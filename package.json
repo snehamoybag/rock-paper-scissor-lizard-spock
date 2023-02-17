@@ -1,0 +1,27 @@
+{
+  "name": "rock-paper-scissors-master",
+  "version": "1.0.0",
+  "description": "![Design preview for the Rock, Paper, Scissors coding challenge](./design/desktop-preview.jpg)",
+  "main": "src/js/app.js",
+  "scripts": {
+    "dev": "vite src",
+    "build": "rm -rf dist && vite build src",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snehamoybag/rock-paper-scissor-lizard-spock.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snehamoybag/rock-paper-scissor-lizard-spock/issues"
+  },
+  "homepage": "https://github.com/snehamoybag/rock-paper-scissor-lizard-spock#readme",
+  "devDependencies": {
+    "gh-pages": "^5.0.0",
+    "sass": "^1.58.2",
+    "vite": "^4.1.2"
+  }
+}
