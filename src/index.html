@@ -12,21 +12,30 @@
   <script src="js/app.js" type="module"></script>
 </head>
 <body>
-  <a id="anchor" href="http://localhost:5173/" style="position: absolute">live site</a>
-  Score
-  Rules
-
-  You Picked
-  The House Picked
-
-  You Win
-  You Lose
-
-  Play Again
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  <header class="header"></header>
+  <main class="main">
+    <div class="heading">
+      <h1 class="heading__title">Rock, Paper, Scissors</h1>
+      <p class="heading__score">
+        Score <span class="heading__score-points" id="score-points">0</span>
+      </p>
+    </div>
+    <div class="game">
+      <div class="game__chips">
+        <button class="chip chip--red"><span class="sr-only">Rock</span></button>
+        <button class="chip chip--blue"><span class="sr-only">Paper</span></button>
+        <button class="chip chip--orange"><span class="sr-only">Scissors</span></button>
+      </div>
+      <div class="game__extras">
+        <button class="btn btn--rules">Rules</button>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="http://localhost:5173/">Your Name Here</a>.
+    </div>
+  </footer>
 </body>
 </html>
