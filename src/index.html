@@ -20,14 +20,17 @@
         <span>Score</span> <span class="heading__score-points" id="score-points">12</span>
       </p>
     </div>
-    <div class="game">
-      <div class="game__chips" id="game-chips">
-        <button class="chip" id="btn-rock" chip-value="rock"><span class="sr-only">Rock</span></button>
-        <button class="chip" id="btn-paper" chip-value="paper"><span class="sr-only">Paper</span></button>
-        <button class="chip" id="btn-scissors" chip-value="scissors"><span class="sr-only">Scissors</span></button>
+    <div class="board">
+      <div class="board__chips" id="board-chips">
+        <button class="chip" chip-value="rock"><span class="sr-only">Rock</span></button>
+        <span class="board__lines"></span>
+        <button class="chip" chip-value="paper"><span class="sr-only">Paper</span></button>
+        <span class="board__lines"></span>
+        <button class="chip" chip-value="scissors"><span class="sr-only">Scissors</span></button>
+        <span class="board__lines"></span>
       </div>
-      <div class="game__extras">
-        <button class="btn btn--rules">Rules</button>
+      <div class="board__extras">
+        <button class="btn btn--border-only">Rules</button>
       </div>
     </div>
   </main>

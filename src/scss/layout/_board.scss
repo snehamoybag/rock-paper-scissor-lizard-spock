@@ -1,0 +1,13 @@
+.board {
+
+  &__chips {
+    margin-top: 7.5rem;
+    margin-bottom: 7.5rem;
+  }
+
+  &__extras {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

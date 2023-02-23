@@ -1,0 +1,22 @@
+.btn {
+
+  &--border-only {
+    background-color: transparent;
+    color: hsla(0, 0%, 100%, 0.85);
+    text-transform: inherit;
+    letter-spacing: 0.15em;
+    padding: 0.35em 2em;
+    border: 2px solid var(--clr-neutral-500);
+    border-radius: 0.5em;
+    transition: background-color 200ms ease;
+
+    &:hover {
+      background-color: var(--clr-neutral-100);
+      color: var(--clr-neutral-600);
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+}

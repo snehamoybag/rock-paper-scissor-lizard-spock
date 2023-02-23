@@ -1,5 +1,7 @@
 .main {
   background: linear-gradient(var(--clr-neutral-700), var(--clr-neutral-900)) no-repeat;
+  color: var(--clr-neutral-100);
   min-height: 100%;
   padding: 2em;
+  text-transform: uppercase;
 }
