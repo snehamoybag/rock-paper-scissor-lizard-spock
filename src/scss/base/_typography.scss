@@ -6,4 +6,35 @@
 
   --fw-semi-bold: 600;
   --fw-bold: 700;
+
+  --fs-200: 0.75rem;
+  --fs-400: 1rem;
+  --fs-700: 1.25rem;
+  --fs-800: 2.35rem;
+}
+
+/* typography reset */
+
+/*
+ Remove built-in typography styles
+*/
+* {
+  font: inherit;
+}
+
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* general body typography */
+body {
+  font-family: var(--ff-primary);
+  color: var(--clr-neutral-100);
+  font-size: var(--fs-400);
 }
