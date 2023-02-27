@@ -1,29 +1,47 @@
 .board {
 
-  &__chips {
-    height: 16.5rem;
+  &__shape {
+    min-height: 16rem;
+    background-image: var(--bg-pattern);
+    background-repeat: no-repeat;
+    background-size: var(--bg-size);
+    background-position: center;
     margin: 6rem 0;
     position: relative;
     isolation: isolate;
+
+    .board__chip-wrapper {
+      position: absolute;
+    }
   }
 
-  &__chip-wrapper {
-    position: absolute;
+  &__shape--triangle {
+    --bg-pattern: url('/images/bg-triangle.svg');
+    --bg-size: 70%;
 
-    &:nth-of-type(1) {
+    .board__chip-wrapper:nth-of-type(1) {
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
     }
 
-    &:nth-of-type(2) {
+    .board__chip-wrapper:nth-of-type(2) {
       top: 0;
       left: 0;
     }
 
-    &:nth-of-type(3) {
+    .board__chip-wrapper:nth-of-type(3) {
       top: 0;
       right: 0;
+    }
+  }
+
+  &__shape--all-center {
+
+    .board__chip-wrapper {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 
@@ -31,14 +49,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  &__pattern {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.65);
-    stroke-width: 25;
-    z-index: -1;
   }
 }
