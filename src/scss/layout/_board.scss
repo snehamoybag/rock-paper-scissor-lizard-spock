@@ -10,38 +10,31 @@
     position: relative;
     isolation: isolate;
 
-    .board__chip-wrapper {
-      position: absolute;
-    }
-  }
+    &--triangle {
+      --bg-pattern: url('/images/bg-triangle.svg');
+      --bg-size: 70%;
 
-  &__shape--triangle {
-    --bg-pattern: url('/images/bg-triangle.svg');
-    --bg-size: 70%;
+      .board__chip-wrapper {
+        position: absolute;
+      }
 
-    .board__chip-wrapper:nth-of-type(1) {
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+      .board__chip-wrapper:nth-of-type(1) {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
-    .board__chip-wrapper:nth-of-type(2) {
-      top: 0;
-      left: 0;
-    }
+      .board__chip-wrapper:nth-of-type(2) {
+        top: 0;
+        left: 0%;
+        transform: none;
+      }
 
-    .board__chip-wrapper:nth-of-type(3) {
-      top: 0;
-      right: 0;
-    }
-  }
-
-  &__shape--all-center {
-
-    .board__chip-wrapper {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      .board__chip-wrapper:nth-of-type(3) {
+        top: 0;
+        right: 0%;
+        transform: none;
+      }
     }
   }
 
@@ -49,5 +42,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+/* keyframes */
+@keyframes center-center {
+  100% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
   }
 }
