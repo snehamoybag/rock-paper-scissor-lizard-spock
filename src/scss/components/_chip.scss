@@ -26,7 +26,19 @@
     transition: transform 200ms ease;
   }
 
-  &[chip-value="rock"] {
+  &:hover {
+    cursor: pointer;
+
+    &::before {
+      transform: var(--translate-pos) rotate(25deg);
+    }
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &--rock {
     background: linear-gradient(var(--clr-red-400), var(--clr-red-500)) no-repeat;
 
     &::before {
@@ -34,7 +46,7 @@
     }
   }
 
-  &[chip-value="paper"] {
+  &--paper {
     background: linear-gradient(var(--clr-blue-400), var(--clr-blue-500)) no-repeat;
 
     &::before {
@@ -42,7 +54,7 @@
     }
   }
 
-  &[chip-value="scissors"] {
+  &--scissors {
     background: linear-gradient(var(--clr-orange-400), var(--clr-orange-500)) no-repeat;
 
     &::before {
@@ -50,7 +62,7 @@
     }
   }
 
-  &[chip-value="lizard"] {
+  &--lizard {
     background: linear-gradient(var(--clr-purple-400), var(--clr-purple-500)) no-repeat;
 
     &::before {
@@ -58,22 +70,11 @@
     }
   }
 
-  &[chip-value="spock"] {
+  &--spock {
     background: linear-gradient(var(--clr-cyan-400), var(--clr-cyan-500)) no-repeat;
 
     &::before {
       --chip-icon: url('/images/icon-spock.svg');
     }
   }
-}
-
-.chip:hover {
-
-  &::before {
-    transform: var(--translate-pos) rotate(25deg);
-  }
-}
-
-.chip:active {
-  transform: scale(0.97);
 }

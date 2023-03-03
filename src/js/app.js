@@ -2,47 +2,92 @@
 import '/scss/styles.scss';
 
 // GAME SCRIPTS
-// DOM elements
-const chips = document.querySelector('#chips');
+const board = document.querySelector('#board');
+const allChips = board.querySelectorAll('button[chip-value]');
+const rulesBtn = document.querySelector('#rules');
 
-// global variables
+let userChoice = null;
 let userChip = null;
+let houseChoice = null;
 let houseChip = null;
 
-// reusables functions
-function generateHouseChip() {
-  const values = [
-    'rock',
-    'paper',
-    'scissors'
-  ];
-  return values[Math.floor(Math.random() * values.length)];
+// add click event to all chips
+board.addEventListener(
+  'click',
+  // callback function
+  startGame,
+  {
+    // adds event only for once
+    once: true,
+  }
+);
+
+// start game function
+function startGame(event) {
+  const target = event.target;
+
+  if (target.hasAttribute('chip-value')) {
+    userChoice = target.getAttribute('chip-value');
+    userChip = target;
+    // house/cpu choice
+    generateHouseChoice();
+    houseChip = board.querySelector(`[chip-value=${houseChoice}]`);
+    // add animation of chip being removed
+    board.classList.add('no-shape');
+    // renders chosen chips after animation
+    renderOnAnimationEnd();
+  }
+};
+
+// generate house/cpu choice
+function generateHouseChoice () {
+  const allChipsValues = [];
+  let chipValue = null;
+  // get all the chip values dynamically
+  for (let i = 0; i < allChips.length; i++) {
+    chipValue = allChips[i].getAttribute('chip-value');
+    allChipsValues.push(chipValue);
+  }
+  // randomly define house choice
+  houseChoice = allChipsValues[Math.floor(Math.random() * allChipsValues.length)];
+};
+
+// render new chips on animation end
+function renderOnAnimationEnd() {
+  board.addEventListener('animationend', () => {
+    removeChips();
+    // user chosen chip
+    createChipElm(userChoice, 'You');
+    // house chosen chip
+    createChipElm(houseChoice, 'The House');
+  }, {
+    once: true
+  });
+};
+
+// remove chips from DOM
+function removeChips() {
+  allChips.forEach(chip => {
+    chip.parentElement.classList.add('remove');
+  });
 }
 
-// add click events to all buttons
-chips.addEventListener('click', (e) => {
-  const clickTarget = e.target;
-  if (clickTarget.hasAttribute('chip-value')) {
-    userChip = e.target.getAttribute('chip-value');
-    houseChip = generateHouseChip();
-    console.log(userChip, houseChip);
-    gameLogic();
-  }
-});
+// create chip DOM element
+function createChipElm(choice, playerName) {
+  const chipContainer = document.createElement('div');
+  const paragraph = document.createElement('p');
+  const chip = document.createElement('div');
+  const span = document.createElement('span');
 
-// game logic
-function gameLogic() {
-  if (!userChip) {
-    return;
-  } else if (userChip === houseChip) {
-    console.log('It\'s a Draw');
-  } else if (
-    (userChip === 'rock' && houseChip === 'scissors') ||
-    (userChip === 'paper' && houseChip === 'rock') ||
-    (userChip === 'scissors' && houseChip === 'paper')
-  ) {
-    console.log('You Win!');
-  } else {
-    console.log('House Wins');
-  }
+  chipContainer.classList.add('board__chip-choice-wrapper');
+  paragraph.classList.add('board__chip-paragraph');
+  paragraph.textContent = `${playerName} Picked`;
+  chip.classList.add('chip', `chip--${choice}`);
+  span.classList.add('sr-only');
+  span.textContent = `${choice}`;
+
+  chip.appendChild(span);
+  chipContainer.append(paragraph, chip);
+  // renders to DOM
+  board.appendChild(chipContainer);
 }

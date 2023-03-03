@@ -1,0 +1,52 @@
+/* javascript class */
+.no-shape.board {
+  animation: shrink-bg 500ms ease forwards;
+  .board__chip-wrapper {
+    animation: center-center 500ms ease forwards;
+  }
+}
+
+.no-shape {
+  .chip:hover {
+    cursor: unset;
+
+    &::before {
+      transform: var(--translate-pos) rotate(0deg);
+    }
+  }
+
+  .chip:active {
+    transform: unset;
+  }
+}
+
+/* animations */
+@keyframes shrink-bg {
+  0% {}
+  95% {
+    background-size: 0;
+  }
+  100% {
+    background-size: 0;
+    background-image: unset;
+  }
+}
+
+@keyframes center-center {
+  0% {}
+  90% {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+}
