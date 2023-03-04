@@ -77,4 +77,12 @@
       --chip-icon: url('/images/icon-spock.svg');
     }
   }
+
+  &__paragraph {
+    text-align: center;
+    position: relative;
+    top: 115%;
+    font-size: 0.75rem;
+    font-weight: var(--fw-bold);
+  }
 }

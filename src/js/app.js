@@ -32,8 +32,8 @@ function startGame(event) {
     // house/cpu choice
     generateHouseChoice();
     houseChip = board.querySelector(`[chip-value=${houseChoice}]`);
-    // add animation of chip being removed
-    board.classList.add('no-shape');
+    // add remeove animation and grid classes
+    board.classList.add('no-shape', 'grid', 'grid--double-columns', 'grid--align-start');
     // renders chosen chips after animation
     renderOnAnimationEnd();
   }
@@ -79,15 +79,20 @@ function createChipElm(choice, playerName) {
   const chip = document.createElement('div');
   const span = document.createElement('span');
 
-  chipContainer.classList.add('board__chip-choice-wrapper');
-  paragraph.classList.add('board__chip-paragraph');
-  paragraph.textContent = `${playerName} Picked`;
   chip.classList.add('chip', `chip--${choice}`);
   span.classList.add('sr-only');
   span.textContent = `${choice}`;
+  paragraph.classList.add('chip__paragraph');
+  paragraph.textContent = `${playerName} Picked`;
 
-  chip.appendChild(span);
-  chipContainer.append(paragraph, chip);
+  if (choice === userChoice) {
+    chipContainer.classList.add('board__chip-choice-wrapper', 'align-start');
+  } else {
+    chipContainer.classList.add('board__chip-choice-wrapper', 'align-end');
+  }
+
+  chip.append(span, paragraph);
+  chipContainer.append(chip);
   // renders to DOM
   board.appendChild(chipContainer);
 }

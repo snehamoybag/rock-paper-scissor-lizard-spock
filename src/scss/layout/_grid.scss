@@ -1,0 +1,12 @@
+.grid {
+  display: grid;
+
+  &--double-columns {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  &--align-start {
+    align-items: start;
+  }
+}

@@ -9,8 +9,6 @@
   margin: 6rem 0;
   position: relative;
   isolation: isolate;
-  outline: 1px solid red;
-
 
   &__chip-wrapper {
     position: absolute;
@@ -32,5 +30,28 @@
     top: 0;
     right: 0%;
     transform: none;
+  }
+
+  &__chip-choice-wrapper {
+    display: flex;
+    flex-direction: column;
+    animation: invisible-to-visible 500ms ease-in forwards;
+
+    &.align-start {
+      align-items: start;
+    }
+
+    &.align-end {
+      align-items: end;
+    }
+  }
+}
+
+@keyframes invisible-to-visible {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
