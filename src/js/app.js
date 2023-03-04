@@ -2,14 +2,20 @@
 import '/scss/styles.scss';
 
 // GAME SCRIPTS
+const scorePoints = document.querySelector('#score-points');
 const board = document.querySelector('#board');
 const allChips = board.querySelectorAll('button[chip-value]');
 const rulesBtn = document.querySelector('#rules');
 
+let score = 0;
+// set score
+scorePoints.textContent = score;
 let userChoice = null;
 let userChip = null;
 let houseChoice = null;
 let houseChip = null;
+let winnerTxt = null;
+
 
 // add click event to all chips
 board.addEventListener(
@@ -32,7 +38,7 @@ function startGame(event) {
     // house/cpu choice
     generateHouseChoice();
     houseChip = board.querySelector(`[chip-value=${houseChoice}]`);
-    // add remeove animation and grid classes
+    // add chip remove animation and grid classes
     board.classList.add('no-shape', 'grid', 'grid--double-columns', 'grid--align-start');
     // renders chosen chips after animation
     renderOnAnimationEnd();
@@ -56,10 +62,12 @@ function generateHouseChoice () {
 function renderOnAnimationEnd() {
   board.addEventListener('animationend', () => {
     removeChips();
-    // user chosen chip
-    createChipElm(userChoice, 'You');
-    // house chosen chip
-    createChipElm(houseChoice, 'The House');
+    // renders user chosen chip
+    createRenderChipElm(userChoice, 'You');
+    // render house chosen chip
+    createRenderChipElm(houseChoice, 'The House');
+    // renders results after some time has passed
+    setTimeout(createRenderResultsElm, 1000);
   }, {
     once: true
   });
@@ -73,7 +81,7 @@ function removeChips() {
 }
 
 // create chip DOM element
-function createChipElm(choice, playerName) {
+function createRenderChipElm(choice, playerName) {
   const chipContainer = document.createElement('div');
   const paragraph = document.createElement('p');
   const chip = document.createElement('div');
@@ -96,3 +104,40 @@ function createChipElm(choice, playerName) {
   // renders to DOM
   board.appendChild(chipContainer);
 }
+
+// create and render render results on DOM
+function createRenderResultsElm() {
+  getWinner();
+  const container = document.createElement('div');
+  const h2 = document.createElement('h2');
+  const button = document.createElement('button');
+
+  h2.textContent = winnerTxt;
+  button.textContent = 'Play Again';
+
+  button.addEventListener('click', () => {
+    console.log('hello world');
+  });
+  container.append(h2, button);
+
+  board.appendChild(container);
+}
+
+// get winner
+function getWinner() {
+  if (!userChoice) {
+    winnerTxt = 'Error: Try again';
+  } else if (userChoice === houseChoice) {
+    winnerTxt = 'It\'s a Draw';
+  } else if (
+    (userChoice === 'rock' && houseChoice === 'scissors') ||
+    (userChoice === 'paper' && houseChoice === 'rock') ||
+    (userChoice === 'scissors' && houseChoice === 'paper')
+  ) {
+    winnerTxt = 'You Win';
+  } else {
+    winnerTxt = 'You Lose'
+  }
+}
+
+console.log(score);
