@@ -7,15 +7,11 @@ const board = document.querySelector('#board');
 const allChips = board.querySelectorAll('button[chip-value]');
 const rulesBtn = document.querySelector('#rules');
 
-let score = 0;
-// set score
-scorePoints.textContent = score;
 let userChoice = null;
 let userChip = null;
 let houseChoice = null;
 let houseChip = null;
 let winnerTxt = null;
-
 
 // add click event to all chips
 board.addEventListener(
@@ -108,6 +104,8 @@ function createRenderChipElm(choice, playerName) {
 // create and render render results on DOM
 function createRenderResultsElm() {
   getWinner();
+  // update score
+  scorePoints.textContent = getWinner();
   const container = document.createElement('div');
   const h2 = document.createElement('h2');
   const button = document.createElement('button');
@@ -125,6 +123,8 @@ function createRenderResultsElm() {
 
 // get winner
 function getWinner() {
+  let score = 0;
+
   if (!userChoice) {
     winnerTxt = 'Error: Try again';
   } else if (userChoice === houseChoice) {
@@ -135,9 +135,10 @@ function getWinner() {
     (userChoice === 'scissors' && houseChoice === 'paper')
   ) {
     winnerTxt = 'You Win';
+    score++;
   } else {
-    winnerTxt = 'You Lose'
+    winnerTxt = 'You Lose';
+    if (!score < 0) score--;
   }
+  return score;
 }
-
-console.log(score);
