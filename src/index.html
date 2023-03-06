@@ -31,8 +31,26 @@
         <button class="chip chip--scissors" chip-value="scissors"><span class="sr-only">Scissors</span></button>
       </div>
     </div>
+    <div class="chosen-chips hidden" id="chosen-chips">
+      <div class="chosen-chips__user">
+        <div class="chip no-btn-effs" id="user-chip"></div>
+        <p class="chosen-chips__texts">
+          <strong>You Picked</strong>
+        </p>
+      </div>
+      <div class="chosen-chips__house">
+        <div class="chip no-btn-effs" id="house-chip"></div>
+        <p class="chosen-chips__texts">
+          <strong>The House Picked</strong>
+        </p>
+      </div>
+      <div class="chosen-chips__results" id="results">
+        <h2 class="chosen-chips__results-title" id="results-title">It's a Draw</h2>
+        <button class="btn btn--white" id="btn-replay">Play Again</button>
+      </div>
+    </div>
     <div class="rules">
-      <button class="btn btn--border-only" id="rules">Rules</button>
+      <button class="btn btn--border-only" id="btn-rules">Rules</button>
     </div>
   </main>
   <footer class="footer">

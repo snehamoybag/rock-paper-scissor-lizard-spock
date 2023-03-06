@@ -1,0 +1,48 @@
+.chosen-chips {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:'user house' 'results results';
+  animation: invisible-to-visible 400ms ease-in forwards;
+
+  &__user,
+  &__house {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: var(--fs-200);
+    font-weight: var(--fw-bold);
+  }
+
+  &__user {
+    grid-area: user;
+    justify-self: start;
+  }
+
+  &__house {
+    grid-area: house;
+    justify-self: end;
+  }
+
+  &__results {
+    grid-area: results;
+    justify-self: center;
+
+    &-title {
+      font-size: var(--fs-900);
+      font-weight: var(--fw-bold);
+      text-align: center;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.chosen-chips.hidden {
+  display: none;
+}

@@ -6,7 +6,7 @@
   background-repeat: no-repeat;
   background-size: var(--bg-size);
   background-position: center;
-  margin: 6rem 0;
+  //margin: 6rem 0;
   position: relative;
   isolation: isolate;
 
@@ -31,27 +31,16 @@
     right: 0%;
     transform: none;
   }
-
-  &__chip-choice-wrapper {
-    display: flex;
-    flex-direction: column;
-    animation: invisible-to-visible 500ms ease-in forwards;
-
-    &.align-start {
-      align-items: start;
-    }
-
-    &.align-end {
-      align-items: end;
-    }
-  }
 }
 
-@keyframes invisible-to-visible {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.board.animate-pattern-close {
+  animation: shrink-bg 500ms ease-in forwards;
+}
+
+.board.hidden {
+  display: none;
+}
+
+.board__chip-wrapper.animate-closing {
+  animation: center-center-vanish 500ms ease-in forwards;
 }

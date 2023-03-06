@@ -1,26 +1,13 @@
-/* javascript class */
-.no-shape.board {
-  animation: shrink-bg 500ms ease forwards;
-  .board__chip-wrapper {
-    animation: center-center 500ms ease forwards;
+// ALL KEYFRAMES / ANIMATIONS
+@keyframes invisible-to-visible {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
-.no-shape {
-  .chip:hover {
-    cursor: unset;
-
-    &::before {
-      transform: var(--translate-pos) rotate(0deg);
-    }
-  }
-
-  .chip:active {
-    transform: unset;
-  }
-}
-
-/* animations */
 @keyframes shrink-bg {
   0% {}
   95% {
@@ -32,7 +19,7 @@
   }
 }
 
-@keyframes center-center {
+@keyframes center-center-vanish {
   0% {}
   90% {
     top: 50%;

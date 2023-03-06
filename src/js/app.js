@@ -3,42 +3,61 @@ import '/scss/styles.scss';
 
 // GAME SCRIPTS
 const scorePoints = document.querySelector('#score-points');
+
 const board = document.querySelector('#board');
 const allChips = board.querySelectorAll('button[chip-value]');
-const rulesBtn = document.querySelector('#rules');
+
+const chosenChips = document.querySelector('#chosen-chips');
+const userChip = chosenChips.querySelector('#user-chip');
+const houseChip = chosenChips.querySelector('#house-chip');
+
+const results = chosenChips.querySelector('#results');
+const resultsTitle = results.querySelector('#results-title');
+const replayBtn = results.querySelector('#btn-replay');
+
+const rulesBtn = document.querySelector('#btn-rules');
 
 let userChoice = null;
-let userChip = null;
 let houseChoice = null;
-let houseChip = null;
+
 let winnerTxt = null;
 
-// add click event to all chips
-board.addEventListener(
-  'click',
-  // callback function
-  startGame,
-  {
-    // adds event only for once
-    once: true,
-  }
-);
+// start game, default behaviour
+startGame();
+// replay click event
+replayBtn.addEventListener('click', () => {
+  
+});
 
-// start game function
-function startGame(event) {
-  const target = event.target;
+// start Game function
+function startGame() {
+  // add click event to all chips
+  board.addEventListener('click', e => {
+    const target = e.target;
 
-  if (target.hasAttribute('chip-value')) {
-    userChoice = target.getAttribute('chip-value');
-    userChip = target;
-    // house/cpu choice
-    generateHouseChoice();
-    houseChip = board.querySelector(`[chip-value=${houseChoice}]`);
-    // add chip remove animation and grid classes
-    board.classList.add('no-shape', 'grid', 'grid--double-columns', 'grid--align-start');
-    // renders chosen chips after animation
-    renderOnAnimationEnd();
-  }
+    if (target.hasAttribute('chip-value')) {
+      // remove pattern animation
+      board.classList.add('animate-pattern-close');
+      allChips.forEach(chip => {
+        // remove chips hover and click effects
+        chip.classList.add('no-btn-effs');
+        chip.parentElement.classList.add('animate-closing');
+      });
+      // get user choice and house choice
+      userChoice = target.getAttribute('chip-value');
+      generateHouseChoice();
+      console.log(userChoice, houseChoice);
+      // add classes to chosen chips depending on user and house choice
+      userChip.classList.add(`chip--${userChoice}`);
+      houseChip.classList.add(`chip--${houseChoice}`);
+      // hide board and show results
+      showResults();
+    }
+  },
+    // add addEventListener only for once
+    {
+      once: true
+    });
 };
 
 // generate house/cpu choice
@@ -54,73 +73,34 @@ function generateHouseChoice () {
   houseChoice = allChipsValues[Math.floor(Math.random() * allChipsValues.length)];
 };
 
-// render new chips on animation end
-function renderOnAnimationEnd() {
+// show results on animation end
+function showResults() {
   board.addEventListener('animationend', () => {
-    removeChips();
-    // renders user chosen chip
-    createRenderChipElm(userChoice, 'You');
-    // render house chosen chip
-    createRenderChipElm(houseChoice, 'The House');
-    // renders results after some time has passed
-    setTimeout(createRenderResultsElm, 1000);
+    // hide board
+    board.classList.add('hidden');
+    // show results
+    chosenChips.classList.remove('hidden');
   }, {
     once: true
   });
 };
 
-// remove chips from DOM
-function removeChips() {
+// hide results and show default chips
+function hideResults() {
+  // hide results
+  chosenChips.classList.add('hidden');
+  // show board
+  board.classList.remove('hidden');
+}
+
+function showDefaultChips() {
+  board.classList.remove('animate-pattern-close');
   allChips.forEach(chip => {
-    chip.parentElement.classList.add('remove');
+    // remove chips hover and click effects
+    chip.classList.remove('no-btn-effs');
+    chip.parentElement.classList.remove('animate-closing');
   });
 }
-
-// create chip DOM element
-function createRenderChipElm(choice, playerName) {
-  const chipContainer = document.createElement('div');
-  const paragraph = document.createElement('p');
-  const chip = document.createElement('div');
-  const span = document.createElement('span');
-
-  chip.classList.add('chip', `chip--${choice}`);
-  span.classList.add('sr-only');
-  span.textContent = `${choice}`;
-  paragraph.classList.add('chip__paragraph');
-  paragraph.textContent = `${playerName} Picked`;
-
-  if (choice === userChoice) {
-    chipContainer.classList.add('board__chip-choice-wrapper', 'align-start');
-  } else {
-    chipContainer.classList.add('board__chip-choice-wrapper', 'align-end');
-  }
-
-  chip.append(span, paragraph);
-  chipContainer.append(chip);
-  // renders to DOM
-  board.appendChild(chipContainer);
-}
-
-// create and render render results on DOM
-function createRenderResultsElm() {
-  getWinner();
-  // update score
-  scorePoints.textContent = getWinner();
-  const container = document.createElement('div');
-  const h2 = document.createElement('h2');
-  const button = document.createElement('button');
-
-  h2.textContent = winnerTxt;
-  button.textContent = 'Play Again';
-
-  button.addEventListener('click', () => {
-    console.log('hello world');
-  });
-  container.append(h2, button);
-
-  board.appendChild(container);
-}
-
 // get winner
 function getWinner() {
   let score = 0;

@@ -4,4 +4,7 @@
   min-height: 100%;
   padding: 2em;
   text-transform: uppercase;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
 }

@@ -1,4 +1,5 @@
 .chip {
+  // colored border
   width: 7.5rem;
   aspect-ratio: 1/1;
   background-color: var(--clr-neutral-100);
@@ -6,8 +7,26 @@
   border-radius: 50%;
   box-shadow: 0 -5px 0 hsla(0, 0%, 0%, 0.2) inset;
   position: relative;
+  isolation: isolate;
 
+  &::before,
+  &::after {
+    border-radius: 50%;
+  }
+
+  //chip shadow
   &::before {
+    content: '';
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 8px 15px -5px hsla(0, 0%, 0%, 0.5);
+  }
+
+  // white circle and icon
+  &::after {
     --translate-pos: translate(-50%, -50%);
     content: '';
     width: 75%;
@@ -21,7 +40,6 @@
     top: 50%;
     left: 50%;
     transform: var(--translate-pos);
-    border-radius: 50%;
     box-shadow: 0 5px 0 hsla(0, 0%, 0%, 0.1) inset;
     transition: transform 200ms ease;
   }
@@ -30,6 +48,10 @@
     cursor: pointer;
 
     &::before {
+      box-shadow: none;
+    }
+
+    &::after {
       transform: var(--translate-pos) rotate(25deg);
     }
   }
@@ -41,7 +63,7 @@
   &--rock {
     background: linear-gradient(var(--clr-red-400), var(--clr-red-500)) no-repeat;
 
-    &::before {
+    &::after {
       --chip-icon: url('/images/icon-rock.svg');
     }
   }
@@ -49,7 +71,7 @@
   &--paper {
     background: linear-gradient(var(--clr-blue-400), var(--clr-blue-500)) no-repeat;
 
-    &::before {
+    &::after {
       --chip-icon: url('/images/icon-paper.svg');
     }
   }
@@ -57,7 +79,7 @@
   &--scissors {
     background: linear-gradient(var(--clr-orange-400), var(--clr-orange-500)) no-repeat;
 
-    &::before {
+    &::after {
       --chip-icon: url('/images/icon-scissors.svg');
     }
   }
@@ -65,7 +87,7 @@
   &--lizard {
     background: linear-gradient(var(--clr-purple-400), var(--clr-purple-500)) no-repeat;
 
-    &::before {
+    &::after {
       --chip-icon: url('/images/icon-lizard.svg');
     }
   }
@@ -73,16 +95,24 @@
   &--spock {
     background: linear-gradient(var(--clr-cyan-400), var(--clr-cyan-500)) no-repeat;
 
-    &::before {
+    &::after {
       --chip-icon: url('/images/icon-spock.svg');
     }
   }
+}
 
-  &__paragraph {
-    text-align: center;
-    position: relative;
-    top: 115%;
-    font-size: 0.75rem;
-    font-weight: var(--fw-bold);
+// remove hover and click effects from chips
+.chip.no-btn-effs {
+
+  &:hover {
+    cursor: unset;
+
+    &::after {
+      transform: var(--translate-pos) rotate(0deg);
+    }
+  }
+
+  &:active {
+    transform: unset;
   }
 }
