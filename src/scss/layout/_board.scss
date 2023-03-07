@@ -33,14 +33,31 @@
   }
 }
 
-.board.animate-pattern-close {
+// animate closing/removing
+.board.animate-closing {
   animation: shrink-bg 500ms ease-in forwards;
+
+  .board__chip-wrapper {
+    animation: center-center-vanish 500ms ease-in forwards;
+  }
+
+  // remove hover and click effects from chips
+  .chip {
+    pointer-events: none;
+    &:hover {
+      cursor: unset;
+
+      &::after {
+        transform: var(--translate-pos) rotate(0deg);
+      }
+    }
+
+    &:active {
+      transform: unset;
+    }
+  }
 }
 
 .board.hidden {
   display: none;
-}
-
-.board__chip-wrapper.animate-closing {
-  animation: center-center-vanish 500ms ease-in forwards;
 }

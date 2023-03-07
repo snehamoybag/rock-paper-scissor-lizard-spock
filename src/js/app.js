@@ -20,44 +20,43 @@ const rulesBtn = document.querySelector('#btn-rules');
 let userChoice = null;
 let houseChoice = null;
 
-let winnerTxt = null;
+// add event listener to all btns
+board.addEventListener('click', (event) => {
+  const target = event.target;
 
-// start game, default behaviour
-startGame();
-// replay click event
-replayBtn.addEventListener('click', () => {
-  
+  if (target.hasAttribute('chip-value')) {
+    // get user choice and house choice
+    userChoice = target.getAttribute('chip-value');
+    generateHouseChoice();
+    addStyles();
+    getWinner();
+  }
 });
 
-// start Game function
-function startGame() {
-  // add click event to all chips
-  board.addEventListener('click', e => {
-    const target = e.target;
+// replay button click event
+replayBtn.addEventListener('click', removeStyles);
 
-    if (target.hasAttribute('chip-value')) {
-      // remove pattern animation
-      board.classList.add('animate-pattern-close');
-      allChips.forEach(chip => {
-        // remove chips hover and click effects
-        chip.classList.add('no-btn-effs');
-        chip.parentElement.classList.add('animate-closing');
-      });
-      // get user choice and house choice
-      userChoice = target.getAttribute('chip-value');
-      generateHouseChoice();
-      console.log(userChoice, houseChoice);
-      // add classes to chosen chips depending on user and house choice
-      userChip.classList.add(`chip--${userChoice}`);
-      houseChip.classList.add(`chip--${houseChoice}`);
-      // hide board and show results
-      showResults();
-    }
-  },
-    // add addEventListener only for once
-    {
-      once: true
+function addStyles() {
+  board.classList.add('animate-closing');
+  userChip.classList.add(`chip--${userChoice}`);
+  houseChip.classList.add(`chip--${houseChoice}`);
+  // hide board and show results on animation end
+  board.addEventListener('animationend',
+    () => {
+      // hide board
+      board.classList.add('hidden');
+      // show results
+      chosenChips.classList.remove('hidden');
     });
+};
+
+function removeStyles() {
+  // remove previous game styles
+  board.classList.remove('animate-closing',
+    'hidden');
+  userChip.classList.remove(`chip--${userChoice}`);
+  houseChip.classList.remove(`chip--${houseChoice}`);
+  chosenChips.classList.add('hidden');
 };
 
 // generate house/cpu choice
@@ -73,52 +72,27 @@ function generateHouseChoice () {
   houseChoice = allChipsValues[Math.floor(Math.random() * allChipsValues.length)];
 };
 
-// show results on animation end
-function showResults() {
-  board.addEventListener('animationend', () => {
-    // hide board
-    board.classList.add('hidden');
-    // show results
-    chosenChips.classList.remove('hidden');
-  }, {
-    once: true
-  });
-};
-
-// hide results and show default chips
-function hideResults() {
-  // hide results
-  chosenChips.classList.add('hidden');
-  // show board
-  board.classList.remove('hidden');
-}
-
-function showDefaultChips() {
-  board.classList.remove('animate-pattern-close');
-  allChips.forEach(chip => {
-    // remove chips hover and click effects
-    chip.classList.remove('no-btn-effs');
-    chip.parentElement.classList.remove('animate-closing');
-  });
-}
 // get winner
 function getWinner() {
+  let winner = null;
   let score = 0;
-
   if (!userChoice) {
-    winnerTxt = 'Error: Try again';
+    winner = 'Error: Try again';
   } else if (userChoice === houseChoice) {
-    winnerTxt = 'It\'s a Draw';
+    winner = 'It\'s a Draw';
   } else if (
     (userChoice === 'rock' && houseChoice === 'scissors') ||
     (userChoice === 'paper' && houseChoice === 'rock') ||
     (userChoice === 'scissors' && houseChoice === 'paper')
   ) {
-    winnerTxt = 'You Win';
+    winner = 'You Win';
     score++;
   } else {
-    winnerTxt = 'You Lose';
-    if (!score < 0) score--;
+    winner = 'You Lose';
+    // decrement only when score is more than zero
+    if (!score) score--;
   }
-  return score;
-}
+  resultsTitle.textContent = winner;
+  //update score
+  scorePoints.textContent = `${JSON.parse(scorePoints.textContent) + score}`;
+};

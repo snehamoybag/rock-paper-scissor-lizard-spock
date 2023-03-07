@@ -103,7 +103,7 @@
 
 // remove hover and click effects from chips
 .chip.no-btn-effs {
-
+  pointer-events: none;
   &:hover {
     cursor: unset;
 
