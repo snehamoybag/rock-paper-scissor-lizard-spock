@@ -1,0 +1,9 @@
+.animate-closing {
+  &.chosen-chips {
+    animation: visible-to-invisible 200ms ease forwards;
+  }
+
+  &.rules__img {
+    animation: visible-to-invisible 400ms ease forwards;
+  }
+}

@@ -1,0 +1,41 @@
+.rules {
+  display: flex;
+  justify-content: center;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    padding: 3em 0;
+    background-color: var(--clr-neutral-100);
+    background-image: url('/images/image-rules.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: scroll;
+
+    &-title {
+      font-size: var(--fs-800);
+      color: var(--clr-neutral-600);
+    }
+
+    &-btn {
+      background-color: transparent;
+      border: none;
+      transition: transform 200ms linear;
+
+      &:hover {
+        transform: rotate(90deg);
+      }
+
+      &:active {
+        transform: scale(0.5);
+      }
+    }
+  }
+}

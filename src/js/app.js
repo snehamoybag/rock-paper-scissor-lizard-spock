@@ -15,7 +15,9 @@ const results = chosenChips.querySelector('#results');
 const resultsTitle = results.querySelector('#results-title');
 const replayBtn = results.querySelector('#btn-replay');
 
-const rulesBtn = document.querySelector('#btn-rules');
+const rulesImg = document.querySelector('#rules-img');
+const rulesOpenBtn = document.querySelector('#btn-rules-open');
+const rulesCloseBtn = document.querySelector('#btn-rules-close');
 
 let userChoice = null;
 let houseChoice = null;
@@ -34,6 +36,11 @@ board.addEventListener('click', (event) => {
 
 // replay button click event
 replayBtn.addEventListener('click', defaultStyles);
+
+// show rules
+rulesOpenBtn.addEventListener('click', showRules);
+// close rules
+rulesCloseBtn.addEventListener('click', closeRules);
 
 // styles to apply when game has started
 function gameOnStyles() {
@@ -111,3 +118,19 @@ function generateResults() {
   //update score
   scorePoints.textContent = `${JSON.parse(scorePoints.textContent) + score}`;
 };
+
+function showRules() {
+  rulesImg.classList.remove('hidden', 'animate-closing');
+  rulesImg.classList.add('animate-opening');
+}
+
+function closeRules() {
+  rulesImg.classList.remove('animate-opening');
+  rulesImg.classList.add('animate-closing');
+
+  rulesImg.addEventListener('animationend', () => {
+    rulesImg.classList.add('hidden');
+  }, {
+    once: true,
+  });
+}

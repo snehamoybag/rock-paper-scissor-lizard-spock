@@ -56,11 +56,3 @@
     }
   }
 }
-
-.board.animate-opening {
-  animation: invisible-to-visible 200ms ease-in forwards;
-
-  .board__chip-wrapper {
-    animation: invisible-to-visible 500ms ease-in forwards;
-  }
-}

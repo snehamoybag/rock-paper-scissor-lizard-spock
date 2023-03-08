@@ -2,7 +2,9 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:'user house' 'results results';
+  grid-row-gap: 4rem;
   animation: invisible-to-visible 400ms ease-in forwards;
+  margin-bottom: 3rem;
 
   &__user,
   &__house {
@@ -41,8 +43,4 @@
       margin: 0 auto;
     }
   }
-}
-
-.chosen-chips.animate-closing {
-  animation: visible-to-invisible 100ms linear forwards;
 }
