@@ -28,35 +28,51 @@ board.addEventListener('click', (event) => {
     // get user choice and house choice
     userChoice = target.getAttribute('chip-value');
     generateHouseChoice();
-    addStyles();
-    getWinner();
+    gameOnStyles();
   }
 });
 
 // replay button click event
-replayBtn.addEventListener('click', removeStyles);
+replayBtn.addEventListener('click', defaultStyles);
 
-function addStyles() {
+// styles to apply when game has started
+function gameOnStyles() {
+  board.classList.remove('animate-opening');
   board.classList.add('animate-closing');
   userChip.classList.add(`chip--${userChoice}`);
   houseChip.classList.add(`chip--${houseChoice}`);
   // hide board and show results on animation end
   board.addEventListener('animationend',
     () => {
-      // hide board
       board.classList.add('hidden');
-      // show results
-      chosenChips.classList.remove('hidden');
+      chosenChips.classList.remove('hidden', 'animate-closing');
+      setTimeout(() => {
+        // show results
+        generateResults();
+        results.classList.remove('hidden');
+      }, 800);
+    },
+    {
+      once: true,
     });
 };
 
-function removeStyles() {
-  // remove previous game styles
-  board.classList.remove('animate-closing',
-    'hidden');
-  userChip.classList.remove(`chip--${userChoice}`);
-  houseChip.classList.remove(`chip--${houseChoice}`);
-  chosenChips.classList.add('hidden');
+// revert back to default game satates
+function defaultStyles() {
+  board.classList.add('animate-opening');
+  chosenChips.classList.add('animate-closing');
+  // hide chosen chips and show board on animation end
+  chosenChips.addEventListener('animationend',
+    () => {
+      chosenChips.classList.add('hidden');
+      userChip.classList.remove(`chip--${userChoice}`);
+      houseChip.classList.remove(`chip--${houseChoice}`);
+      results.classList.add('hidden')
+      board.classList.remove('animate-closing', 'hidden');
+    },
+    {
+      once: true,
+    });
 };
 
 // generate house/cpu choice
@@ -73,11 +89,11 @@ function generateHouseChoice () {
 };
 
 // get winner
-function getWinner() {
+function generateResults() {
   let winner = null;
   let score = 0;
   if (!userChoice) {
-    winner = 'Error: Try again';
+    winner = 'Error!';
   } else if (userChoice === houseChoice) {
     winner = 'It\'s a Draw';
   } else if (
@@ -89,8 +105,7 @@ function getWinner() {
     score++;
   } else {
     winner = 'You Lose';
-    // decrement only when score is more than zero
-    if (!score) score--;
+    // score--;
   }
   resultsTitle.textContent = winner;
   //update score

@@ -43,6 +43,6 @@
   }
 }
 
-.chosen-chips.hidden {
-  display: none;
+.chosen-chips.animate-closing {
+  animation: visible-to-invisible 100ms linear forwards;
 }

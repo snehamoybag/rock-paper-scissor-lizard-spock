@@ -8,6 +8,15 @@
   }
 }
 
+@keyframes visible-to-invisible {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes shrink-bg {
   0% {}
   95% {

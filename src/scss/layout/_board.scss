@@ -40,7 +40,6 @@
   .board__chip-wrapper {
     animation: center-center-vanish 500ms ease-in forwards;
   }
-
   // remove hover and click effects from chips
   .chip {
     pointer-events: none;
@@ -58,6 +57,10 @@
   }
 }
 
-.board.hidden {
-  display: none;
+.board.animate-opening {
+  animation: invisible-to-visible 200ms ease-in forwards;
+
+  .board__chip-wrapper {
+    animation: invisible-to-visible 500ms ease-in forwards;
+  }
 }
