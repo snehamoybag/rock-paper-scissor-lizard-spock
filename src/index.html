@@ -33,13 +33,17 @@
     </div>
     <div class="chosen-chips hidden" id="chosen-chips">
       <div class="chosen-chips__user">
-        <div class="chip no-btn-effs" id="user-chip"></div>
+        <div class="chip no-btn-effs" id="user-chip">
+          <span class="sr-only"></span>
+        </div>
         <p class="chosen-chips__texts">
           <strong>You Picked</strong>
         </p>
       </div>
       <div class="chosen-chips__house winner">
-        <div class="chip no-btn-effs" id="house-chip"></div>
+        <div class="chip no-btn-effs" id="house-chip">
+          <span class="sr-only"></span>
+        </div>
         <p class="chosen-chips__texts">
           <strong>The House Picked</strong>
         </p>
@@ -50,11 +54,14 @@
       </div>
     </div>
     <div class="rules">
-      <div class="rules__img" id="rules-img">
+      <div class="rules__img hidden" id="rules-img">
         <h2 class="rules__img-title">Rules</h2>
-        <button class="rules__img-btn" id="btn-rules-close"><img src="/images/icon-close.svg" alt="close"></button>
+        <p class="sr-only">
+          Rock beats Scissors, Scissors beats Paper and Paper beats Rock.
+        </p>
+        <button class="rules__img-btn" id="btn-rules-close" aria-controls="rules-img" aria-expanded="true"><img src="/images/icon-close.svg" alt="close"></button>
       </div>
-      <button class="btn btn--border-only" id="btn-rules-open">Rules</button>
+      <button class="btn btn--border-only" id="btn-rules-open" aria-controls="rules-img" aria-expanded="false">Rules</button>
     </div>
   </main>
   <footer class="footer">

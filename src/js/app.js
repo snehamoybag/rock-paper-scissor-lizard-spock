@@ -9,7 +9,9 @@ const allChips = board.querySelectorAll('button[chip-value]');
 
 const chosenChips = document.querySelector('#chosen-chips');
 const userChip = chosenChips.querySelector('#user-chip');
+const userChipSrOnly = userChip.querySelector('.sr-only');
 const houseChip = chosenChips.querySelector('#house-chip');
+const houseChipSrOnly = houseChip.querySelector('.sr-only');
 
 const results = chosenChips.querySelector('#results');
 const resultsTitle = results.querySelector('#results-title');
@@ -48,6 +50,9 @@ function gameOnStyles() {
   board.classList.add('animate-closing');
   userChip.classList.add(`chip--${userChoice}`);
   houseChip.classList.add(`chip--${houseChoice}`);
+  // screen reader only texts
+  userChipSrOnly.textContent = `${userChoice}`;
+  houseChipSrOnly.textContent = `${houseChoice}`;
   // hide board and show results on animation end
   board.addEventListener('animationend',
     () => {
@@ -122,6 +127,7 @@ function generateResults() {
 function showRules() {
   rulesImg.classList.remove('hidden', 'animate-closing');
   rulesImg.classList.add('animate-opening');
+  rulesOpenBtn.setAttribute('aria-expanded', 'true');
 }
 
 function closeRules() {
@@ -130,6 +136,7 @@ function closeRules() {
 
   rulesImg.addEventListener('animationend', () => {
     rulesImg.classList.add('hidden');
+    rulesOpenBtn.setAttribute('aria-expanded', 'false');
   }, {
     once: true,
   });
