@@ -32,6 +32,7 @@ board.addEventListener('click', (event) => {
     // get user choice and house choice
     userChoice = target.getAttribute('chip-value');
     generateHouseChoice();
+    // apply styles
     gameOnStyles();
   }
 });

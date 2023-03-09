@@ -1,4 +1,5 @@
 .heading {
+  width: clamp(10rem, 100%, 35rem);;
   display: flex;
   justify-content: space-between;
   align-items: center;

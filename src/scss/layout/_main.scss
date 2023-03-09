@@ -1,4 +1,6 @@
 .main {
+  /* prevents board from breaking on small screen devices */
+  min-width: 20rem;
   background: linear-gradient(var(--clr-neutral-700), var(--clr-neutral-900)) no-repeat;
   color: var(--clr-neutral-100);
   min-height: 100%;
@@ -7,4 +9,5 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   align-items: start;
+  justify-items: center;
 }

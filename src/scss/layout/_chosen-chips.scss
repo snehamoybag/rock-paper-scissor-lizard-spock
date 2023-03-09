@@ -1,4 +1,6 @@
 .chosen-chips {
+  --chosen-chips-width: clamp(15rem, 100%, 22rem);
+  width: var(--chosen-chips-width);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:'user house' 'results results';

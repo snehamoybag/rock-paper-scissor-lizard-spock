@@ -1,12 +1,14 @@
 .board {
+  --board-width: clamp(15rem, 100%, 22rem);
+  --board-height: clamp(15rem, 15rem + 5vh, 20rem);
   --bg-pattern: url('/images/bg-triangle.svg');
-  --bg-size: 70%;
-  min-height: 16rem;
+  --bg-size: clamp(10rem, 70%, 20rem);
+  width: var(--board-width);
+  height: var(--board-height);
   background-image: var(--bg-pattern);
   background-repeat: no-repeat;
   background-size: var(--bg-size);
   background-position: center;
-  //margin: 6rem 0;
   position: relative;
   isolation: isolate;
 
