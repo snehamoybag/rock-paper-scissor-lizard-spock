@@ -1,6 +1,24 @@
 .animate-closing {
-  &.chosen-chips {
-    animation: visible-to-invisible 200ms ease forwards;
+  --board-animation-duration: 400ms;
+  --chosen-chips-animation-duration: 400ms;
+
+  &.board {
+    animation: shrink-bg var(--board-animation-duration) ease-in forwards;
+  }
+  .board__chip-wrapper {
+    animation: center-center-vanish var(--board-animation-duration) ease-in forwards;
+  }
+
+  .chosen-chips__user {
+    animation: left-to-center var(--chosen-chips-animation-duration) ease forwards;
+  }
+
+  .chosen-chips__house {
+    animation: right-to-center var(--chosen-chips-animation-duration) ease forwards;
+  }
+
+  .chosen-chips__results {
+    animation: move-up var(--chosen-chips-animation-duration) ease forwards;
   }
 
   &.rules__img {

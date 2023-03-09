@@ -31,6 +31,7 @@
 @keyframes center-center-vanish {
   0% {}
   90% {
+    position: absolute;
     top: 50%;
     left: 50%;
     right: auto;
@@ -38,11 +39,39 @@
     transform: translate(-50%, -50%);
   }
   100% {
+    position: absolute;
     top: 50%;
     left: 50%;
     right: auto;
     bottom: auto;
     transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+@keyframes left-to-center {
+  0% {}
+  100% {
+    position: relative;
+    transform: translate(60%, 20%);
+    opacity: 0;
+  }
+}
+
+@keyframes right-to-center {
+  0% {}
+  100% {
+    position: relative;
+    transform: translate(-60%, 20%);
+    opacity: 0;
+  }
+}
+
+@keyframes move-up {
+  0% {}
+  100% {
+    position: relative;
+    transform: translateY(-100%);
     opacity: 0;
   }
 }

@@ -35,11 +35,6 @@
 
 // animate closing/removing
 .board.animate-closing {
-  animation: shrink-bg 500ms ease-in forwards;
-
-  .board__chip-wrapper {
-    animation: center-center-vanish 500ms ease-in forwards;
-  }
   // remove hover and click effects from chips
   .chip {
     pointer-events: none;

@@ -62,7 +62,7 @@ function gameOnStyles() {
         // show results
         generateResults();
         results.classList.remove('hidden');
-      }, 800);
+      }, 600);
     },
     {
       once: true,
