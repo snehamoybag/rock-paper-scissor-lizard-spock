@@ -27,7 +27,7 @@ let houseChoice = null;
 // add event listener to all btns
 allChips.forEach(chip => {
 	chip.addEventListener('click', () => {
-		// get user choice and house choice
+		// get user and house choice
 		userChoice = chip.getAttribute('chip-value');
 		generateHouseChoice();
 		// apply styles
@@ -46,8 +46,7 @@ rulesCloseBtn.addEventListener('click', closeRules);
 // styles to apply when game has started
 function gameOnStyles() {
 	board.classList.remove('animate-opening');
-	board.classList.add('animate-closing',
-		'no-btn-effs');
+	board.classList.add('animate-closing', 'no-btn-effs');
 	userChip.classList.add(`chip--${userChoice}`);
 	houseChip.classList.add(`chip--${houseChoice}`);
 	// screen reader only texts
@@ -113,7 +112,7 @@ function generateResults() {
 		score++;
 	} else {
 		winner = 'You Lose';
-		// score--;
+		//score--; // should I decrease the score?
 	}
 	resultsTitle.textContent = winner;
 	//update score
@@ -124,7 +123,7 @@ function showRules() {
 	rulesImg.classList.remove('hidden', 'animate-closing');
 	rulesImg.classList.add('animate-opening');
 	rulesOpenBtn.setAttribute('aria-expanded', 'true');
-}
+};
 
 function closeRules() {
 	rulesImg.classList.remove('animate-opening');
@@ -136,4 +135,4 @@ function closeRules() {
 	}, {
 		once: true,
 	});
-}
+};

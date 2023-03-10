@@ -1,26 +1,29 @@
 @use '../abstracts/breakpoints' as brk;
 
 .chosen-chips {
-	--chosen-chips-container-width: min(100%, 18.5rem);
-	width: var(--chosen-chips-container-width);
+	--container-width: min(100%, 18.5rem);
+	--container-min-height: 22rem;
+	--result-alignment: end;
+	width: var(--container-width);
+	min-height: var(--container-min-height); // prevents layout from shifting
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-areas:'user house' 'results results';
-	grid-row-gap: 4rem;
+	align-items: start;
 	margin-bottom: 3rem;
 	animation: invisible-to-visible 400ms ease-in forwards;
 
 	@include brk.minWidth(xsmall) {
-		--chosen-chips-container-width: 30rem;
+		--container-width: 30rem;
+		--container-min-height: 25rem;
 	}
 
 	@include brk.minWidth(large) {
-		--chosen-chips-container-width: 58rem;
+		--container-width: 58rem;
+		--container-min-height: unset;
+		--result-alignment: center;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-areas: 'user results house';
-		grid-row-gap: 0;
-		grid-column-gap: 0;
-		justify-items: center;
 		align-items: center;
 
 		// increase chips size
@@ -33,7 +36,7 @@
 	&__house {
 		display: flex;
 		flex-direction: column;
-		justify-content: start;
+		justify-content: center;
 		align-items: center;
 		gap: 1.5rem;
 		font-size: var(--fs-200);
@@ -53,6 +56,7 @@
 	&__results {
 		grid-area: results;
 		justify-self: center;
+		align-self: var(--result-alignment);
 
 		&-title {
 			font-size: var(--fs-900);
