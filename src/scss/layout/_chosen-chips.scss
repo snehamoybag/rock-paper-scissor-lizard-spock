@@ -1,69 +1,69 @@
 @use '../abstracts/breakpoints' as brk;
 
 .chosen-chips {
-  --chosen-chips-container-width: min(100%, 18.5rem);
-  width: var(--chosen-chips-container-width);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas:'user house' 'results results';
-  grid-row-gap: 4rem;
-  animation: invisible-to-visible 400ms ease-in forwards;
-  margin-bottom: 3rem;
+	--chosen-chips-container-width: min(100%, 18.5rem);
+	width: var(--chosen-chips-container-width);
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-areas:'user house' 'results results';
+	grid-row-gap: 4rem;
+	margin-bottom: 3rem;
+	animation: invisible-to-visible 400ms ease-in forwards;
 
-  @include brk.minWidth(xsmall) {
-    --chosen-chips-container-width: 30rem;
-  }
+	@include brk.minWidth(xsmall) {
+		--chosen-chips-container-width: 30rem;
+	}
 
-  @include brk.minWidth(large) {
-    --chosen-chips-container-width: 58rem;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: 'user results house';
-    grid-row-gap: 0;
-    grid-column-gap: 0;
-    justify-items: center;
-    align-items: center;
+	@include brk.minWidth(large) {
+		--chosen-chips-container-width: 58rem;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-areas: 'user results house';
+		grid-row-gap: 0;
+		grid-column-gap: 0;
+		justify-items: center;
+		align-items: center;
 
-    // increase chips size
-    .chip {
-      --chip-width: 18.7rem;
-    }
-  }
+		// increase chips size
+		.chip {
+			--chip-width: 18.7rem;
+		}
+	}
 
-  &__user,
-  &__house {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    gap: 1.5rem;
-    font-size: var(--fs-200);
-    font-weight: var(--fw-bold);
-  }
+	&__user,
+	&__house {
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		align-items: center;
+		gap: 1.5rem;
+		font-size: var(--fs-200);
+		font-weight: var(--fw-bold);
+	}
 
-  &__user {
-    grid-area: user;
-    justify-self: start;
-  }
+	&__user {
+		grid-area: user;
+		justify-self: start;
+	}
 
-  &__house {
-    grid-area: house;
-    justify-self: end;
-  }
+	&__house {
+		grid-area: house;
+		justify-self: end;
+	}
 
-  &__results {
-    grid-area: results;
-    justify-self: center;
+	&__results {
+		grid-area: results;
+		justify-self: center;
 
-    &-title {
-      font-size: var(--fs-900);
-      font-weight: var(--fw-bold);
-      text-align: center;
-    }
+		&-title {
+			font-size: var(--fs-900);
+			font-weight: var(--fw-bold);
+			text-align: center;
+		}
 
-    .btn {
-      display: block;
-      width: 100%;
-      margin: 0 auto;
-    }
-  }
+		.btn {
+			display: block;
+			width: 100%;
+			margin: 0 auto;
+		}
+	}
 }

@@ -25,16 +25,14 @@ let userChoice = null;
 let houseChoice = null;
 
 // add event listener to all btns
-board.addEventListener('click', (event) => {
-  const target = event.target;
-
-  if (target.hasAttribute('chip-value')) {
-    // get user choice and house choice
-    userChoice = target.getAttribute('chip-value');
-    generateHouseChoice();
-    // apply styles
-    gameOnStyles();
-  }
+allChips.forEach(chip => {
+	chip.addEventListener('click', () => {
+		// get user choice and house choice
+		userChoice = chip.getAttribute('chip-value');
+		generateHouseChoice();
+		// apply styles
+		gameOnStyles();
+	});
 });
 
 // replay button click event
@@ -47,99 +45,95 @@ rulesCloseBtn.addEventListener('click', closeRules);
 
 // styles to apply when game has started
 function gameOnStyles() {
-  board.classList.remove('animate-opening');
-  board.classList.add('animate-closing',
-    'no-btn-effs');
-  userChip.classList.add(`chip--${userChoice}`);
-  houseChip.classList.add(`chip--${houseChoice}`);
-  // screen reader only texts
-  userChipSrOnly.textContent = `${userChoice}`;
-  houseChipSrOnly.textContent = `${houseChoice}`;
-  // hide board and show results on animation end
-  board.addEventListener('animationend',
-    () => {
-      board.classList.add('hidden');
-      chosenChips.classList.remove('hidden', 'animate-closing');
-      setTimeout(() => {
-        // show results
-        generateResults();
-        results.classList.remove('hidden');
-      }, 600);
-    },
-    {
-      once: true,
-    });
+	board.classList.remove('animate-opening');
+	board.classList.add('animate-closing',
+		'no-btn-effs');
+	userChip.classList.add(`chip--${userChoice}`);
+	houseChip.classList.add(`chip--${houseChoice}`);
+	// screen reader only texts
+	userChipSrOnly.textContent = `${userChoice}`;
+	houseChipSrOnly.textContent = `${houseChoice}`;
+	// hide board and show results on animation end
+	board.addEventListener('animationend', () => {
+		board.classList.add('hidden');
+		chosenChips.classList.remove('hidden', 'animate-closing');
+		setTimeout(() => {
+			// show results
+			generateResults();
+			results.classList.remove('hidden');
+		}, 600);
+	}, {
+		once: true,
+	});
 };
 
 // revert back to default game satates
 function defaultStyles() {
-  board.classList.add('animate-opening');
-  chosenChips.classList.add('animate-closing');
-  // hide chosen chips and show board on animation end
-  chosenChips.addEventListener('animationend',
-    () => {
-      chosenChips.classList.add('hidden');
-      userChip.classList.remove(`chip--${userChoice}`);
-      houseChip.classList.remove(`chip--${houseChoice}`);
-      results.classList.add('hidden')
-      board.classList.remove('animate-closing', 'no-btn-effs', 'hidden');
-    },
-    {
-      once: true,
-    });
+	board.classList.add('animate-opening');
+	chosenChips.classList.add('animate-closing');
+	// hide chosen chips and show board on animation end
+	chosenChips.addEventListener('animationend', () => {
+		chosenChips.classList.add('hidden');
+		userChip.classList.remove(`chip--${userChoice}`);
+		houseChip.classList.remove(`chip--${houseChoice}`);
+		results.classList.add('hidden')
+		board.classList.remove('animate-closing', 'no-btn-effs', 'hidden');
+	}, {
+		once: true,
+	});
 };
 
 // generate house/cpu choice
 function generateHouseChoice () {
-  const allChipsValues = [];
-  let chipValue = null;
-  // get all the chip values dynamically
-  for (let i = 0; i < allChips.length; i++) {
-    chipValue = allChips[i].getAttribute('chip-value');
-    allChipsValues.push(chipValue);
-  }
-  // randomly define house choice
-  houseChoice = allChipsValues[Math.floor(Math.random() * allChipsValues.length)];
+	const allChipsValues = [];
+	let chipValue = null;
+	// get all the chip values dynamically
+	for (let i = 0; i < allChips.length; i++) {
+		chipValue = allChips[i].getAttribute('chip-value');
+		allChipsValues.push(chipValue);
+	}
+	// randomly define house choice
+	houseChoice = allChipsValues[Math.floor(Math.random() * allChipsValues.length)];
 };
 
 // get winner
 function generateResults() {
-  let winner = null;
-  let score = 0;
-  if (!userChoice) {
-    winner = 'Error!';
-  } else if (userChoice === houseChoice) {
-    winner = 'It\'s a Draw';
-  } else if (
-    (userChoice === 'rock' && houseChoice === 'scissors') ||
-    (userChoice === 'paper' && houseChoice === 'rock') ||
-    (userChoice === 'scissors' && houseChoice === 'paper')
-  ) {
-    winner = 'You Win';
-    score++;
-  } else {
-    winner = 'You Lose';
-    // score--;
-  }
-  resultsTitle.textContent = winner;
-  //update score
-  scorePoints.textContent = `${JSON.parse(scorePoints.textContent) + score}`;
+	let winner = null;
+	let score = 0;
+	if (!userChoice) {
+		winner = 'Error!';
+	} else if (userChoice === houseChoice) {
+		winner = 'It\'s a Draw';
+	} else if (
+		(userChoice === 'rock' && houseChoice === 'scissors') ||
+		(userChoice === 'paper' && houseChoice === 'rock') ||
+		(userChoice === 'scissors' && houseChoice === 'paper')
+	) {
+		winner = 'You Win';
+		score++;
+	} else {
+		winner = 'You Lose';
+		// score--;
+	}
+	resultsTitle.textContent = winner;
+	//update score
+	scorePoints.textContent = `${JSON.parse(scorePoints.textContent) + score}`;
 };
 
 function showRules() {
-  rulesImg.classList.remove('hidden', 'animate-closing');
-  rulesImg.classList.add('animate-opening');
-  rulesOpenBtn.setAttribute('aria-expanded', 'true');
+	rulesImg.classList.remove('hidden', 'animate-closing');
+	rulesImg.classList.add('animate-opening');
+	rulesOpenBtn.setAttribute('aria-expanded', 'true');
 }
 
 function closeRules() {
-  rulesImg.classList.remove('animate-opening');
-  rulesImg.classList.add('animate-closing');
+	rulesImg.classList.remove('animate-opening');
+	rulesImg.classList.add('animate-closing');
 
-  rulesImg.addEventListener('animationend', () => {
-    rulesImg.classList.add('hidden');
-    rulesOpenBtn.setAttribute('aria-expanded', 'false');
-  }, {
-    once: true,
-  });
+	rulesImg.addEventListener('animationend', () => {
+		rulesImg.classList.add('hidden');
+		rulesOpenBtn.setAttribute('aria-expanded', 'false');
+	}, {
+		once: true,
+	});
 }
