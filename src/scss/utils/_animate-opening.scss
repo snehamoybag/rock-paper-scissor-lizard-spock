@@ -1,9 +1,9 @@
 .animate-opening {
-  &.board {
-    animation: invisible-to-visible 200ms ease-in forwards;
-  }
+	&.board {
+		animation: invisible-to-visible 200ms ease-in forwards;
+	}
 
-  &.rules__img {
-    animation: invisible-to-visible 200ms ease-in;
-  }
+	&.rules__modal {
+		animation: invisible-to-visible 200ms ease-in;
+	}
 }

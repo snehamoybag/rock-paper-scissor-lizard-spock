@@ -17,7 +17,7 @@ const results = chosenChips.querySelector('#results');
 const resultsTitle = results.querySelector('#results-title');
 const replayBtn = results.querySelector('#btn-replay');
 
-const rulesImg = document.querySelector('#rules-img');
+const rulesModal = document.querySelector('#rules-modal');
 const rulesOpenBtn = document.querySelector('#btn-rules-open');
 const rulesCloseBtn = document.querySelector('#btn-rules-close');
 
@@ -120,17 +120,17 @@ function generateResults() {
 };
 
 function showRules() {
-	rulesImg.classList.remove('hidden', 'animate-closing');
-	rulesImg.classList.add('animate-opening');
+	rulesModal.classList.remove('hidden', 'animate-closing');
+	rulesModal.classList.add('animate-opening');
 	rulesOpenBtn.setAttribute('aria-expanded', 'true');
 };
 
 function closeRules() {
-	rulesImg.classList.remove('animate-opening');
-	rulesImg.classList.add('animate-closing');
+	rulesModal.classList.remove('animate-opening');
+	rulesModal.classList.add('animate-closing');
 
-	rulesImg.addEventListener('animationend', () => {
-		rulesImg.classList.add('hidden');
+	rulesModal.addEventListener('animationend', () => {
+		rulesModal.classList.add('hidden');
 		rulesOpenBtn.setAttribute('aria-expanded', 'false');
 	}, {
 		once: true,
