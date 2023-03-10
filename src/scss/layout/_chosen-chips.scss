@@ -1,12 +1,33 @@
+@use '../abstracts/breakpoints' as brk;
+
 .chosen-chips {
-  --chosen-chips-width: clamp(15rem, 100%, 22rem);
-  width: var(--chosen-chips-width);
+  --chosen-chips-container-width: min(100%, 18.5rem);
+  width: var(--chosen-chips-container-width);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:'user house' 'results results';
   grid-row-gap: 4rem;
   animation: invisible-to-visible 400ms ease-in forwards;
   margin-bottom: 3rem;
+
+  @include brk.minWidth(xsmall) {
+    --chosen-chips-container-width: 30rem;
+  }
+
+  @include brk.minWidth(large) {
+    --chosen-chips-container-width: 58rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 'user results house';
+    grid-row-gap: 0;
+    grid-column-gap: 0;
+    justify-items: center;
+    align-items: center;
+
+    // increase chips size
+    .chip {
+      --chip-width: 18.7rem;
+    }
+  }
 
   &__user,
   &__house {

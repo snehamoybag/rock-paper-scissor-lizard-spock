@@ -1,8 +1,10 @@
+@use '../abstracts/breakpoints' as brk;
+
 .board {
-  --board-width: clamp(15rem, 100%, 22rem);
-  --board-height: clamp(15rem, 15rem + 5vh, 20rem);
+  --board-width: min(100%, 18.5rem);
+  --board-height: 16.5rem;
   --bg-pattern: url('/images/bg-triangle.svg');
-  --bg-size: clamp(10rem, 70%, 20rem);
+  --bg-size: 70%;
   width: var(--board-width);
   height: var(--board-height);
   background-image: var(--bg-pattern);
@@ -11,6 +13,12 @@
   background-position: center;
   position: relative;
   isolation: isolate;
+  margin-bottom: 3rem;
+
+  @include brk.minWidth(xsmall) {
+    --board-width: 30rem;
+    --board-height: 25.5rem;
+  }
 
   &__chip-wrapper {
     position: absolute;
@@ -32,24 +40,5 @@
     top: 0;
     right: 0%;
     transform: none;
-  }
-}
-
-// animate closing/removing
-.board.animate-closing {
-  // remove hover and click effects from chips
-  .chip {
-    pointer-events: none;
-    &:hover {
-      cursor: unset;
-
-      &::after {
-        transform: var(--translate-pos) rotate(0deg);
-      }
-    }
-
-    &:active {
-      transform: unset;
-    }
   }
 }

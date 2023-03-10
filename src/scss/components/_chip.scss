@@ -1,6 +1,9 @@
+@use '../abstracts/breakpoints' as brk;
+
 .chip {
+  --chip-width: 7.5rem;
   // colored border
-  width: 7.5rem;
+  width: var(--chip-width);
   aspect-ratio: 1/1;
   background-color: var(--clr-neutral-100);
   border: none;
@@ -8,6 +11,10 @@
   box-shadow: 0 -5px 0 hsla(0, 0%, 0%, 0.2) inset;
   position: relative;
   isolation: isolate;
+
+  @include brk.minWidth(xsmall) {
+    --chip-width: 11.75rem;
+  }
 
   &::before,
   &::after {
@@ -102,17 +109,19 @@
 }
 
 // remove hover and click effects from chips
-.chip.no-btn-effs {
-  pointer-events: none;
-  &:hover {
-    cursor: unset;
+.no-btn-effs {
+  .chip {
+    pointer-events: none;
+    &:hover {
+      cursor: unset;
 
-    &::after {
-      transform: var(--translate-pos) rotate(0deg);
+      &::after {
+        transform: var(--translate-pos) rotate(0deg);
+      }
     }
-  }
 
-  &:active {
-    transform: unset;
+    &:active {
+      transform: unset;
+    }
   }
 }

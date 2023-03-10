@@ -48,7 +48,8 @@ rulesCloseBtn.addEventListener('click', closeRules);
 // styles to apply when game has started
 function gameOnStyles() {
   board.classList.remove('animate-opening');
-  board.classList.add('animate-closing');
+  board.classList.add('animate-closing',
+    'no-btn-effs');
   userChip.classList.add(`chip--${userChoice}`);
   houseChip.classList.add(`chip--${houseChoice}`);
   // screen reader only texts
@@ -81,7 +82,7 @@ function defaultStyles() {
       userChip.classList.remove(`chip--${userChoice}`);
       houseChip.classList.remove(`chip--${houseChoice}`);
       results.classList.add('hidden')
-      board.classList.remove('animate-closing', 'hidden');
+      board.classList.remove('animate-closing', 'no-btn-effs', 'hidden');
     },
     {
       once: true,
