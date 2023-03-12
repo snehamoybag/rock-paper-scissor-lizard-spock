@@ -4,7 +4,7 @@
   --board-width: min(100%, 18.5rem);
   --board-height: 16.5rem;
   --bg-pattern: url('/images/bg-triangle.svg');
-  --bg-size: 70%;
+  --bg-size: 65%;
   width: var(--board-width);
   height: var(--board-height);
   background-image: var(--bg-pattern);
@@ -18,6 +18,11 @@
   @include brk.minWidth(xsmall) {
     --board-width: 30rem;
     --board-height: 25.5rem;
+  }
+
+  @include brk.minWidth(large) {
+    --board-width: 31rem;
+    --board-height: 26.5rem;
   }
 
   &__chip-wrapper {

@@ -16,6 +16,10 @@
     --chip-width: 11.75rem;
   }
 
+  @include brk.minWidth(large) {
+    --chip-width: 12.5rem;
+  }
+
   &::before,
   &::after {
     border-radius: 50%;

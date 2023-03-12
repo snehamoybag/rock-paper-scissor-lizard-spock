@@ -3,6 +3,8 @@
 .chosen-chips {
   --container-width: min(100%, 18.5rem);
   --container-min-height: 22rem;
+  --dark-circle-vertical-pos: 7%;
+  --dark-circle-size: 6rem;
   --result-alignment: end;
   width: var(--container-width);
   min-height: var(--container-min-height); // prevents layout from shifting
@@ -15,11 +17,14 @@
   @include brk.minWidth(xsmall) {
     --container-width: 30rem;
     --container-min-height: 25rem;
+    --dark-circle-size: 8rem;
+    --dark-circle-vertical-pos: 14%;
   }
 
   @include brk.minWidth(large) {
     --container-width: 58rem;
     --container-min-height: unset;
+    --dark-circle-size: 12rem;
     --result-alignment: center;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: 'user results house';
@@ -27,7 +32,7 @@
 
     // increase chips size
     .chip {
-      --chip-width: 18.7rem;
+      --chip-width: 18.5rem;
     }
   }
 
@@ -54,19 +59,19 @@
     justify-self: end;
 
     .chip {
-      /* transparent by default to show the dark circle at first, then use animation to show it */
+      /* transparent by default to show the dark circle at first, then use animation to show the chip */
       opacity: 0;
     }
   }
 
   &__dark-circle {
-    width: 6rem;
+    width: var(--dark-circle-size);
     aspect-ratio: 1/1;
     background-color: var(--clr-neutral-900);
     border-radius: 50%;
     /* align it centered of the chip */
     position: absolute;
-    top: 7%;
+    top: var(--dark-circle-vertical-pos);
     left: 50%;
     transform: translateX(-50%);
   }

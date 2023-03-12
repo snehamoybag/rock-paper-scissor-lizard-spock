@@ -49,12 +49,34 @@
   }
 }
 
+@keyframes center-to-left {
+  0% {
+    position: absolute;
+    left: 50%;
+  }
+  100% {
+    position: absolute;
+    left: 0%;
+  }
+}
+
 @keyframes left-to-center {
   0% {}
   100% {
     position: relative;
     transform: translateX(60%);
     opacity: 0;
+  }
+}
+
+@keyframes center-to-right {
+  0% {
+    position: absolute;
+    right: 50%;
+  }
+  100% {
+    position: absolute;
+    right: 0%;
   }
 }
 
