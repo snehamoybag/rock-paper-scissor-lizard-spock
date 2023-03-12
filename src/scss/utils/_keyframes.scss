@@ -1,77 +1,96 @@
 // ALL KEYFRAMES / ANIMATIONS
 @keyframes invisible-to-visible {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes visible-to-invisible {
-	0% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes shrink-bg {
-	0% {}
-	95% {
-		background-size: 0;
-	}
-	100% {
-		background-size: 0;
-		background-image: unset;
-	}
+  0% {}
+  95% {
+    background-size: 0;
+  }
+  100% {
+    background-size: 0;
+    background-image: unset;
+  }
 }
 
 @keyframes center-center-vanish {
-	0% {}
-	90% {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		right: auto;
-		bottom: auto;
-		transform: translate(-50%, -50%);
-	}
-	100% {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		right: auto;
-		bottom: auto;
-		transform: translate(-50%, -50%);
-		opacity: 0;
-	}
+  0% {}
+  90% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
 }
 
 @keyframes left-to-center {
-	0% {}
-	100% {
-		position: relative;
-		transform: translateX(60%);
-		opacity: 0;
-	}
+  0% {}
+  100% {
+    position: relative;
+    transform: translateX(60%);
+    opacity: 0;
+  }
 }
 
 @keyframes right-to-center {
-	0% {}
-	100% {
-		position: relative;
-		transform: translateX(-60%);
-		opacity: 0;
-	}
+  0% {}
+  100% {
+    position: relative;
+    transform: translateX(-60%);
+    opacity: 0;
+  }
 }
 
 @keyframes move-up {
-	0% {}
-	100% {
-		position: relative;
-		transform: translateY(-100%);
-		opacity: 0;
-	}
+  0% {}
+  100% {
+    position: relative;
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes pop-up {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  95% {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

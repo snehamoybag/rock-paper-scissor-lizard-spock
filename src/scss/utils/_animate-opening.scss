@@ -1,9 +1,18 @@
 .animate-opening {
-	&.board {
-		animation: invisible-to-visible 200ms ease-in forwards;
-	}
+  &.board {
+    animation: invisible-to-visible 200ms ease-in forwards;
+  }
 
-	&.rules__modal {
-		animation: invisible-to-visible 200ms ease-in;
-	}
+  &.chosen-chips {
+    --chip-container-ani-duration: 400ms;
+    animation: invisible-to-visible var(--chip-container-ani-duration) ease-in forwards;
+  }
+
+  .chosen-chips__house .chip {
+    animation: pop-up 100ms var(--chip-container-ani-duration) linear forwards;
+  }
+
+  &.rules__modal {
+    animation: invisible-to-visible 200ms ease-in;
+  }
 }

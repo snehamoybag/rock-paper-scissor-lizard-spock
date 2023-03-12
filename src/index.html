@@ -1,76 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-	<meta name="author" content="Snehamoy Bag">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="author" content="Snehamoy Bag">
 
-	<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
-	<title>Frontend Mentor | Rock, Paper, Scissors</title>
-	<!-- JAVASCRIPT -->
-	<script src="js/app.js" type="module"></script>
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  <!-- JAVASCRIPT -->
+  <script src="js/app.js" type="module"></script>
 </head>
 <body>
-	<header class="header"></header>
-	<main class="main">
-		<div class="heading">
-			<h1 class="heading__title">Rock Paper Scissors</h1>
-			<p class="heading__score">
-				<span>Score</span> <span class="heading__score-points" id="score-points">0</span>
-			</p>
-		</div>
-		<div class="board" id="board">
-			<div class="board__chip-wrapper">
-				<button class="chip chip--rock" chip-value="rock"><span class="sr-only">Rock</span></button>
-			</div>
-			<div class="board__chip-wrapper">
-				<button class="chip chip--paper" chip-value="paper"><span class="sr-only">Paper</span></button>
-			</div>
-			<div class="board__chip-wrapper">
-				<button class="chip chip--scissors" chip-value="scissors"><span class="sr-only">Scissors</span></button>
-			</div>
-		</div>
-		<div class="chosen-chips hidden no-btn-effs" id="chosen-chips">
-			<div class="chosen-chips__user">
-				<div class="chip" id="user-chip">
-					<span class="sr-only"></span>
-				</div>
-				<p class="chosen-chips__texts">
-					<strong>You Picked</strong>
-				</p>
-			</div>
-			<div class="chosen-chips__house winner">
-				<div class="chip" id="house-chip">
-					<span class="sr-only"></span>
-				</div>
-				<p class="chosen-chips__texts">
-					<strong>The House Picked</strong>
-				</p>
-			</div>
-			<div class="chosen-chips__results hidden" id="results">
-				<h2 class="chosen-chips__results-title" id="results-title">It's a Draw</h2>
-				<button class="btn btn--white" id="btn-replay">Play Again</button>
-			</div>
-		</div>
-		<div class="rules">
-			<div class="rules__modal hidden" id="rules-modal">
-				<div class="rules__img">
-					<h2 class="rules__img-title">Rules</h2>
-					<p class="sr-only">
-						Rock beats Scissors, Scissors beats Paper and Paper beats Rock.
-					</p>
-					<button class="rules__img-btn" id="btn-rules-close" aria-controls="rules-modal" aria-expanded="true"><img src="/images/icon-close.svg" alt="close"></button>
-				</div>
-			</div>
-			<button class="btn btn--border-only" id="btn-rules-open" aria-controls="rules-modal" aria-expanded="false">Rules</button>
-		</div>
-	</main>
-	<footer class="footer">
-		<div class="attribution">
-			Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-			Coded by <a href="http://localhost:5173/">Your Name Here</a>.
-		</div>
-	</footer>
+  <header class="header"></header>
+  <main class="main">
+    <div class="heading">
+      <h1 class="heading__title">Rock Paper Scissors</h1>
+      <p class="heading__score">
+        <span>Score</span> <span class="heading__score-points" id="score-points">0</span>
+      </p>
+    </div>
+    <div class="board" id="board">
+      <div class="board__chip-wrapper">
+        <button class="chip chip--rock" chip-value="rock"><span class="sr-only">Rock</span></button>
+      </div>
+      <div class="board__chip-wrapper">
+        <button class="chip chip--paper" chip-value="paper"><span class="sr-only">Paper</span></button>
+      </div>
+      <div class="board__chip-wrapper">
+        <button class="chip chip--scissors" chip-value="scissors"><span class="sr-only">Scissors</span></button>
+      </div>
+    </div>
+    <div class="chosen-chips hidden no-btn-effs" id="chosen-chips">
+      <div class="chosen-chips__user">
+        <div class="chip" id="user-chip">
+          <span class="sr-only"></span>
+        </div>
+        <p class="chosen-chips__texts">
+          <strong>You Picked</strong>
+        </p>
+      </div>
+      <div class="chosen-chips__house">
+        <div class="chosen-chips__dark-circle"></div>
+        <div class="chip" id="house-chip">
+          <span class="sr-only"></span>
+        </div>
+        <p class="chosen-chips__texts">
+          <strong>The House Picked</strong>
+        </p>
+      </div>
+      <div class="chosen-chips__results hidden" id="results">
+        <h2 class="chosen-chips__results-title" id="results-title">It's a Draw</h2>
+        <button class="btn btn--white" id="btn-replay">Play Again</button>
+      </div>
+    </div>
+    <div class="rules">
+      <button class="btn btn--border-only" id="btn-rules-open" aria-controls="rules-modal" aria-expanded="false">Rules</button>
+      <div class="rules__modal hidden" id="rules-modal">
+        <div class="rules__img">
+          <h2 class="rules__img-title">Rules</h2>
+          <p class="sr-only">
+            Rock beats Scissors, Scissors beats Paper and Paper beats Rock.
+          </p>
+          <button class="rules__img-btn" id="btn-rules-close" aria-controls="rules-modal" aria-expanded="true"><img src="/images/icon-close.svg" alt="close"></button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="http://localhost:5173/">Your Name Here</a>.
+    </div>
+  </footer>
 </body>
 </html>
