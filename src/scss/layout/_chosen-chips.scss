@@ -2,17 +2,17 @@
 
 .chosen-chips {
   --container-width: min(100%, 18.5rem);
-  --container-min-height: 22rem;
+  --container-min-height: 21rem;
+  --chips-flex-direction: column-reverse;
+  --user-horizontal-pos: 0;
   --dark-circle-vertical-pos: 7%;
   --dark-circle-size: 6rem;
-  --result-alignment: end;
+  --results-width: min(80%, 15rem);
   width: var(--container-width);
   min-height: var(--container-min-height); // prevents layout from shifting
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas:'user house' 'results results';
-  align-items: start;
+  position: relative;
   margin-bottom: 3rem;
+  outline: 1px solid red;
 
   @include brk.minWidth(xsmall) {
     --container-width: 30rem;
@@ -23,12 +23,11 @@
 
   @include brk.minWidth(large) {
     --container-width: 58rem;
-    --container-min-height: unset;
-    --dark-circle-size: 12rem;
-    --result-alignment: center;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: 'user results house';
-    align-items: center;
+    --container-min-height: 22rem;
+    --chips-flex-direction: column;
+    --user-horizontal-pos: 14%;
+    --dark-circle-size: 14rem;
+    --dark-circle-vertical-pos: 20%;
 
     // increase chips size
     .chip {
@@ -39,24 +38,24 @@
   &__user,
   &__house {
     display: flex;
-    flex-direction: column;
+    flex-direction: var(--chips-flex-direction);
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
     font-size: var(--fs-200);
     font-weight: var(--fw-bold);
-    /* for the dark cricle */
-    position: relative;
   }
 
   &__user {
-    grid-area: user;
-    justify-self: start;
+    position: absolute;
+    top: 0;
+    left: var(--user-horizontal-pos);
   }
 
   &__house {
-    grid-area: house;
-    justify-self: end;
+    position: absolute;
+    top: 0;
+    right: var(--user-horizontal-pos);
 
     .chip {
       /* transparent by default to show the dark circle at first, then use animation to show the chip */
@@ -77,9 +76,20 @@
   }
 
   &__results {
-    grid-area: results;
-    justify-self: center;
-    align-self: var(--result-alignment);
+    position: absolute;
+    width: var(--results-width);
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    /* transparent by default to show the dark circle at first, then use animation to show the chip */
+    opacity: 0;
+
+    @include brk.minWidth(large) {
+      left: 50%;
+      top: 50%;
+      bottom: auto;
+      transform: translate(-50%, -50%);
+    }
 
     &-title {
       font-size: var(--fs-900);

@@ -62,7 +62,7 @@ function startGame() {
     setTimeout(() => {
       generateResults();
       results.classList.remove('hidden');
-    }, 800);
+    }, 1000);
   }, {
     once: true,
   });

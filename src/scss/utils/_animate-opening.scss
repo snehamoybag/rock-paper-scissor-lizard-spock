@@ -5,11 +5,26 @@
 
   &.chosen-chips {
     --chip-container-ani-duration: 400ms;
+    --house-chip-ani-duration: 100ms;
+    --house-chip-ani-delay: var(--chip-container-ani-duration);
+    --chip-wrappers-ani-duration: 400ms;
+    --chip-wrappers-ani-delay: calc(var(--house-chip-ani-duration) + var(--house-chip-ani-delay) + 200ms);
     animation: invisible-to-visible var(--chip-container-ani-duration) ease-in forwards;
   }
 
-  .chosen-chips__house .chip {
-    animation: pop-up 100ms var(--chip-container-ani-duration) linear forwards;
+  .chosen-chips__user {
+    animation: to-left var(--chip-wrappers-ani-duration) var(--chip-wrappers-ani-delay) ease-in forwards;
+  }
+
+  .chosen-chips__house {
+    animation: to-right var(--chip-wrappers-ani-duration) var(--chip-wrappers-ani-delay) ease-in forwards;
+    .chip {
+      animation: pop-up var(--house-chip-ani-duration) var(--house-chip-ani-delay) linear forwards;
+    }
+  }
+
+  .chosen-chips__results {
+    animation: invisible-to-visible 400ms ease forwards;
   }
 
   &.rules__modal {

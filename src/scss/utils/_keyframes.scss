@@ -49,13 +49,9 @@
   }
 }
 
-@keyframes center-to-left {
-  0% {
-    position: absolute;
-    left: 50%;
-  }
+@keyframes to-left {
+  0% {}
   100% {
-    position: absolute;
     left: 0%;
   }
 }
@@ -69,13 +65,9 @@
   }
 }
 
-@keyframes center-to-right {
-  0% {
-    position: absolute;
-    right: 50%;
-  }
+@keyframes to-right {
+  0% {}
   100% {
-    position: absolute;
     right: 0%;
   }
 }
