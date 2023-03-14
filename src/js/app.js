@@ -25,20 +25,9 @@ let userChoice = null;
 let houseChoice = null;
 
 // add event listener to all btns
-allChips.forEach(chip => {
-  chip.addEventListener('click', () =>
-    {
-      // get user and house choice
-      userChoice = chip.getAttribute('chip-value');
-      generateHouseChoice();
-      // apply styles
-      startGame();
-    });
-});
-
+allChips.forEach(chip => chip.addEventListener('click', startGame));
 // replay button click event
 replayBtn.addEventListener('click', replayGame);
-
 // show rules
 rulesOpenBtn.addEventListener('click', showRules);
 // close rules
@@ -46,23 +35,23 @@ rulesCloseBtn.addEventListener('click', closeRules);
 
 // start game function
 function startGame() {
-  board.classList.remove('animate-opening');
-  board.classList.add('animate-closing', 'no-btn-effs');
-  chosenChips.classList.add('animate-opening');
-  userChip.classList.add(`chip--${userChoice}`);
-  houseChip.classList.add(`chip--${houseChoice}`);
+  // get user and house choice
+  userChoice = this.getAttribute('chip-value');
+  generateHouseChoice();
   // screen reader only texts
   userChipSrOnly.textContent = `${userChoice}`;
   houseChipSrOnly.textContent = `${houseChoice}`;
+  userChip.classList.add(`chip--${userChoice}`);
+  houseChip.classList.add(`chip--${houseChoice}`);
+  board.classList.remove('animate-opening');
+  board.classList.add('animate-closing', 'no-btn-effs');
   // hide board and show results on animation end
   board.addEventListener('animationend', () => {
     board.classList.add('hidden');
     chosenChips.classList.remove('hidden', 'animate-closing');
+    chosenChips.classList.add('animate-opening');
     // show results after some time
-    setTimeout(() => {
-      generateResults();
-      results.classList.remove('hidden');
-    }, 1000);
+    setTimeout(generateResults, 1000);
   }, {
     once: true,
   });
@@ -70,16 +59,15 @@ function startGame() {
 
 // revert back to default game satates
 function replayGame() {
-  board.classList.add('animate-opening');
   chosenChips.classList.add('animate-closing');
   // hide chosen chips and show board on animation end
   chosenChips.addEventListener('animationend', () => {
-    chosenChips.classList.add('hidden');
     chosenChips.classList.remove('animate-opening');
+    chosenChips.classList.add('hidden');
     userChip.classList.remove(`chip--${userChoice}`);
     houseChip.classList.remove(`chip--${houseChoice}`);
-    results.classList.add('hidden')
     board.classList.remove('animate-closing', 'no-btn-effs', 'hidden');
+    board.classList.add('animate-opening');
   }, {
     once: true,
   });

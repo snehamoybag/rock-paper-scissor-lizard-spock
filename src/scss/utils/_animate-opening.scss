@@ -1,14 +1,16 @@
 .animate-opening {
+  --chip-container-ani-duration: 400ms;
+  --house-chip-ani-duration: 100ms;
+  --house-chip-ani-delay: var(--chip-container-ani-duration);
+  --chip-wrappers-ani-duration: 400ms;
+  --chip-wrappers-ani-delay: calc(var(--house-chip-ani-duration) + var(--house-chip-ani-delay) + 200ms);
+  --results-ani-delay: calc(var(--chip-wrappers-ani-duration) + var(--chip-wrappers-ani-delay));
+
   &.board {
     animation: invisible-to-visible 200ms ease-in forwards;
   }
 
   &.chosen-chips {
-    --chip-container-ani-duration: 400ms;
-    --house-chip-ani-duration: 100ms;
-    --house-chip-ani-delay: var(--chip-container-ani-duration);
-    --chip-wrappers-ani-duration: 400ms;
-    --chip-wrappers-ani-delay: calc(var(--house-chip-ani-duration) + var(--house-chip-ani-delay) + 200ms);
     animation: invisible-to-visible var(--chip-container-ani-duration) ease-in forwards;
   }
 
@@ -24,10 +26,53 @@
   }
 
   .chosen-chips__results {
-    animation: invisible-to-visible 400ms ease forwards;
+    animation: invisible-to-visible 400ms var(--results-ani-delay) ease forwards;
   }
 
   &.rules__modal {
     animation: invisible-to-visible 200ms ease-in;
+  }
+}
+
+/* keyframes used in to animate opening states */
+@keyframes invisible-to-visible {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes to-left {
+  0% {}
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes to-right {
+  0% {}
+  100% {
+    right: 0%;
+  }
+}
+
+@keyframes pop-up {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  95% {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

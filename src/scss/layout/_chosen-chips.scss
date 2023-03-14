@@ -9,10 +9,10 @@
   --dark-circle-size: 6rem;
   --results-width: min(80%, 15rem);
   width: var(--container-width);
-  min-height: var(--container-min-height); // prevents layout from shifting
+  min-height: var(--container-min-height); /* prevents layout from shifting */
   position: relative;
+  isolation: isolate;
   margin-bottom: 3rem;
-  outline: 1px solid red;
 
   @include brk.minWidth(xsmall) {
     --container-width: 30rem;
