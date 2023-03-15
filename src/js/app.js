@@ -93,7 +93,7 @@ function generateResults() {
   if (!userChoice) {
     winner = 'Error!';
   } else if (userChoice === houseChoice) {
-    winner = 'It\'s a Draw';
+    winner = 'Draw';
   } else if (
     (userChoice === 'rock' && houseChoice === 'scissors') ||
     (userChoice === 'paper' && houseChoice === 'rock') ||

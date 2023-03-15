@@ -1,5 +1,10 @@
+@use '../abstracts/breakpoints' as brk;
+
 .heading {
-  width: clamp(10rem, 100%, 43.75rem);;
+  --fs-title: 1.25rem;
+  --fs-score: 0.625rem;
+  --fs-score-points: 2.5rem;
+  width: clamp(10rem, 100%, 45rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,9 +15,15 @@
   font-weight: var(--fw-bold);
   margin-bottom: 5rem;
 
+  @include brk.minWidth(xsmall) {
+    --fs-title: 1.75rem;
+    --fs-score: 0.875rem;
+    --fs-score-points: 3.75rem;
+  }
+
   &__title {
     max-width: 5ch;
-    font-size: var(--fs-700);
+    font-size: var(--fs-title);
     line-height: 0.8;
     padding: 0.75em;
   }
@@ -20,13 +31,12 @@
   &__score {
     background-color: var(--clr-neutral-100);
     color: var(--clr-neutral-400);
-    font-size: var(--fs-200);
+    font-size: var(--fs-score);
     letter-spacing: 0.1em;
-    line-height: 1.05;
+    line-height: 1.025;
     text-align: center;
-    padding: 0 1.75em;
+    padding: 1em 2.25em;
     border-radius: 0.5em;
-    align-self: stretch;
 
     /* for inner contents */
     display: flex;
@@ -37,6 +47,8 @@
 
   &__score-points {
     color: var(--clr-neutral-600);
-    font-size: var(--fs-800);
+    font-size: var(--fs-score-points);
+    font-weight: var(--fw-bold);
+    letter-spacing: -0.03em;
   }
 }

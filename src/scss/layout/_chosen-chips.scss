@@ -2,12 +2,14 @@
 
 .chosen-chips {
   --container-width: min(100%, 18.5rem);
-  --container-min-height: 21rem;
+  --container-min-height: 23rem;
   --chips-flex-direction: column-reverse;
   --user-horizontal-pos: 0;
   --dark-circle-vertical-pos: 7%;
   --dark-circle-size: 6rem;
   --results-width: min(80%, 15rem);
+  --fs-chips: var(--fs-400);
+  --fs-resilts-title: 3.5rem;
   width: var(--container-width);
   min-height: var(--container-min-height); /* prevents layout from shifting */
   position: relative;
@@ -16,9 +18,11 @@
 
   @include brk.minWidth(xsmall) {
     --container-width: 30rem;
-    --container-min-height: 25rem;
+    --container-min-height: 27rem;
     --dark-circle-size: 8rem;
     --dark-circle-vertical-pos: 14%;
+    --fs-resilts-title: 4rem;
+    --fs-chips: 1.25rem;
   }
 
   @include brk.minWidth(large) {
@@ -42,8 +46,9 @@
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    font-size: var(--fs-200);
+    font-size: var(--fs-chips);
     font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
   }
 
   &__user {
@@ -92,14 +97,16 @@
     }
 
     &-title {
-      font-size: var(--fs-900);
+      font-size: var(--fs-resilts-title);
       font-weight: var(--fw-bold);
       text-align: center;
+      line-height: 0.85;
+      margin-bottom: 0.4em;
     }
 
     .btn {
       display: block;
-      width: 100%;
+      width: 90%;
       margin: 0 auto;
     }
   }
