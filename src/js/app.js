@@ -4,8 +4,8 @@ import '/scss/styles.scss';
 // GAME SCRIPTS
 const scorePoints = document.querySelector('#score-points');
 
-const board = document.querySelector('#board');
-const allChips = board.querySelectorAll('button[chip-value]');
+const defaultChips = document.querySelector('#default-chips');
+const allChips = defaultChips.querySelectorAll('button[chip-value]');
 
 const chosenChips = document.querySelector('#chosen-chips');
 const userChip = chosenChips.querySelector('#user-chip');
@@ -43,11 +43,11 @@ function startGame() {
   houseChipSrOnly.textContent = `${houseChoice}`;
   userChip.classList.add(`chip--${userChoice}`);
   houseChip.classList.add(`chip--${houseChoice}`);
-  board.classList.remove('animate-opening');
-  board.classList.add('animate-closing', 'no-btn-effs');
-  // hide board and show results on animation end
-  board.addEventListener('animationend', () => {
-    board.classList.add('hidden');
+  defaultChips.classList.remove('animate-opening');
+  defaultChips.classList.add('animate-closing', 'no-btn-effs');
+  // hide defaultChips and show results on animation end
+  defaultChips.addEventListener('animationend', () => {
+    defaultChips.classList.add('hidden');
     chosenChips.classList.remove('hidden', 'animate-closing');
     chosenChips.classList.add('animate-opening');
     // show results after some time
@@ -60,14 +60,14 @@ function startGame() {
 // revert back to default game satates
 function replayGame() {
   chosenChips.classList.add('animate-closing');
-  // hide chosen chips and show board on animation end
+  // hide chosen chips and show defaultChips on animation end
   chosenChips.addEventListener('animationend', () => {
     chosenChips.classList.remove('animate-opening');
     chosenChips.classList.add('hidden');
     userChip.classList.remove(`chip--${userChoice}`);
     houseChip.classList.remove(`chip--${houseChoice}`);
-    board.classList.remove('animate-closing', 'no-btn-effs', 'hidden');
-    board.classList.add('animate-opening');
+    defaultChips.classList.remove('animate-closing', 'no-btn-effs', 'hidden');
+    defaultChips.classList.add('animate-opening');
   }, {
     once: true,
   });
