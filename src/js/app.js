@@ -5,7 +5,7 @@ import '/scss/styles.scss';
 const scorePoints = document.querySelector('#score-points');
 
 const defaultChips = document.querySelector('#default-chips');
-const allChips = defaultChips.querySelectorAll('button[chip-value]');
+const allChips = defaultChips.querySelectorAll('button[data-chip-value]');
 
 const chosenChips = document.querySelector('#chosen-chips');
 const userChip = chosenChips.querySelector('#user-chip');
@@ -79,11 +79,13 @@ function generateHouseChoice () {
   let chipValue = null;
   // get all the chip values dynamically
   for (let i = 0; i < allChips.length; i++) {
-    chipValue = allChips[i].getAttribute('chip-value');
+    //chipValue = allChips[i].getAttribute('data-chip-value');
+    chipValue = allChips[i].dataset.chipValue; // same as above
     allChipsValues.push(chipValue);
   }
   // randomly define house choice
   houseChoice = allChipsValues[Math.floor(Math.random() * allChipsValues.length)];
+  console.log(allChipsValues);
 };
 
 // get winner

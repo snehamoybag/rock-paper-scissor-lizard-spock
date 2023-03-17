@@ -1,12 +1,12 @@
 .main {
-	min-height: 100%;
-	min-width: 20rem; /* prevents game from breaking on small screens */
-	padding: 2em;
-	background: linear-gradient(var(--clr-neutral-700), var(--clr-neutral-900)) no-repeat;
-	color: var(--clr-neutral-100);
-	text-transform: uppercase;
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	justify-items: center;
-	align-items: center;
+  min-height: 100%;
+  min-width: 20rem; /* prevents game from breaking on small screens */
+  padding: 2em;
+  background: linear-gradient(var(--clr-neutral-700), var(--clr-neutral-900)) no-repeat;
+  color: var(--clr-neutral-100);
+  text-transform: uppercase;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  align-items: center;
 }
