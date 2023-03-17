@@ -5,7 +5,7 @@ import '/scss/styles.scss';
 const scorePoints = document.querySelector('#score-points');
 
 const defaultChips = document.querySelector('#default-chips');
-const allChips = defaultChips.querySelectorAll('button[data-chip-value]');
+const allChips = defaultChips.querySelectorAll('[data-chip-value]');
 
 const chosenChips = document.querySelector('#chosen-chips');
 const userChip = chosenChips.querySelector('#user-chip');
@@ -13,7 +13,7 @@ const userChipSrOnly = userChip.querySelector('.sr-only');
 const houseChip = chosenChips.querySelector('#house-chip');
 const houseChipSrOnly = houseChip.querySelector('.sr-only');
 
-const results = chosenChips.querySelector('#results');
+const results = document.querySelector('#results');
 const resultsTitle = results.querySelector('#results-title');
 const replayBtn = results.querySelector('#btn-replay');
 
@@ -35,26 +35,26 @@ rulesCloseBtn.addEventListener('click', closeRules);
 
 // start game function
 function startGame() {
+  console.log('clicked ' + this);
   // get user and house choice
-  userChoice = this.getAttribute('chip-value');
+  userChoice = this.dataset.chipValue;
   generateHouseChoice();
   // screen reader only texts
   userChipSrOnly.textContent = `${userChoice}`;
   houseChipSrOnly.textContent = `${houseChoice}`;
   userChip.classList.add(`chip--${userChoice}`);
   houseChip.classList.add(`chip--${houseChoice}`);
-  defaultChips.classList.remove('animate-opening');
   defaultChips.classList.add('animate-closing', 'no-btn-effs');
   // hide defaultChips and show results on animation end
-  defaultChips.addEventListener('animationend', () => {
-    defaultChips.classList.add('hidden');
-    chosenChips.classList.remove('hidden', 'animate-closing');
-    chosenChips.classList.add('animate-opening');
-    // show results after some time
-    setTimeout(generateResults, 1000);
-  }, {
-    once: true,
-  });
+  // defaultChips.addEventListener('animationend', () => {
+  //   //defaultChips.classList.add('hidden');
+  //   chosenChips.classList.remove('hidden', 'animate-closing');
+  //   chosenChips.classList.add('animate-opening');
+  //   // show results after some time
+  //   setTimeout(generateResults, 1000);
+  // }, {
+  //   once: true,
+  // });
 };
 
 // revert back to default game satates
@@ -105,7 +105,7 @@ function generateResults() {
     score++;
   } else {
     winner = 'You Lose';
-    //score--; // should I decrease the score?
+    score--;
   }
   resultsTitle.textContent = winner;
   //update score

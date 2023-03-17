@@ -1,33 +1,28 @@
 .default-chips {
   --bg-img: url('/images/bg-triangle.svg');
-  --bg-size: 0%;
+  --bg-size: 65%;
+  --ani-dur: 400ms;
+  --ani-style: ease;
   width: 100%;
   height: 100%;
   background-image: var(--bg-img);
   background-repeat: no-repeat;
-  background-size: var(--bg-size);
   background-position: center;
+  animation: scale-up-bg var(--ani-dur) var(--ani-style) forwards;
 
   &__chip-wrapper {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
-}
-
-.default-chips.animate-opening {
-  animation: scale-up-bg 200ms ease forwards;
-
+  /* rock */
   &__chip-wrapper:nth-of-type(1) {
-    animation: to-top-left 200ms ease forwards;
+    animation: center-to-bottom-center var(--ani-dur) var(--ani-style) forwards;
   }
-
+  /* paper */
   &__chip-wrapper:nth-of-type(2) {
-    animation: to-top-right 200ms ease forwards;
+    animation: center-to-top-left var(--ani-dur) var(--ani-style) forwards;
   }
-
+  /* scissors */
   &__chip-wrapper:nth-of-type(3) {
-    animation: to-bottom-center 200ms ease forwards;
+    animation: center-to-top-right var(--ani-dur) var(--ani-style) forwards;
   }
 }
