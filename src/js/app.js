@@ -35,7 +35,7 @@ rulesCloseBtn.addEventListener('click', closeRules);
 
 // start game function
 function startGame() {
-  console.log('clicked ' + this);
+  console.log(this);
   // get user and house choice
   userChoice = this.dataset.chipValue;
   generateHouseChoice();
@@ -45,31 +45,29 @@ function startGame() {
   userChip.classList.add(`chip--${userChoice}`);
   houseChip.classList.add(`chip--${houseChoice}`);
   defaultChips.classList.add('animate-closing', 'no-btn-effs');
-  // hide defaultChips and show results on animation end
-  // defaultChips.addEventListener('animationend', () => {
-  //   //defaultChips.classList.add('hidden');
-  //   chosenChips.classList.remove('hidden', 'animate-closing');
-  //   chosenChips.classList.add('animate-opening');
-  //   // show results after some time
-  //   setTimeout(generateResults, 1000);
-  // }, {
-  //   once: true,
-  // });
+  //hide defaultChips and show results on animation end
+  defaultChips.addEventListener('animationend', () => {
+    defaultChips.classList.add('hidden');
+    defaultChips.classList.remove('animate-closing', 'no-btn-effs');
+    chosenChips.classList.remove('hidden');
+    generateResults();
+  }, {
+    once: true, // runs event only once
+  });
 };
 
-// revert back to default game satates
+// revert back to default game states
 function replayGame() {
   chosenChips.classList.add('animate-closing');
   // hide chosen chips and show defaultChips on animation end
   chosenChips.addEventListener('animationend', () => {
-    chosenChips.classList.remove('animate-opening');
     chosenChips.classList.add('hidden');
+    chosenChips.classList.remove('animate-closing');
     userChip.classList.remove(`chip--${userChoice}`);
     houseChip.classList.remove(`chip--${houseChoice}`);
-    defaultChips.classList.remove('animate-closing', 'no-btn-effs', 'hidden');
-    defaultChips.classList.add('animate-opening');
+    defaultChips.classList.remove('hidden');
   }, {
-    once: true,
+    once: true, // runs event only once
   });
 };
 
@@ -79,37 +77,36 @@ function generateHouseChoice () {
   let chipValue = null;
   // get all the chip values dynamically
   for (let i = 0; i < allChips.length; i++) {
-    //chipValue = allChips[i].getAttribute('data-chip-value');
-    chipValue = allChips[i].dataset.chipValue; // same as above
+    chipValue = allChips[i].dataset.chipValue;
     allChipsValues.push(chipValue);
   }
   // randomly define house choice
   houseChoice = allChipsValues[Math.floor(Math.random() * allChipsValues.length)];
-  console.log(allChipsValues);
 };
 
 // get winner
 function generateResults() {
-  let winner = null;
-  let score = 0;
+  let winnerTxt = '';
+  let score = Number(scorePoints.textContent);
   if (!userChoice) {
-    winner = 'Error!';
+    winnerTxt = 'Error!';
   } else if (userChoice === houseChoice) {
-    winner = 'Draw';
+    winnerTxt = 'Draw';
   } else if (
     (userChoice === 'rock' && houseChoice === 'scissors') ||
     (userChoice === 'paper' && houseChoice === 'rock') ||
     (userChoice === 'scissors' && houseChoice === 'paper')
   ) {
-    winner = 'You Win';
+    winnerTxt = 'You Win';
     score++;
   } else {
-    winner = 'You Lose';
-    score--;
+    winnerTxt = 'You Lose';
+    // decerement score only if its more than 0
+    (score >= 1) ? score--: score;
   }
-  resultsTitle.textContent = winner;
+  resultsTitle.textContent = winnerTxt;
   //update score
-  scorePoints.textContent = `${JSON.parse(scorePoints.textContent) + score}`;
+  scorePoints.textContent = score;
 };
 
 function showRules() {
@@ -126,6 +123,6 @@ function closeRules() {
     rulesModal.classList.add('hidden');
     rulesOpenBtn.setAttribute('aria-expanded', 'false');
   }, {
-    once: true,
+    once: true, // runs event only once
   });
 };

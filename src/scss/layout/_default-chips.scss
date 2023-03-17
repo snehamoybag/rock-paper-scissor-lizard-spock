@@ -26,3 +26,22 @@
     animation: center-to-top-right var(--ani-dur) var(--ani-style) forwards;
   }
 }
+
+/* closing states */
+.animate-closing {
+  &.default-chips {
+    animation: scale-down-bg var(--ani-dur) var(--ani-style) forwards;
+  }
+  /* rock */
+  .default-chips__chip-wrapper:nth-of-type(1) {
+    animation: bottom-center-to-center var(--ani-dur) var(--ani-style) forwards;
+  }
+  /* paper */
+  .default-chips__chip-wrapper:nth-of-type(2) {
+    animation: top-left-to-center var(--ani-dur) var(--ani-style) forwards;
+  }
+  /* scissors */
+  .default-chips__chip-wrapper:nth-of-type(3) {
+    animation: top-right-to-center var(--ani-dur) var(--ani-style) forwards;
+  }
+}

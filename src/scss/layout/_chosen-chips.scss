@@ -1,0 +1,33 @@
+.chosen-chips {
+  --ani-dur: 400ms;
+  --ani-style: ease;
+  &__user,
+  &__house {
+    position: absolute;
+    /* for inner contents */
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1em;
+  }
+
+  &__user {
+    animation: center-to-top-left var(--ani-dur) var(--ani-style) forwards;
+  }
+
+  &__house {
+    animation: center-to-top-right var(--ani-dur) var(--ani-style) forwards;
+  }
+}
+
+/* closing state */
+.animate-closing {
+
+  .chosen-chips__user {
+    animation: top-left-to-center var(--ani-dur) var(--ani-style) forwards;
+  }
+
+  .chosen-chips__house {
+    animation: top-right-to-center var(--ani-dur) var(--ani-style) forwards;
+  }
+}
