@@ -7,6 +7,7 @@
   isolation: isolate;
 
   &__modal {
+    animation: fade-in 250ms ease-in forwards;
     @include brk.minWidth(xsmall) {
       width: 100%;
       height: 100%;
@@ -69,5 +70,11 @@
         transform: scale(0.95);
       }
     }
+  }
+}
+
+.animate-closing {
+  &.rules__modal {
+    animation: fade-out 250ms ease-out forwards;
   }
 }

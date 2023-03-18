@@ -136,17 +136,16 @@ function generateResults() {
 };
 
 function showRules() {
-  rulesModal.classList.remove('hidden', 'animate-closing');
-  rulesModal.classList.add('animate-opening');
+  rulesModal.classList.remove('hidden');
   rulesOpenBtn.setAttribute('aria-expanded', 'true');
 };
 
 function closeRules() {
-  rulesModal.classList.remove('animate-opening');
   rulesModal.classList.add('animate-closing');
 
   rulesModal.addEventListener('animationend', () => {
     rulesModal.classList.add('hidden');
+    rulesModal.classList.remove('animate-closing');
     rulesOpenBtn.setAttribute('aria-expanded', 'false');
   }, {
     once: true, // runs event only once
