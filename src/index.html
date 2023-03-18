@@ -21,7 +21,7 @@
       </p>
     </div>
     <div class="board" id="board">
-      <div class="default-chips" id="default-chips">
+      <div class="default-chips board__chips-container" id="default-chips">
         <div class="default-chips__chip-wrapper">
           <button class="chip chip--rock" data-chip-value="rock"><span class="sr-only">Rock</span></button>
         </div>
@@ -32,7 +32,7 @@
           <button class="chip chip--scissors" data-chip-value="scissors"><span class="sr-only">Scissors</span></button>
         </div>
       </div>
-      <div class="chosen-chips hidden no-btn-effs" id="chosen-chips">
+      <div class="chosen-chips board__chips-container hidden no-btn-effs" id="chosen-chips">
         <div class="chosen-chips__user">
           <p class="chosen-chips__texts">
             <strong>You Picked</strong>
@@ -51,10 +51,10 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="results" id="results">
-      <h2 class="results--title" id="results-title">It's a Draw</h2>
-      <button class="btn btn--white" id="btn-replay">Play Again</button>
+      <div class="results hidden" id="results">
+        <h2 class="results--title" id="results-title">It's a Draw</h2>
+        <button class="btn btn--white" id="btn-replay">Play Again</button>
+      </div>
     </div>
     <div class="rules">
       <button class="btn btn--border-only" id="btn-rules-open" aria-controls="rules-modal" aria-expanded="false">Rules</button>

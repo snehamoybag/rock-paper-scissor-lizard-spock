@@ -1,5 +1,10 @@
 .results {
-  position: relative;
-  transform: translateY(-70%);
   text-align: center;
+  animation: fade-in 200ms ease forwards;
+}
+
+.animate-closing {
+  &.results {
+    animation: fade-out 200ms ease forwards;
+  }
 }

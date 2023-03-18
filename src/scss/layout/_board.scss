@@ -1,6 +1,13 @@
 .board {
-  position: relative;
+  --chips-con-height: 16.25rem;
   width: min(100%, 18rem);
-  height: 16.25rem;
+  min-height: 22rem;
+  isolation: isolate;
   outline: 1px solid red;
+
+  &__chips-container {
+    width: 100%;
+    height: var(--chips-con-height);
+    position: relative;
+  }
 }

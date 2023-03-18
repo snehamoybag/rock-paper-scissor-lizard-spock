@@ -2,8 +2,6 @@
 import '/scss/styles.scss';
 
 // GAME SCRIPTS
-const scorePoints = document.querySelector('#score-points');
-
 const defaultChips = document.querySelector('#default-chips');
 const allChips = defaultChips.querySelectorAll('[data-chip-value]');
 
@@ -35,22 +33,28 @@ rulesCloseBtn.addEventListener('click', closeRules);
 
 // start game function
 function startGame() {
-  console.log(this);
   // get user and house choice
-  userChoice = this.dataset.chipValue;
+  const selectedChip = this;
+  userChoice = selectedChip.dataset.chipValue;
   generateHouseChoice();
-  // screen reader only texts
-  userChipSrOnly.textContent = `${userChoice}`;
-  houseChipSrOnly.textContent = `${houseChoice}`;
+  selectedChip.parentElement.classList.add('selected');
   userChip.classList.add(`chip--${userChoice}`);
   houseChip.classList.add(`chip--${houseChoice}`);
   defaultChips.classList.add('animate-closing', 'no-btn-effs');
+  // screen reader only texts
+  userChipSrOnly.textContent = `${userChoice}`;
+  houseChipSrOnly.textContent = `${houseChoice}`;
   //hide defaultChips and show results on animation end
   defaultChips.addEventListener('animationend', () => {
+    selectedChip.parentElement.classList.remove('selected');
     defaultChips.classList.add('hidden');
     defaultChips.classList.remove('animate-closing', 'no-btn-effs');
     chosenChips.classList.remove('hidden');
-    generateResults();
+    // show results after some time
+    setTimeout(() => {
+      generateResults();
+      results.classList.remove('hidden');
+    }, 800);
   }, {
     once: true, // runs event only once
   });
@@ -59,6 +63,7 @@ function startGame() {
 // revert back to default game states
 function replayGame() {
   chosenChips.classList.add('animate-closing');
+  results.classList.add('animate-closing');
   // hide chosen chips and show defaultChips on animation end
   chosenChips.addEventListener('animationend', () => {
     chosenChips.classList.add('hidden');
@@ -66,6 +71,13 @@ function replayGame() {
     userChip.classList.remove(`chip--${userChoice}`);
     houseChip.classList.remove(`chip--${houseChoice}`);
     defaultChips.classList.remove('hidden');
+  }, {
+    once: true, // runs event only once
+  });
+  // hide results on animation end
+  results.addEventListener('animationend', () => {
+    results.classList.add('hidden');
+    results.classList.remove('animate-closing');
   }, {
     once: true, // runs event only once
   });
@@ -86,6 +98,7 @@ function generateHouseChoice () {
 
 // get winner
 function generateResults() {
+  const scorePoints = document.querySelector('#score-points');
   let winnerTxt = '';
   let score = Number(scorePoints.textContent);
   if (!userChoice) {
@@ -102,7 +115,7 @@ function generateResults() {
   } else {
     winnerTxt = 'You Lose';
     // decerement score only if its more than 0
-    (score >= 1) ? score--: score;
+    (score > 0) ? score--: score;
   }
   resultsTitle.textContent = winnerTxt;
   //update score
