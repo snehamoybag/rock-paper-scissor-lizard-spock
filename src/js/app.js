@@ -37,24 +37,32 @@ function startGame() {
   const selectedChip = this;
   userChoice = selectedChip.dataset.chipValue;
   generateHouseChoice();
+
   selectedChip.parentElement.classList.add('selected');
   userChip.classList.add(`chip--${userChoice}`);
   houseChip.classList.add(`chip--${houseChoice}`);
   defaultChips.classList.add('animate-closing', 'no-btn-effs');
+
   // screen reader only texts
   userChipSrOnly.textContent = `${userChoice}`;
   houseChipSrOnly.textContent = `${houseChoice}`;
+
   //hide defaultChips and show results on animation end
   defaultChips.addEventListener('animationend', () => {
     selectedChip.parentElement.classList.remove('selected');
     defaultChips.classList.add('hidden');
     defaultChips.classList.remove('animate-closing', 'no-btn-effs');
     chosenChips.classList.remove('hidden');
+  }, {
+    once: true, // runs event only once
+  });
+
+  chosenChips.addEventListener('animationend', () => {
     // show results after some time
     setTimeout(() => {
       generateResults();
       results.classList.remove('hidden');
-    }, 800);
+    }, 500);
   }, {
     once: true, // runs event only once
   });
@@ -64,6 +72,7 @@ function startGame() {
 function replayGame() {
   chosenChips.classList.add('animate-closing');
   results.classList.add('animate-closing');
+
   // hide chosen chips and show defaultChips on animation end
   chosenChips.addEventListener('animationend', () => {
     chosenChips.classList.add('hidden');
@@ -74,6 +83,7 @@ function replayGame() {
   }, {
     once: true, // runs event only once
   });
+
   // hide results on animation end
   results.addEventListener('animationend', () => {
     results.classList.add('hidden');
@@ -87,6 +97,7 @@ function replayGame() {
 function generateHouseChoice () {
   const allChipsValues = [];
   let chipValue = null;
+
   // get all the chip values dynamically
   for (let i = 0; i < allChips.length; i++) {
     chipValue = allChips[i].dataset.chipValue;
@@ -101,6 +112,7 @@ function generateResults() {
   const scorePoints = document.querySelector('#score-points');
   let winnerTxt = '';
   let score = Number(scorePoints.textContent);
+
   if (!userChoice) {
     winnerTxt = 'Error!';
   } else if (userChoice === houseChoice) {
@@ -117,6 +129,7 @@ function generateResults() {
     // decerement score only if its more than 0
     (score > 0) ? score--: score;
   }
+  // show win or lose texts
   resultsTitle.textContent = winnerTxt;
   //update score
   scorePoints.textContent = score;
