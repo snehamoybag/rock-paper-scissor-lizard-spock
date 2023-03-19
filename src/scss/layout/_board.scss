@@ -1,13 +1,12 @@
 .board {
-  --chips-con-height: 16.25rem;
-  width: min(100%, 18rem);
-  min-height: 22rem;
+  width: min(100%, 30rem);
+  position: relative;
   isolation: isolate;
   outline: 1px solid red;
 
   &__chips-container {
     width: 100%;
-    height: var(--chips-con-height);
+    aspect-ratio: 1.1/1;
     position: relative;
   }
 }

@@ -37,26 +37,28 @@ function startGame() {
   const selectedChip = this;
   userChoice = selectedChip.dataset.chipValue;
   generateHouseChoice();
-
+  // add class defending on choices and add closing animations
   selectedChip.parentElement.classList.add('selected');
   userChip.classList.add(`chip--${userChoice}`);
   houseChip.classList.add(`chip--${houseChoice}`);
   defaultChips.classList.add('animate-closing', 'no-btn-effs');
-
   // screen reader only texts
   userChipSrOnly.textContent = `${userChoice}`;
   houseChipSrOnly.textContent = `${houseChoice}`;
 
   //hide defaultChips and show results on animation end
   defaultChips.addEventListener('animationend', () => {
-    selectedChip.parentElement.classList.remove('selected');
-    defaultChips.classList.add('hidden');
-    defaultChips.classList.remove('animate-closing', 'no-btn-effs');
-    chosenChips.classList.remove('hidden');
+    // makes the chip stay in the center for some time
+    setTimeout(() => {
+      selectedChip.parentElement.classList.remove('selected');
+      defaultChips.classList.add('hidden');
+      defaultChips.classList.remove('animate-closing', 'no-btn-effs');
+      chosenChips.classList.remove('hidden');
+    }, 250);
   }, {
     once: true, // runs event only once
   });
-
+  // show results after chosen chips opening animation
   chosenChips.addEventListener('animationend', () => {
     // show results after some time
     setTimeout(() => {
@@ -70,6 +72,10 @@ function startGame() {
 
 // revert back to default game states
 function replayGame() {
+  // removes winner class
+  userChip.parentElement.classList.remove('winner');
+  houseChip.parentElement.classList.remove('winner');
+  // add closing animations
   chosenChips.classList.add('animate-closing');
   results.classList.add('animate-closing');
 
@@ -124,16 +130,21 @@ function generateResults() {
   ) {
     winnerTxt = 'You Win';
     score++;
+    // add winner styles
+    userChip.parentElement.classList.add('winner');
   } else {
     winnerTxt = 'You Lose';
     // decerement score only if its more than 0
     (score > 0) ? score--: score;
+    // add winner styles
+    houseChip.parentElement.classList.add('winner');
   }
   // show win or lose texts
   resultsTitle.textContent = winnerTxt;
   //update score
   scorePoints.textContent = score;
 };
+
 
 function showRules() {
   rulesModal.classList.remove('hidden');

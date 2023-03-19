@@ -1,6 +1,13 @@
 .results {
   text-align: center;
+  position: relative;
+  transform: translateY(-25%);
   animation: fade-in 200ms ease forwards;
+
+  &__title {
+    font-size: 3rem;
+    font-weight: var(--fw-bold);
+  }
 }
 
 .animate-closing {
