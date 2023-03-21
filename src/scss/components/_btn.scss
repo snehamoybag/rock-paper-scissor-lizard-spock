@@ -1,15 +1,16 @@
 .btn {
-  --fs-border-only: var(--fs-400);
+  --fs-white: clamp(0.75rem, calc(0.5rem + 1.85vw), 5rem);
   text-transform: inherit;
 
   &--border-only {
+    --clr-neutral-100-values: 0, 0%, 100%;
     background-color: transparent;
-    color: hsla(0, 0%, 100%, 0.85);
-    font-size: var(--fs-400);
+    color: hsla(var(--clr-neutral-100-values), 0.85);
+    font-size: var(--fs-white);
     text-transform: inherit;
     letter-spacing: 0.15em;
     padding: 0.5em 2.5em;
-    border: 2px solid var(--clr-neutral-500);
+    border: 2px solid hsla(var(--clr-neutral-100-values), 0.6);
     border-radius: 0.5em;
     transition: background-color 200ms ease;
 
@@ -27,7 +28,7 @@
   &--white {
     background-color: var(--clr-neutral-100);
     color: var(--clr-neutral-700);
-    font-size: var(--fs-400);
+    font-size: var(--fs-white);
     letter-spacing: 0.15em;
     font-weight: var(--fw-bold);
     padding: 0.75em 3em;

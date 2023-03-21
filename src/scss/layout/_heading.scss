@@ -1,9 +1,9 @@
 @use '../abstracts/breakpoints' as brk;
 
 .heading {
-  --fs-title: 1.25rem;
-  --fs-score: 0.625rem;
-  --fs-score-points: 2.5rem;
+  --fs-title: clamp(1rem, calc(0.5rem + 3.5vw), 5rem);
+  --fs-score: clamp(0.5rem, calc(0.5rem + 0.65vw), 1rem);
+  --fs-score-points: clamp(1.5rem, calc(1rem + 7vw), 5rem);
   width: clamp(10rem, 100%, 45rem);
   display: flex;
   justify-content: space-between;
@@ -14,12 +14,6 @@
   border-radius: 0.5em;
   font-weight: var(--fw-bold);
   margin-bottom: 5rem;
-
-  @include brk.minWidth(xsmall) {
-    --fs-title: 1.75rem;
-    --fs-score: 0.875rem;
-    --fs-score-points: 3.75rem;
-  }
 
   &__title {
     max-width: 5ch;

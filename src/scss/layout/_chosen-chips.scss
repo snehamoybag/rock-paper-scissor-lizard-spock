@@ -23,6 +23,8 @@
   }
 
   &__texts {
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.15em;
     z-index: 1;
     opacity: 0; /* to make the animation work */
     animation: fade-in var(--ani-dur) var(--ani-dur) var(--ani-style) forwards;

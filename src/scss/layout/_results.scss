@@ -1,12 +1,16 @@
 .results {
   text-align: center;
   position: relative;
-  transform: translateY(-25%);
+  transform: translateY(-40%);
   animation: fade-in 200ms ease forwards;
 
   &__title {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, calc(1rem + 11vw), 5rem);
     font-weight: var(--fw-bold);
+  }
+
+  .btn {
+    width: 75%;
   }
 }
 
