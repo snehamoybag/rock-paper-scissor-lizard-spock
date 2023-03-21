@@ -1,6 +1,8 @@
 .chosen-chips {
   --ani-dur: 400ms;
-  --ani-style: ease;
+  --ani-style: ease-in;
+  isolation: isolate;
+
   &__user,
   &__house {
     position: absolute;
@@ -9,6 +11,7 @@
     flex-direction: column-reverse;
     align-items: center;
     gap: 1em;
+    isolation: isolate;
   }
 
   &__user {
@@ -17,6 +20,12 @@
 
   &__house {
     animation: center-to-top-right var(--ani-dur) var(--ani-style) forwards;
+  }
+
+  &__texts {
+    z-index: 1;
+    opacity: 0; /* to make the animation work */
+    animation: fade-in var(--ani-dur) var(--ani-dur) var(--ani-style) forwards;
   }
 }
 
@@ -29,5 +38,9 @@
 
   .chosen-chips__house {
     animation: top-right-to-center var(--ani-dur) var(--ani-style) forwards;
+  }
+
+  .chosen-chips__texts {
+    animation: fade-out 200ms var(--ani-style) forwards;
   }
 }

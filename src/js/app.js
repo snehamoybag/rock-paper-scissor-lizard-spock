@@ -81,11 +81,14 @@ function replayGame() {
 
   // hide chosen chips and show defaultChips on animation end
   chosenChips.addEventListener('animationend', () => {
-    chosenChips.classList.add('hidden');
-    chosenChips.classList.remove('animate-closing');
-    userChip.classList.remove(`chip--${userChoice}`);
-    houseChip.classList.remove(`chip--${houseChoice}`);
-    defaultChips.classList.remove('hidden');
+    // makes the chips stay in the center for few mil-secs
+    setTimeout(() => {
+      chosenChips.classList.add('hidden');
+      chosenChips.classList.remove('animate-closing');
+      userChip.classList.remove(`chip--${userChoice}`);
+      houseChip.classList.remove(`chip--${houseChoice}`);
+      defaultChips.classList.remove('hidden');
+    }, 500);
   }, {
     once: true, // runs event only once
   });
