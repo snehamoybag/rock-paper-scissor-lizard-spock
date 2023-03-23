@@ -54,10 +54,10 @@
 @keyframes center-to-top-right {
   0% {
     top: 50%;
-    left: 50%;
+    left: auto;
     bottom: auto;
-    right: auto;
-    transform: translate(-50%, -50%);
+    right: 50%;
+    transform: translate(50%, -50%);
   }
   100% {
     top: 0;
@@ -78,10 +78,10 @@
   }
   100% {
     top: 50%;
-    left: 50%;
+    left: auto;
     bottom: auto;
-    right: auto;
-    transform: translate(-50%, -50%);
+    right: 50%;
+    transform: translate(50%, -50%);
   }
 }
 
