@@ -1,3 +1,5 @@
+@use '../abstracts/breakpoints' as brk;
+
 .hidden {
   display: none;
 }

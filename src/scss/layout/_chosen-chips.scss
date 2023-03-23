@@ -1,14 +1,21 @@
+@use '../abstracts/breakpoints' as brk;
+
 .chosen-chips {
   --ani-dur: 400ms;
   --ani-style: ease-in;
+  --user-house-flex-dir: column-reverse;
   isolation: isolate;
+
+  @include brk.minWidth(medium) {
+    --user-house-flex-dir: column;
+  }
 
   &__user,
   &__house {
     position: absolute;
     /* for inner contents */
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: var(--user-house-flex-dir);
     align-items: center;
     gap: 1em;
     isolation: isolate;
@@ -43,6 +50,6 @@
   }
 
   .chosen-chips__texts {
-    animation: fade-out 200ms var(--ani-style) forwards;
+    animation: fade-out 100ms var(--ani-style) forwards;
   }
 }
