@@ -8,8 +8,6 @@
 
   --fw-semi-bold: 600;
   --fw-bold: 700;
-
-  --fs-400: clamp(0.75rem, calc(0.5rem + 1.5vw), 5rem);
 }
 
 /* typography reset */
@@ -34,6 +32,5 @@ body {
 /* general body typography */
 body {
   font-family: var(--ff-primary);
-  font-size: var(--fs-400);
   font-weight: var(--fw-semi-bold);
 }

@@ -2,54 +2,78 @@
 
 .chosen-chips {
   --ani-dur: 400ms;
-  --ani-style: ease-in;
-  --user-house-flex-dir: column-reverse;
+  --ani-style: ease;
+  --user-ani-name: center-to-top-left;
+  --house-ani-name: center-to-top-right;
+  --chip-width: min(35vw, 12.5rem);
+  --text-vertical-pos: 115%;
+  position: relative;
   isolation: isolate;
 
   @include brk.minWidth(medium) {
-    --user-house-flex-dir: column;
+    --user-ani-name: center-to-bottom-left;
+    --house-ani-name: center-to-bottom-right;
+    --chip-width: 18rem;
+    --text-vertical-pos: -50%;
+    position: static;
   }
 
   &__user,
   &__house {
     position: absolute;
     /* for inner contents */
-    display: flex;
-    flex-direction: var(--user-house-flex-dir);
-    align-items: center;
-    gap: 1em;
     isolation: isolate;
+    border: 1px solid lime;
   }
 
   &__user {
-    animation: center-to-top-left var(--ani-dur) var(--ani-style) forwards;
+    animation: var(--user-ani-name) var(--ani-dur) var(--ani-style) forwards;
   }
 
   &__house {
-    animation: center-to-top-right var(--ani-dur) var(--ani-style) forwards;
+    animation: var(--house-ani-name) var(--ani-dur) var(--ani-style) forwards;
   }
 
   &__texts {
+    width: var(--chip-width);
+    font-size: clamp(0.75rem, calc(0.5rem + 1.5vw), 1.5rem);
     font-weight: var(--fw-bold);
+    text-align: center;
     letter-spacing: 0.15em;
+    position: absolute;
+    top: var(--text-vertical-pos);
     z-index: 1;
     opacity: 0; /* to make the animation work */
     animation: fade-in var(--ani-dur) var(--ani-dur) var(--ani-style) forwards;
+    border: 1px solid yellow;
+  }
+
+  &__texts:nth-of-type(1) {
+    left: 0;
+  }
+
+  &__texts:nth-of-type(2) {
+    right: 0;
+  }
+
+  .chip {
+    width: var(--chip-width);
   }
 }
 
 /* closing state */
 .animate-closing {
+  .chosen-chips {
+    &__user {
+      animation: top-left-to-center var(--ani-dur) var(--ani-style) forwards;
+    }
 
-  .chosen-chips__user {
-    animation: top-left-to-center var(--ani-dur) var(--ani-style) forwards;
-  }
+    &__house {
+      animation: top-right-to-center var(--ani-dur) var(--ani-style) forwards;;
+    }
 
-  .chosen-chips__house {
-    animation: top-right-to-center var(--ani-dur) var(--ani-style) forwards;
-  }
-
-  .chosen-chips__texts {
-    animation: fade-out 100ms var(--ani-style) forwards;
+    &__texts {
+      animation: fade-out var(--ani-dur) var(--ani-style) forwards;
+    }
   }
 }

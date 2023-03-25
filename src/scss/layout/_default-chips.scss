@@ -6,7 +6,9 @@
   background-image: var(--bg-img);
   background-repeat: no-repeat;
   background-position: center;
+  position: relative;
   animation: scale-up-bg var(--ani-dur) var(--ani-style) forwards;
+  border: 1px solid white;
 
   &__chip-wrapper {
     position: absolute;

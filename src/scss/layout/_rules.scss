@@ -1,10 +1,15 @@
 @use '../abstracts/breakpoints' as brk;
 
 .rules {
-  --fs-title: 2rem;
+  --fs-title: clamp(0.75rem, calc(0.5rem + 7vw), 2.25rem);
+  width: 100%;
   display: flex;
   justify-content: center;
   isolation: isolate;
+
+  @include brk.minWidth(medium) {
+    justify-content: end;
+  }
 
   &__modal {
     animation: fade-in 250ms ease-in forwards;

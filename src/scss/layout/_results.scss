@@ -7,7 +7,7 @@
   position: relative;
   transform: translateY(-40%);
   animation: fade-in 200ms ease forwards;
-  @include brk.minWidth(medium) {
+  @include brk.minWidth(small) {
     position: absolute;
     top: 50%;
     left: 50%;

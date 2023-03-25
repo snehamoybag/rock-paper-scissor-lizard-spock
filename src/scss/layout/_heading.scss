@@ -16,7 +16,7 @@
   font-weight: var(--fw-bold);
   margin-bottom: 5rem;
 
-  @include brk.minWidth(medium) {
+  @include brk.minWidth(small) {
     --score-padding: 1em 3.25em;
   }
 
