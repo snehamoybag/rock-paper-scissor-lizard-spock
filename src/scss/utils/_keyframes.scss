@@ -1,179 +1,35 @@
-/* ANIMATIONS */
-@keyframes scale-up {
-  0% {}
-  100% {
-    transform: scale(1.25);
-  }
-}
-
-@keyframes scale-up-bg {
-  0% {
-    background-size: 0;
-  }
-  100% {
-    background-size: var(--bg-size); /* coming from default-chips.scss */
-  }
-}
-
-@keyframes scale-down-bg {
-  0% {
-    background-size: var(--bg-size); /* coming from default-chips.scss */
-  }
+@keyframes shrink-bg {
   100% {
     background-size: 0;
   }
 }
 
-@keyframes center-to-top-left {
-  0% {
+@keyframes to-center {
+  100% {
     top: 50%;
-    left: 50%;
-    bottom: auto;
     right: auto;
+    bottom: auto;
+    left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+@keyframes to-top-left {
   100% {
     top: 0;
+    right: auto;
+    bottom: auto;
     left: 0;
-    bottom: auto;
-    right: auto;
-    transform: unset;
+    transform: translate(0, 0);
   }
 }
 
-@keyframes center-to-bottom-left {
-  0% {
-    top: auto;
-    left: 50%;
-    bottom: 50%;
-    right: auto;
-    transform: translate(-50%, 50%);
-  }
-  100% {
-    top: auto;
-    left: 0;
-    bottom: 0;
-    right: auto;
-    transform: unset;
-  }
-}
-
-@keyframes top-left-to-center {
-  0% {
-    top: 0;
-    left: 0;
-    bottom: auto;
-    right: auto;
-    transform: unset;
-  }
-  100% {
-    top: 50%;
-    left: 50%;
-    bottom: auto;
-    right: auto;
-    transform: translate(-50%, -50%);
-  }
-}
-
-@keyframes center-to-top-right {
-  0% {
-    top: 50%;
-    left: auto;
-    bottom: auto;
-    right: 50%;
-    transform: translate(50%, -50%);
-  }
+@keyframes to-top-right {
   100% {
     top: 0;
-    left: auto;
-    bottom: auto;
     right: 0;
-    transform: unset;
-  }
-}
-
-@keyframes center-to-bottom-right {
-  0% {
-    top: aut0;
-    left: auto;
-    bottom: 50%;
-    right: 50%;
-    transform: translate(50%, 50%);
-  }
-  100% {
-    top: auto;
-    left: auto;
-    bottom: 0;
-    right: 0;
-    transform: unset;
-  }
-}
-
-@keyframes top-right-to-center {
-  0% {
-    top: 0;
-    left: auto;
     bottom: auto;
-    right: 0;
-    transform: unset;
-  }
-  100% {
-    top: 50%;
     left: auto;
-    bottom: auto;
-    right: 50%;
-    transform: translate(50%, -50%);
-  }
-}
-
-@keyframes center-to-bottom-center {
-  0% {
-    top: 50%;
-    left: 50%;
-    bottom: auto;
-    right: auto;
-    transform: translate(-50%, -50%);
-  }
-  100% {
-    top: auto;
-    left: 50%;
-    bottom: 0%;
-    right: auto;
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes bottom-center-to-center {
-  0% {
-    top: auto;
-    left: 50%;
-    bottom: 0%;
-    right: auto;
-    transform: translateX(-50%);
-  }
-  100% {
-    top: 50%;
-    left: 50%;
-    bottom: auto;
-    right: auto;
-    transform: translate(-50%, -50%);
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
+    transform: translate(0, 0);
   }
 }

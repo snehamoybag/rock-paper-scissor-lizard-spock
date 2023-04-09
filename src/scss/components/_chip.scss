@@ -2,7 +2,8 @@
 
 .chip {
   // colored border
-  width: min(35vw, 12.5rem);
+  /* width: min(35vw, 12.5rem); */
+  width: 7.75rem;
   aspect-ratio: 1/1;
   background-color: var(--clr-neutral-100);
   border: none;

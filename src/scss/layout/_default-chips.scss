@@ -1,47 +1,47 @@
 .default-chips {
-  --bg-img: url('/images/bg-triangle.svg');
-  --bg-size: 65%;
-  --ani-dur: 400ms;
-  --ani-style: ease;
-  background-image: var(--bg-img);
+  outline: 1px solid yellow;
+  background-image: url('/images/bg-triangle.svg');
   background-repeat: no-repeat;
   background-position: center;
-  position: relative;
-  animation: scale-up-bg var(--ani-dur) var(--ani-style) forwards;
-  border: 1px solid white;
+  background-size: 70%;
 
   &__chip-wrapper {
     position: absolute;
-  }
-  /* rock */
-  &__chip-wrapper:nth-of-type(1) {
-    animation: center-to-bottom-center var(--ani-dur) var(--ani-style) forwards;
-  }
-  /* paper */
-  &__chip-wrapper:nth-of-type(2) {
-    animation: center-to-top-left var(--ani-dur) var(--ani-style) forwards;
-  }
-  /* scissors */
-  &__chip-wrapper:nth-of-type(3) {
-    animation: center-to-top-right var(--ani-dur) var(--ani-style) forwards;
+
+    &:nth-of-type(1) {
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
+    &:nth-of-type(2) {
+      top: 0;
+      right: auto;
+      bottom: auto;
+      left: 0;
+      transform: translate(0, 0);
+    }
+
+    &:nth-of-type(3) {
+      top: 0;
+      right: 0;
+      bottom: auto;
+      left: auto;
+      transform: translate(0, 0);
+    }
   }
 }
 
-/* closing states */
 .animate-closing {
+  --global-ani-speed: 400ms;
+
   &.default-chips {
-    animation: scale-down-bg var(--ani-dur) var(--ani-style) forwards;
+    animation: shrink-bg var(--global-ani-speed) ease forwards;
   }
-  /* rock */
-  .default-chips__chip-wrapper:nth-of-type(1) {
-    animation: bottom-center-to-center var(--ani-dur) var(--ani-style) forwards;
-  }
-  /* paper */
-  .default-chips__chip-wrapper:nth-of-type(2) {
-    animation: top-left-to-center var(--ani-dur) var(--ani-style) forwards;
-  }
-  /* scissors */
-  .default-chips__chip-wrapper:nth-of-type(3) {
-    animation: top-right-to-center var(--ani-dur) var(--ani-style) forwards;
+
+  .default-chips__chip-wrapper {
+    animation: to-center var(--global-ani-speed) ease forwards;
   }
 }

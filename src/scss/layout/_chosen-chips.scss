@@ -1,79 +1,40 @@
-@use '../abstracts/breakpoints' as brk;
-
 .chosen-chips {
-  --ani-dur: 400ms;
-  --ani-style: ease;
-  --user-ani-name: center-to-top-left;
-  --house-ani-name: center-to-top-right;
-  --chip-width: min(35vw, 12.5rem);
-  --text-vertical-pos: 115%;
-  position: relative;
-  isolation: isolate;
-
-  @include brk.minWidth(medium) {
-    --user-ani-name: center-to-bottom-left;
-    --house-ani-name: center-to-bottom-right;
-    --chip-width: 18rem;
-    --text-vertical-pos: -50%;
-    position: static;
-  }
+  outline: 1px solid red;
 
   &__user,
   &__house {
+    width: 50%;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     /* for inner contents */
-    isolation: isolate;
-    border: 1px solid lime;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.5em;
   }
 
   &__user {
-    animation: var(--user-ani-name) var(--ani-dur) var(--ani-style) forwards;
-  }
-
-  &__house {
-    animation: var(--house-ani-name) var(--ani-dur) var(--ani-style) forwards;
-  }
-
-  &__texts {
-    width: var(--chip-width);
-    font-size: clamp(0.75rem, calc(0.5rem + 1.5vw), 1.5rem);
-    font-weight: var(--fw-bold);
-    text-align: center;
-    letter-spacing: 0.15em;
-    position: absolute;
-    top: var(--text-vertical-pos);
     z-index: 1;
-    opacity: 0; /* to make the animation work */
-    animation: fade-in var(--ani-dur) var(--ani-dur) var(--ani-style) forwards;
-    border: 1px solid yellow;
-  }
-
-  &__texts:nth-of-type(1) {
-    left: 0;
-  }
-
-  &__texts:nth-of-type(2) {
-    right: 0;
-  }
-
-  .chip {
-    width: var(--chip-width);
   }
 }
 
-/* closing state */
-.animate-closing {
+.animate-opening {
+  --ani-speed: 400ms;
+  --ani-delay: 500ms;
+
   .chosen-chips {
+
     &__user {
-      animation: top-left-to-center var(--ani-dur) var(--ani-style) forwards;
+      animation: to-top-left var(--ani-speed) ease var(--ani-delay) forwards;
     }
 
     &__house {
-      animation: top-right-to-center var(--ani-dur) var(--ani-style) forwards;;
-    }
-
-    &__texts {
-      animation: fade-out var(--ani-dur) var(--ani-style) forwards;
+      animation: to-top-right var(--ani-speed) ease var(--ani-delay) forwards;
     }
   }
 }

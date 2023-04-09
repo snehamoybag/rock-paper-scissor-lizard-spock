@@ -32,7 +32,7 @@
           <button class="chip chip--scissors" data-chip-value="scissors"><span class="sr-only">Scissors</span></button>
         </div>
       </div>
-      <div class="chosen-chips board__chips-container hidden no-btn-effs" id="chosen-chips">
+      <div class="chosen-chips board__chips-container no-btn-effs animate-opening" id="chosen-chips">
         <div class="chosen-chips__user">
           <p class="chosen-chips__texts">
             You Picked
@@ -45,15 +45,17 @@
           <p class="chosen-chips__texts">
             The House Picked
           </p>
-          <div class="chip" id="house-chip">
-            <span class="sr-only"></span>
+          <div class="chosen-chips__loading">
+            <div class="chip" id="house-chip">
+              <span class="sr-only"></span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="results hidden" id="results">
-        <h2 class="results__title" id="results-title">It's a Draw</h2>
-        <button class="btn btn--white" id="btn-replay">Play Again</button>
-      </div>
+    </div>
+    <div class="results" id="results">
+      <h2 class="results__title" id="results-title">It's a Draw</h2>
+      <button class="btn btn--white" id="btn-replay">Play Again</button>
     </div>
     <div class="rules">
       <button class="btn btn--border-only" id="btn-rules-open" aria-controls="rules-modal" aria-expanded="false">Rules</button>

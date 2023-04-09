@@ -1,31 +1,4 @@
-@use '../abstracts/breakpoints' as brk;
-
 .results {
-  --btn-size: min(75%, 25rem);
-  width: 100%;
-  text-align: center;
-  position: relative;
-  transform: translateY(-40%);
-  animation: fade-in 200ms ease forwards;
-  @include brk.minWidth(small) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &__title {
-    font-size: clamp(2.5rem, calc(1rem + 11vw), 5rem);
-    font-weight: var(--fw-bold);
-  }
-
-  .btn {
-    width: var(--btn-size);
-  }
-}
-
-.animate-closing {
-  &.results {
-    animation: fade-out 200ms ease forwards;
-  }
+  position: absolute;
+  z-index: 2;
 }

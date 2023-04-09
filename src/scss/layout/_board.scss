@@ -1,20 +1,11 @@
 @use '../abstracts/breakpoints' as brk;
 
 .board {
-  --chips-con-width: min(100%, 30rem);
-  --chips-con-aspect-ratio: 1.1/1;
-  width: min(100%, 55rem);
-  position: relative;
-  isolation: isolate;
-  /* for inner contents */
-  display: grif;
-  justify-items: center;
-  align-items: center;
-  outline: 1px solid red;
+
 
   &__chips-container {
-    width: var(--chips-con-width);
-    aspect-ratio: var(--chips-con-aspect-ratio);
-    margin: 0 auto;
+    height: 17.5rem;
+    position: relative;
+    isolation: isolate;
   }
 }
