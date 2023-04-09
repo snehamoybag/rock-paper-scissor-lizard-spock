@@ -62,7 +62,7 @@
     transform: scale(0.97);
   }
 
-  &--rock {
+  &[data-chip-value="rock"] {
     background: linear-gradient(var(--clr-red-400), var(--clr-red-500)) no-repeat;
 
     &::after {
@@ -70,7 +70,7 @@
     }
   }
 
-  &--paper {
+  &[data-chip-value="paper"] {
     background: linear-gradient(var(--clr-blue-400), var(--clr-blue-500)) no-repeat;
 
     &::after {
@@ -78,7 +78,7 @@
     }
   }
 
-  &--scissors {
+  &[data-chip-value="scissors"] {
     background: linear-gradient(var(--clr-orange-400), var(--clr-orange-500)) no-repeat;
 
     &::after {
@@ -86,7 +86,7 @@
     }
   }
 
-  &--lizard {
+  &[data-chip-value="lizard"] {
     background: linear-gradient(var(--clr-purple-400), var(--clr-purple-500)) no-repeat;
 
     &::after {
@@ -94,7 +94,7 @@
     }
   }
 
-  &--spock {
+  &[data-chip-value="spock"] {
     background: linear-gradient(var(--clr-cyan-400), var(--clr-cyan-500)) no-repeat;
 
     &::after {
