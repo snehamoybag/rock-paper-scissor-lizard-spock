@@ -7,7 +7,6 @@ const allChipBtnEls = defaultChipsEl.querySelectorAll('.chip');
 
 // game logic
 const getResults = (userChoice, houseChoice) => {
-  console.log(userChoice, houseChoice);
   let resultPoint = 0;
   let resultString = '';
 
@@ -25,7 +24,7 @@ const getResults = (userChoice, houseChoice) => {
     resultPoint = -1;
     resultString = 'You Lose';
   }
-
+  // return an object
   return {
     resultPoint,
     resultString
@@ -36,16 +35,38 @@ const getResults = (userChoice, houseChoice) => {
 const updateScore = (result) => {
   const scoreEl = document.querySelector('#score-points');
   scoreEl.textContent = Number(scoreEl.textContent) + result;
-}
+};
+
+// hide chips function
+const hideChipsEl = (el) => {
+  el.classList.remove('animate-opening');
+  el.classList.add('animate-closing', 'no-btn-effs');
+  // display: none element on animation end
+  el.addEventListener('animationend', () => el.classList.add('hidden'));
+};
+
+// show chips function
+const showChipsEl = (closingEl, showEl) => {
+  // wait for a closing element to finish animation (closingEl),
+  // then show the elment (showEl)
+  closingEl.addEventListener('animationend', () => {
+    showEl.classList.remove('hidden', 'no-btn-effs');
+    showEl.classList.add('animate-opening');
+  });
+};
 
 // display choices on DOM
 const displayChosenChips = (userChoice, houseChoice) => {
   const chosenChipsEl = document.querySelector('#chosen-chips');
   const userChipEl = chosenChipsEl.querySelector('#user-chip');
   const houseChipEl = chosenChipsEl.querySelector('#house-chip');
-  // display chosen chips
+
+  // apply chosen chips styles
   userChipEl.dataset.chipValue = userChoice;
   houseChipEl.dataset.chipValue = houseChoice;
+
+  hideChipsEl(defaultChipsEl);
+  showChipsEl(defaultChipsEl, chosenChipsEl);
 };
 
 // display results
