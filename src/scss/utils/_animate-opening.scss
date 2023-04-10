@@ -1,0 +1,33 @@
+.animate-opening {
+  --ani-prop: 400ms ease forwards;
+
+  &.default-chips {
+    animation: expand-bg var(--ani-prop);
+  }
+
+  .default-chips__chip-wrapper {
+    &:nth-of-type(1) {
+      animation: center-to-bottom var(--ani-prop);
+    }
+
+    &:nth-of-type(2) {
+      animation: center-to-top-left var(--ani-prop);
+    }
+
+    &:nth-of-type(3) {
+      animation: center-to-top-right var(--ani-prop);
+    }
+  }
+
+  .chosen-chips__user {
+    animation: center-to-top-left var(--ani-prop);
+  }
+
+  .chosen-chips__house {
+    animation: center-to-top-right var(--ani-prop);
+  }
+
+  .chosen-chips__texts {
+    animation: fade-in 400ms ease 500ms forwards;
+  }
+}

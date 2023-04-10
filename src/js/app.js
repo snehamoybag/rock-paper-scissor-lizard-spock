@@ -46,27 +46,27 @@ const displayChosenChips = (userChoice, houseChoice) => {
   userChipEl.dataset.chipValue = userChoice;
   houseChipEl.dataset.chipValue = houseChoice;
   // hide default chips
-  defaultChipsEl.classList.remove('animate-opening');
   defaultChipsEl.classList.add('no-btn-effs', 'animate-closing');
   chosenChipsEl.classList.remove('animate-closing');
   // show chosen chips on animation end
   defaultChipsEl.addEventListener('animationend', () => {
     defaultChipsEl.classList.add('hidden');
     chosenChipsEl.classList.remove('hidden');
-    chosenChipsEl.classList.add('animate-opening');
+  }, {
+    once: true // runs event only once
   });
 };
 
 // hide chosen chips and show default chips
 const displayDefualtChips = () => {
-  chosenChipsEl.classList.remove('animate-opening');
   chosenChipsEl.classList.add('animate-closing');
   defaultChipsEl.classList.remove('animate-closing', 'no-btn-effs');
   // show default chips on animation end
   chosenChipsEl.addEventListener('animationend', () => {
     chosenChipsEl.classList.add('hidden');
     defaultChipsEl.classList.remove('hidden');
-    defaultChipsEl.classList.add('animate-opening');
+  }, {
+    once: true // runs event only once
   });
 };
 

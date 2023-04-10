@@ -1,13 +1,11 @@
 .chosen-chips {
-  outline: 1px solid red;
+  --texts-vertical-pos: 6rem; /* translateY value */
+  isolation: isolate;
 
   &__user,
   &__house {
     min-width: 16ch;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
     /* for inner contents */
     display: flex;
@@ -15,26 +13,16 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 1.5em;
   }
 
   &__user {
     z-index: 1;
   }
-}
 
-.animate-opening {
-  --ani-speed: 400ms;
-  --ani-delay: 500ms;
-
-  .chosen-chips {
-
-    &__user {
-      animation: to-top-left var(--ani-speed) ease var(--ani-delay) forwards;
-    }
-
-    &__house {
-      animation: to-top-right var(--ani-speed) ease var(--ani-delay) forwards;
-    }
+  &__texts {
+    z-index: 1;
+    position: absolute;
+    transform: translateY(var(--texts-vertical-pos));
+    opacity: 0; /* to make animation work */
   }
 }

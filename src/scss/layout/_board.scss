@@ -2,10 +2,10 @@
 
 .board {
 
-
   &__chips-container {
     height: 17.5rem;
     position: relative;
     isolation: isolate;
+    outline: 1px solid red;
   }
 }

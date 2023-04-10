@@ -1,16 +1,14 @@
 .default-chips {
-  outline: 1px solid yellow;
+  --bg-size: 70%;
   background-image: url('/images/bg-triangle.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 70%;
+  background-size: var(--bg-size);
 
   &__chip-wrapper {
     position: absolute;
 
     &:nth-of-type(1) {
-      top: auto;
-      right: auto;
       bottom: 0;
       left: 50%;
       transform: translate(-50%, 0);
@@ -18,8 +16,6 @@
 
     &:nth-of-type(2) {
       top: 0;
-      right: auto;
-      bottom: auto;
       left: 0;
       transform: translate(0, 0);
     }
@@ -27,21 +23,7 @@
     &:nth-of-type(3) {
       top: 0;
       right: 0;
-      bottom: auto;
-      left: auto;
       transform: translate(0, 0);
     }
-  }
-}
-
-.animate-closing {
-  --global-ani-speed: 400ms;
-
-  &.default-chips {
-    animation: shrink-bg var(--global-ani-speed) ease forwards;
-  }
-
-  .default-chips__chip-wrapper {
-    animation: to-center var(--global-ani-speed) ease forwards;
   }
 }
