@@ -5,6 +5,8 @@ import '/scss/styles.scss';
 const defaultChipsEl = document.querySelector('#default-chips');
 const allChipBtnEls = defaultChipsEl.querySelectorAll('.chip');
 const chosenChipsEl = document.querySelector('#chosen-chips');
+const userChipEl = chosenChipsEl.querySelector('#user-chip');
+const houseChipEl = chosenChipsEl.querySelector('#house-chip');
 
 // game logic
 const getResults = (userChoice, houseChoice) => {
@@ -40,8 +42,6 @@ const updateScore = (result) => {
 
 // hide default chips and then show chosen chips
 const displayChosenChips = (userChoice, houseChoice) => {
-  const userChipEl = chosenChipsEl.querySelector('#user-chip');
-  const houseChipEl = chosenChipsEl.querySelector('#house-chip');
   // update chosen chips styles
   userChipEl.dataset.chipValue = userChoice;
   houseChipEl.dataset.chipValue = houseChoice;
@@ -70,6 +70,26 @@ const displayDefualtChips = () => {
   });
 };
 
+// add winning effects to the winner
+const displayWinner = (result) => {
+  switch (result) {
+    case 1:
+      houseChipEl.parentNode.classList.remove('winner');
+      userChipEl.parentNode.classList.add('winner');
+      break;
+    case -1:
+      userChipEl.parentNode.classList.remove('winner');
+      houseChipEl.parentNode.classList.add('winner');
+      break;
+
+    default:
+      userChipEl.parentNode.classList.remove('winner');
+      houseChipEl.parentNode.classList.remove('winner');
+      break;
+  };
+};
+
+
 // display results
 const displayResults = (userChoice, houseChoice) => {
   const resultsEl = document.querySelector('#results');
@@ -77,8 +97,12 @@ const displayResults = (userChoice, houseChoice) => {
   const btnReplay = resultsEl.querySelector('#btn-replay');
   const resultsObj = getResults(userChoice, houseChoice);
   resultsTitleEl.textContent = resultsObj.resultString;
+  displayWinner(resultsObj.resultPoint);
   updateScore(resultsObj.resultPoint);
-  btnReplay.addEventListener('click', displayDefualtChips);
+  // replay game on click
+  btnReplay.addEventListener('click', displayDefualtChips, {
+    once: true // add EventListener only once
+  });
 };
 
 // generate random CPU choice
