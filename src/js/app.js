@@ -4,6 +4,7 @@ import '/scss/styles.scss';
 /* // GAME SCRIPTS // */
 const defaultChipsEl = document.querySelector('#default-chips');
 const allChipBtnEls = defaultChipsEl.querySelectorAll('.chip');
+const chosenChipsEl = document.querySelector('#chosen-chips');
 
 // game logic
 const getResults = (userChoice, houseChoice) => {
@@ -37,45 +38,47 @@ const updateScore = (result) => {
   scoreEl.textContent = Number(scoreEl.textContent) + result;
 };
 
-// hide chips function
-const hideChipsEl = (el) => {
-  el.classList.remove('animate-opening');
-  el.classList.add('animate-closing', 'no-btn-effs');
-  // display: none element on animation end
-  el.addEventListener('animationend', () => el.classList.add('hidden'));
-};
-
-// show chips function
-const showChipsEl = (closingEl, showEl) => {
-  // wait for a closing element to finish animation (closingEl),
-  // then show the elment (showEl)
-  closingEl.addEventListener('animationend', () => {
-    showEl.classList.remove('hidden', 'no-btn-effs');
-    showEl.classList.add('animate-opening');
+// hide default chips and then show chosen chips
+const displayChosenChips = (userChoice, houseChoice) => {
+  const userChipEl = chosenChipsEl.querySelector('#user-chip');
+  const houseChipEl = chosenChipsEl.querySelector('#house-chip');
+  // update chosen chips styles
+  userChipEl.dataset.chipValue = userChoice;
+  houseChipEl.dataset.chipValue = houseChoice;
+  // hide default chips
+  defaultChipsEl.classList.remove('animate-opening');
+  defaultChipsEl.classList.add('no-btn-effs', 'animate-closing');
+  chosenChipsEl.classList.remove('animate-closing');
+  // show chosen chips on animation end
+  defaultChipsEl.addEventListener('animationend', () => {
+    defaultChipsEl.classList.add('hidden');
+    chosenChipsEl.classList.remove('hidden');
+    chosenChipsEl.classList.add('animate-opening');
   });
 };
 
-// display choices on DOM
-const displayChosenChips = (userChoice, houseChoice) => {
-  const chosenChipsEl = document.querySelector('#chosen-chips');
-  const userChipEl = chosenChipsEl.querySelector('#user-chip');
-  const houseChipEl = chosenChipsEl.querySelector('#house-chip');
-
-  // apply chosen chips styles
-  userChipEl.dataset.chipValue = userChoice;
-  houseChipEl.dataset.chipValue = houseChoice;
-
-  hideChipsEl(defaultChipsEl);
-  showChipsEl(defaultChipsEl, chosenChipsEl);
+// hide chosen chips and show default chips
+const displayDefualtChips = () => {
+  chosenChipsEl.classList.remove('animate-opening');
+  chosenChipsEl.classList.add('animate-closing');
+  defaultChipsEl.classList.remove('animate-closing', 'no-btn-effs');
+  // show default chips on animation end
+  chosenChipsEl.addEventListener('animationend', () => {
+    chosenChipsEl.classList.add('hidden');
+    defaultChipsEl.classList.remove('hidden');
+    defaultChipsEl.classList.add('animate-opening');
+  });
 };
 
 // display results
 const displayResults = (userChoice, houseChoice) => {
   const resultsEl = document.querySelector('#results');
   const resultsTitleEl = resultsEl.querySelector('.results__title');
+  const btnReplay = resultsEl.querySelector('#btn-replay');
   const resultsObj = getResults(userChoice, houseChoice);
   resultsTitleEl.textContent = resultsObj.resultString;
   updateScore(resultsObj.resultPoint);
+  btnReplay.addEventListener('click', displayDefualtChips);
 };
 
 // generate random CPU choice
