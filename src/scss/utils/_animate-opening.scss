@@ -1,3 +1,5 @@
+@use '../abstracts/breakpoints' as brk;
+
 .animate-opening {
   --ani-prop: 400ms ease forwards;
 
@@ -19,6 +21,13 @@
     }
   }
 
+  &.chosen-chips {
+    @include brk.minWidth(small) {
+      animation: full-stretch var(--ani-prop);
+      animation-delay: 1s;
+    }
+  };
+
   .chosen-chips__user {
     animation: center-to-top-left var(--ani-prop);
   }
@@ -28,7 +37,8 @@
   }
 
   .chosen-chips__texts {
-    animation: fade-in 400ms ease 500ms forwards;
+    animation: fade-in var(--ani-prop);
+    animation-delay: 500ms;
   }
 
   &.results {

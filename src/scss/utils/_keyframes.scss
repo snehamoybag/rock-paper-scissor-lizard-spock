@@ -140,3 +140,9 @@
     opacity: 0;
   }
 }
+
+@keyframes full-stretch {
+  100% {
+    width: 100%;
+  }
+}
