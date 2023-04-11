@@ -1,21 +1,18 @@
 @use '../abstracts/breakpoints' as brk;
-:root {
-  --chip-width: 7.75rem;
-
-  @include brk.minWidth(small) {
-    --chip-width: 12.5rem;
-  }
-}
 
 .chip {
   // colored border
-  width: var(--chip-width);
+  width: 7.75rem;
   aspect-ratio: 1/1;
   background-color: var(--clr-neutral-100);
   border: none;
   border-radius: 50%;
   box-shadow: 0 -5px 0 hsla(0, 0%, 0%, 0.2) inset;
   position: relative;
+
+  @include brk.minWidth(small) {
+    width: 12.5rem;
+  }
 
   &::before,
   &::after {

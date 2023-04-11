@@ -20,5 +20,6 @@
     height: var(--chips-container-height);
     position: relative;
     isolation: isolate;
+    outline: 1px solid red;
   }
 }

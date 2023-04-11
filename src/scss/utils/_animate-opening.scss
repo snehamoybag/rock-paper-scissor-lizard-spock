@@ -1,43 +1,58 @@
 @use '../abstracts/breakpoints' as brk;
 
 .animate-opening {
-  --ani-prop: 400ms ease forwards;
+  --ani-props: 400ms ease forwards;
 
   &.default-chips {
-    animation: expand-bg var(--ani-prop);
+    animation: expand-bg var(--ani-props);
   }
 
   .default-chips__chip-wrapper {
     &:nth-of-type(1) {
-      animation: center-to-bottom var(--ani-prop);
+      animation: center-to-bottom var(--ani-props);
     }
 
     &:nth-of-type(2) {
-      animation: center-to-top-left var(--ani-prop);
+      animation: center-to-top-left var(--ani-props);
     }
 
     &:nth-of-type(3) {
-      animation: center-to-top-right var(--ani-prop);
+      animation: center-to-top-right var(--ani-props);
     }
   }
 
   &.chosen-chips {
     @include brk.minWidth(small) {
-      animation: full-stretch var(--ani-prop);
+      animation: full-stretch var(--ani-props);
       animation-delay: 1s;
     }
   };
 
   .chosen-chips__user {
-    animation: center-to-top-left var(--ani-prop);
+    animation: center-to-top-left var(--ani-props);
+    @include brk.minWidth(small) {
+      animation: center-to-left var(--ani-props);
+    }
   }
 
   .chosen-chips__house {
-    animation: center-to-top-right var(--ani-prop);
+    animation: center-to-top-right var(--ani-props);
+    @include brk.minWidth(small) {
+      animation: center-to-right var(--ani-props);
+    }
+  }
+
+  .chosen-chips__user,
+  .chosen-chips__house {
+    @include brk.minWidth(small) {
+      .chip {
+        animation: increase-size var(--ani-props);
+      }
+    }
   }
 
   .chosen-chips__texts {
-    animation: fade-in var(--ani-prop);
+    animation: fade-in var(--ani-props);
     animation-delay: 500ms;
   }
 

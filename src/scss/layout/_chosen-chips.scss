@@ -4,6 +4,10 @@
   --texts-vertical-pos: 6rem; /* translateY value */
   isolation: isolate;
 
+  @include brk.minWidth(small) {
+    --texts-vertical-pos: -10rem;
+  }
+
   &__user,
   &__house {
     min-width: 16ch;

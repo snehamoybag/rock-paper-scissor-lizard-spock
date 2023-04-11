@@ -1,3 +1,5 @@
+@use '../abstracts/breakpoints' as brk;
+
 .animate-closing {
   --ani-props: 400ms ease forwards;
 
@@ -21,11 +23,29 @@
 
   .chosen-chips__user {
     animation: top-left-to-center var(--ani-props);
+
+    @include brk.minWidth(small) {
+      animation: left-to-center var(--ani-props);
+    }
   }
 
   .chosen-chips__house {
     animation: top-right-to-center var(--ani-props);
+
+    @include brk.minWidth(small) {
+      animation: right-to-center var(--ani-props);
+    }
   }
+  
+  .chosen-chips__user,
+  .chosen-chips__house {
+    @include brk.minWidth(small) {
+      .chip {
+        animation: decrease-size var(--ani-props);
+      }
+    }
+  }
+
 
   .chosen-chips__texts {
     animation: fade-out var(--ani-props);
