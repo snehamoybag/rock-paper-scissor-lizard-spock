@@ -30,4 +30,8 @@
   .chosen-chips__texts {
     animation: fade-in 400ms ease 500ms forwards;
   }
+
+  &.results {
+    animation: fade-in var(--ani-props);
+  }
 }

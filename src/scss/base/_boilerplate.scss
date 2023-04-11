@@ -20,12 +20,6 @@
 }
 
 /*
-  3. Allow percentage-based heights in the application
-*/
-html, body {
-  height: 100%;
-}
-/*
   6. Improve media defaults
 */
 img, picture, video, canvas, svg {
@@ -36,4 +30,10 @@ img, picture, video, canvas, svg {
 /* smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* basic styling on body */
+body {
+  background: linear-gradient(var(--clr-neutral-700), var(--clr-neutral-900)) no-repeat;
+  background-size: cover;
 }

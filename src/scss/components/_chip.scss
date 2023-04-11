@@ -1,9 +1,15 @@
 @use '../abstracts/breakpoints' as brk;
+:root {
+  --chip-width: 7.75rem;
+
+  @include brk.minWidth(small) {
+    --chip-width: 12.5rem;
+  }
+}
 
 .chip {
   // colored border
-  /* width: min(35vw, 12.5rem); */
-  width: 7.75rem;
+  width: var(--chip-width);
   aspect-ratio: 1/1;
   background-color: var(--clr-neutral-100);
   border: none;
@@ -99,24 +105,6 @@
 
     &::after {
       --chip-icon: url('/images/icon-spock.svg');
-    }
-  }
-}
-
-// remove hover and click effects from chips
-.no-btn-effs {
-  .chip {
-    pointer-events: none;
-    &:hover {
-      cursor: unset;
-
-      &::after {
-        transform: var(--translate-pos) rotate(0deg);
-      }
-    }
-
-    &:active {
-      transform: unset;
     }
   }
 }

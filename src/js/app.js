@@ -7,6 +7,7 @@ const allChipBtnEls = defaultChipsEl.querySelectorAll('.chip');
 const chosenChipsEl = document.querySelector('#chosen-chips');
 const userChipEl = chosenChipsEl.querySelector('#user-chip');
 const houseChipEl = chosenChipsEl.querySelector('#house-chip');
+const resultsEl = document.querySelector('#results');
 
 // game logic
 const getResults = (userChoice, houseChoice) => {
@@ -52,6 +53,7 @@ const displayChosenChips = (userChoice, houseChoice) => {
   defaultChipsEl.addEventListener('animationend', () => {
     defaultChipsEl.classList.add('hidden');
     chosenChipsEl.classList.remove('hidden');
+    resultsEl.classList.remove('hidden')
   }, {
     once: true // runs event only once
   });
@@ -61,13 +63,17 @@ const displayChosenChips = (userChoice, houseChoice) => {
 const displayDefualtChips = () => {
   chosenChipsEl.classList.add('animate-closing');
   defaultChipsEl.classList.remove('animate-closing', 'no-btn-effs');
+  resultsEl.classList.add('animate-closing');
   // show default chips on animation end
   chosenChipsEl.addEventListener('animationend', () => {
     chosenChipsEl.classList.add('hidden');
+    resultsEl.classList.add('hidden')
     defaultChipsEl.classList.remove('hidden');
   }, {
     once: true // runs event only once
   });
+  // hide results on animation end
+  resultsEl.addEventListener('animationend', () => resultsEl.classList.add('hidden'));
 };
 
 // add winning effects to the winner
@@ -77,6 +83,7 @@ const displayWinner = (result) => {
       houseChipEl.parentNode.classList.remove('winner');
       userChipEl.parentNode.classList.add('winner');
       break;
+
     case -1:
       userChipEl.parentNode.classList.remove('winner');
       houseChipEl.parentNode.classList.add('winner');
@@ -89,10 +96,8 @@ const displayWinner = (result) => {
   };
 };
 
-
 // display results
 const displayResults = (userChoice, houseChoice) => {
-  const resultsEl = document.querySelector('#results');
   const resultsTitleEl = resultsEl.querySelector('.results__title');
   const btnReplay = resultsEl.querySelector('#btn-replay');
   const resultsObj = getResults(userChoice, houseChoice);

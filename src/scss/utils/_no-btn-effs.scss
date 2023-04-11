@@ -1,0 +1,17 @@
+// remove hover and click effects from chips
+.no-btn-effs {
+  .chip {
+    pointer-events: none;
+    &:hover {
+      cursor: unset;
+
+      &::after {
+        transform: var(--translate-pos) rotate(0deg);
+      }
+    }
+
+    &:active {
+      transform: unset;
+    }
+  }
+}
