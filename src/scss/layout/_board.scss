@@ -1,25 +1,32 @@
 @use '../abstracts/breakpoints' as brk;
 
 .board {
+  --chips-container-width: min(100%, 20rem);
   --chips-container-height: 17.5rem;
-  --board-extra-height: 10rem;
-  min-height: calc(var(--chips-container-height) + var(--board-extra-height));
+  max-width: 57.5rem;
+  margin: 0 auto;
+  /* for inner contents0s */
   display: grid;
-  align-items: center;
+  //align-items: center;
   justify-items: center;
-  outline: 2px solid white;
   position: relative;
 
   @include brk.minWidth(small) {
-    --chips-container-height: 29.25rem;
+    --chips-container-width: 32rem;
+    --chips-container-height: 28rem;
     --board-extra-height: 20rem;
   }
 
   &__chips-container {
-    width: min(100%, 29.25rem);
+    width: var(--chips-container-width);
     height: var(--chips-container-height);
     position: relative;
     isolation: isolate;
-    outline: 1px solid red;
+
+    &:nth-of-type(2) {
+      @include brk.minWidth(small) {
+        width: 35rem;
+      }
+    }
   }
 }

@@ -5,7 +5,7 @@
   isolation: isolate;
 
   @include brk.minWidth(small) {
-    --texts-vertical-pos: -10rem;
+    --texts-vertical-pos: -15rem;
   }
 
   &__user,

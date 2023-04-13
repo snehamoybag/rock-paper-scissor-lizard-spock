@@ -217,13 +217,37 @@
 
 
 @keyframes increase-size {
+  0% {
+    transform: scale(1);
+  }
   100% {
     transform: scale(1.5);
   }
 }
 
 @keyframes decrease-size {
+  0% {
+    transform: scale(1.5);
+  }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(var(--translate-y-pos));
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(var(--translate-y-pos));
+  }
+  100% {
+    transform: translateY(0);
   }
 }

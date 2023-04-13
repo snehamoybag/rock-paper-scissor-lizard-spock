@@ -1,19 +1,17 @@
-// Breakpoints 600px, 720px, 960px, 1440px, 1920px
+// Breakpoints 960px, 1024, 1440px, 1920px
 $breakpoints-up: (
-  "xsmall" : 37.5em,
-  "small" : 45em,
-  "medium" : 60em,
-  "large": 90em,
+  "small" : 60em,
+  "medium": 64em,
+  "large" : 90em,
   "xlarge": 120em
 );
 
-// Breakpoints 599.5px, 719.5px, 959.5px, 1439.5px, 1919.5px
+// Breakpoints 959.5px, 1023.5px 1439.5px, 1919.5px
 $breakpoints-down: (
-  "xsmall" : 37.46875em,
-  "small" : 44.96875em,
-  "medium" : 59.96875em,
-  "large": 89.96875em,
-  "xlarge": 119.97875em
+  "small" : 59.96875em,
+  "medium" : 63.96875,
+  "large" : 89.96875em,
+  "xlarge": 119.96875em
 );
 
 // Min-width media query

@@ -9,8 +9,11 @@ const userChipEl = chosenChipsEl.querySelector('#user-chip');
 const houseChipEl = chosenChipsEl.querySelector('#house-chip');
 const resultsEl = document.querySelector('#results');
 
+let userChoice = '';
+let houseChoice = '';
+
 // game logic
-const getResults = (userChoice, houseChoice) => {
+const getResults = () => {
   let resultPoint = 0;
   let resultString = '';
 
@@ -41,72 +44,80 @@ const updateScore = (result) => {
   scoreEl.textContent = Number(scoreEl.textContent) + result;
 };
 
+// add winning effects to the winner
+const displayWinner = (result) => {
+  if (result === 1) {
+    houseChipEl.parentNode.classList.remove('winner');
+    userChipEl.parentNode.classList.add('winner');
+  } else if (result === - 1) {
+    userChipEl.parentNode.classList.remove('winner');
+    houseChipEl.parentNode.classList.add('winner');
+  };
+};
+
+// remove winner effects
+const removeWinnerEffs = () => {
+  userChipEl.parentNode.classList.remove('winner');
+  houseChipEl.parentNode.classList.remove('winner');
+};
+
+// hide chosen chips and results then show default chips
+const displayDefualtChips = () => {
+  chosenChipsEl.classList.add('animate-closing');
+  resultsEl.classList.add('animate-closing');
+  removeWinnerEffs();
+  // show default chips on animation end
+  chosenChipsEl.addEventListener('animationend', () => {
+    chosenChipsEl.classList.add('hidden');
+    chosenChipsEl.classList.remove('animate-closing');
+    resultsEl.classList.add('hidden');
+    resultsEl.classList.remove('animate-opening', 'animate-closing');
+    defaultChipsEl.classList.remove('hidden');
+  }, {
+    once: true // runs event only once
+  });
+};
+
 // hide default chips and then show chosen chips
-const displayChosenChips = (userChoice, houseChoice) => {
+const displayChosenChips = () => {
   // update chosen chips styles
   userChipEl.dataset.chipValue = userChoice;
   houseChipEl.dataset.chipValue = houseChoice;
   // hide default chips
   defaultChipsEl.classList.add('no-btn-effs', 'animate-closing');
-  chosenChipsEl.classList.remove('animate-closing');
   // show chosen chips on animation end
   defaultChipsEl.addEventListener('animationend', () => {
     defaultChipsEl.classList.add('hidden');
+    defaultChipsEl.classList.remove('no-btn-effs', 'animate-closing');
     chosenChipsEl.classList.remove('hidden');
-    resultsEl.classList.remove('hidden')
   }, {
-    once: true // runs event only once
+    once: true
   });
-};
-
-// hide chosen chips and show default chips
-const displayDefualtChips = () => {
-  chosenChipsEl.classList.add('animate-closing');
-  defaultChipsEl.classList.remove('animate-closing', 'no-btn-effs');
-  resultsEl.classList.add('animate-closing');
-  // show default chips on animation end
-  chosenChipsEl.addEventListener('animationend', () => {
-    chosenChipsEl.classList.add('hidden');
-    resultsEl.classList.add('hidden')
-    defaultChipsEl.classList.remove('hidden');
-  }, {
-    once: true // runs event only once
-  });
-  // hide results on animation end
-  resultsEl.addEventListener('animationend', () => resultsEl.classList.add('hidden'));
-};
-
-// add winning effects to the winner
-const displayWinner = (result) => {
-  switch (result) {
-    case 1:
-      houseChipEl.parentNode.classList.remove('winner');
-      userChipEl.parentNode.classList.add('winner');
-      break;
-
-    case -1:
-      userChipEl.parentNode.classList.remove('winner');
-      houseChipEl.parentNode.classList.add('winner');
-      break;
-
-    default:
-      userChipEl.parentNode.classList.remove('winner');
-      houseChipEl.parentNode.classList.remove('winner');
-      break;
-  };
 };
 
 // display results
-const displayResults = (userChoice, houseChoice) => {
+const displayResults = () => {
   const resultsTitleEl = resultsEl.querySelector('.results__title');
   const btnReplay = resultsEl.querySelector('#btn-replay');
-  const resultsObj = getResults(userChoice, houseChoice);
+  const resultsObj = getResults();
   resultsTitleEl.textContent = resultsObj.resultString;
-  displayWinner(resultsObj.resultPoint);
-  updateScore(resultsObj.resultPoint);
   // replay game on click
   btnReplay.addEventListener('click', displayDefualtChips, {
     once: true // add EventListener only once
+  });
+  // show results after chosen chips finish opening animation
+  chosenChipsEl.addEventListener('animationend', () => {
+    resultsEl.classList.remove('hidden');
+    resultsEl.classList.add('animate-opening');
+  }, {
+    once: true
+  });
+  // update score and show winner after results opening animation end
+  resultsEl.addEventListener('animationend', () => {
+    displayWinner(resultsObj.resultPoint);
+    updateScore(resultsObj.resultPoint);
+  }, {
+    once: true
   });
 };
 
@@ -114,16 +125,16 @@ const displayResults = (userChoice, houseChoice) => {
 const getHouseChoice = () => {
   const numberOfChoices = allChipBtnEls.length;
   const randomNumber = Math.floor(Math.random() * numberOfChoices);
-  const houseChoice = allChipBtnEls[randomNumber].dataset.chipValue;
-  return houseChoice;
+  const choice = allChipBtnEls[randomNumber].dataset.chipValue;
+  return choice;
 };
 
 // run game
 const runGame = (e) => {
-  const userChoice = e.target.dataset.chipValue;
-  const houseChoice = getHouseChoice();
-  displayChosenChips(userChoice, houseChoice);
-  displayResults(userChoice, houseChoice);
+  userChoice = e.target.dataset.chipValue;
+  houseChoice = getHouseChoice();
+  displayChosenChips();
+  displayResults();
 };
 
 // add click event to all chip buttons

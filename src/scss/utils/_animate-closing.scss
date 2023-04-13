@@ -36,7 +36,7 @@
       animation: right-to-center var(--ani-props);
     }
   }
-  
+
   .chosen-chips__user,
   .chosen-chips__house {
     @include brk.minWidth(small) {
@@ -51,7 +51,9 @@
     animation: fade-out var(--ani-props);
   }
 
-  .results {
-    animation: fade-out var(--ani-props);
+  &.results {
+    animation:
+    fade-out var(--ani-props),
+    slide-down var(--ani-props);
   }
 }
