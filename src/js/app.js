@@ -61,6 +61,12 @@ const removeWinnerEffs = () => {
   houseChipEl.parentNode.classList.remove('winner');
 };
 
+// remove selected class from chip
+const removeSelectedClass = () => {
+  const selectedEl = defaultChipsEl.querySelector('.selected');
+  selectedEl.classList.remove('selected');
+};
+
 // hide chosen chips and results then show default chips
 const displayDefualtChips = () => {
   chosenChipsEl.classList.add('animate-closing');
@@ -75,6 +81,11 @@ const displayDefualtChips = () => {
     defaultChipsEl.classList.remove('hidden');
   }, {
     once: true // runs event only once
+  });
+  // remove selected class from the previously selected chip,
+  // after default chips has finished opening animation
+  defaultChipsEl.addEventListener('animationend', removeSelectedClass, {
+    once: true
   });
 };
 
@@ -133,6 +144,8 @@ const getHouseChoice = () => {
 const runGame = (e) => {
   userChoice = e.target.dataset.chipValue;
   houseChoice = getHouseChoice();
+  // make clicked item stay on top
+  e.target.parentNode.classList.add('selected');
   displayChosenChips();
   displayResults();
 };

@@ -2,6 +2,7 @@
 
 .animate-opening {
   --ani-props: 400ms ease forwards;
+  --chosen-chips-delay: 1000ms;
 
   &.default-chips {
     animation: expand-bg var(--ani-props);
@@ -24,7 +25,7 @@
   &.chosen-chips {
     @include brk.minWidth(medium) {
       animation: full-stretch var(--ani-props);
-      animation-delay: 1s;
+      animation-delay: var(--chosen-chips-delay);
     }
   };
 
@@ -61,5 +62,10 @@
     animation:
     fade-in var(--ani-props),
     slide-up var(--ani-props);
+
+    @include brk.minWidth(medium) {
+      animation: fade-in var(--ani-props);
+      animation-delay: calc(var(--chosen-chips-delay) + 100ms);
+    }
   }
 }

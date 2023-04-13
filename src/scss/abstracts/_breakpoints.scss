@@ -1,14 +1,14 @@
-// Breakpoints 960px, 1024, 1440px, 1920px
+// Breakpoints 720px, 1024, 1440px, 1920px
 $breakpoints-up: (
-  "small" : 60em,
+  "small" : 45em,
   "medium": 64em,
   "large" : 90em,
   "xlarge": 120em
 );
 
-// Breakpoints 959.5px, 1023.5px 1439.5px, 1919.5px
+// Breakpoints 719.5px, 1023.5px 1439.5px, 1919.5px
 $breakpoints-down: (
-  "small" : 59.96875em,
+  "small" : 44.96875em,
   "medium" : 63.96875,
   "large" : 89.96875em,
   "xlarge": 119.96875em

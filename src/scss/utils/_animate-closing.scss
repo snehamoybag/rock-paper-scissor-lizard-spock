@@ -55,5 +55,9 @@
     animation:
     fade-out var(--ani-props),
     slide-down var(--ani-props);
+
+    @include brk.minWidth(medium) {
+      animation: fade-out;
+    }
   }
 }
