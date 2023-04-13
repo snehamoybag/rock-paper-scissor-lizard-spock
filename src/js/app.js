@@ -91,9 +91,14 @@ const displayDefualtChips = () => {
 
 // hide default chips and then show chosen chips
 const displayChosenChips = () => {
+  const userChipSrOnlyEl = userChipEl.querySelector('.sr-only');
+  const houseChipSrOnlyEl = houseChipEl.querySelector('.sr-only');
   // update chosen chips styles
   userChipEl.dataset.chipValue = userChoice;
   houseChipEl.dataset.chipValue = houseChoice;
+  // add screen reader only classes
+  userChipSrOnlyEl.textContent = userChoice;
+  houseChipSrOnlyEl.textContent = houseChoice;
   // hide default chips
   defaultChipsEl.classList.add('no-btn-effs', 'animate-closing');
   // show chosen chips on animation end
