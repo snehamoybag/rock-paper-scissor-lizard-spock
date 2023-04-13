@@ -32,8 +32,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* basic styling on body */
-body {
-  background: linear-gradient(var(--clr-neutral-700), var(--clr-neutral-900)) no-repeat;
-  background-size: cover;
+/* allow percentage based heights */
+html, body {
+  height: 100%;
 }

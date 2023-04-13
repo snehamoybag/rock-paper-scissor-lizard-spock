@@ -12,63 +12,65 @@
   <script src="js/app.js" type="module"></script>
 </head>
 <body>
-  <header class="header"></header>
-  <main class="main">
-    <div class="heading">
-      <h1 class="heading__title">Rock Paper Scissors</h1>
-      <p class="heading__score">
-        <span>Score</span> <span class="heading__score-points" id="score-points">0</span>
-      </p>
-    </div>
-    <div class="board" id="board">
-      <div class="default-chips board__chips-container animate-opening" id="default-chips">
-        <div class="default-chips__chip-wrapper">
-          <button class="chip" data-chip-value="rock"><span class="sr-only">Rock</span></button>
+  <div class="body-container">
+    <header class="header"></header>
+    <main class="main">
+      <div class="heading">
+        <h1 class="heading__title">Rock Paper Scissors</h1>
+        <p class="heading__score">
+          <span>Score</span> <span class="heading__score-points" id="score-points">0</span>
+        </p>
+      </div>
+      <div class="board" id="board">
+        <div class="default-chips board__chips-container animate-opening" id="default-chips">
+          <div class="default-chips__chip-wrapper">
+            <button class="chip" data-chip-value="rock"><span class="sr-only">Rock</span></button>
+          </div>
+          <div class="default-chips__chip-wrapper">
+            <button class="chip" data-chip-value="paper"><span class="sr-only">Paper</span></button>
+          </div>
+          <div class="default-chips__chip-wrapper">
+            <button class="chip" data-chip-value="scissors"><span class="sr-only">Scissors</span></button>
+          </div>
         </div>
-        <div class="default-chips__chip-wrapper">
-          <button class="chip" data-chip-value="paper"><span class="sr-only">Paper</span></button>
+        <div class="chosen-chips board__chips-container animate-opening no-btn-effs hidden" id="chosen-chips">
+          <div class="chosen-chips__user selected">
+            <p class="chosen-chips__texts">
+              You Picked <span class="sr-only"></span>
+            </p>
+            <div class="chip" id="user-chip"></div>
+          </div>
+          <div class="chosen-chips__house">
+            <p class="chosen-chips__texts">
+              The House Picked <span class="sr-only"></span>
+            </p>
+            <div class="chip" id="house-chip"></div>
+          </div>
         </div>
-        <div class="default-chips__chip-wrapper">
-          <button class="chip" data-chip-value="scissors"><span class="sr-only">Scissors</span></button>
+        <div class="results hidden" id="results">
+          <h2 class="results__title">It's a Draw</h2>
+          <button class="btn btn--white" id="btn-replay">Play Again</button>
         </div>
       </div>
-      <div class="chosen-chips board__chips-container animate-opening no-btn-effs hidden" id="chosen-chips">
-        <div class="chosen-chips__user selected">
-          <p class="chosen-chips__texts">
-            You Picked <span class="sr-only"></span>
-          </p>
-          <div class="chip" id="user-chip"></div>
-        </div>
-        <div class="chosen-chips__house">
-          <p class="chosen-chips__texts">
-            The House Picked <span class="sr-only"></span>
-          </p>
-          <div class="chip" id="house-chip"></div>
+      <div class="rules" id="rules">
+        <button class="btn btn--border-only" id="btn-rules-open" aria-controls="rules-modal" aria-expanded="false">Rules</button>
+        <div class="rules__modal animate-opening hidden" id="rules-modal">
+          <div class="rules__img">
+            <h2 class="rules__img-title">Rules</h2>
+            <p class="sr-only">
+              Rock beats Scissors, Scissors beats Paper and Paper beats Rock.
+            </p>
+            <button class="rules__img-btn" id="btn-rules-close" aria-controls="rules-modal" aria-expanded="false"><img src="/images/icon-close.svg" alt="close"></button>
+          </div>
         </div>
       </div>
-      <div class="results hidden" id="results">
-        <h2 class="results__title">It's a Draw</h2>
-        <button class="btn btn--white" id="btn-replay">Play Again</button>
+    </main>
+    <footer class="footer">
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="http://localhost:5173/">Your Name Here</a>.
       </div>
-    </div>
-    <div class="rules" id="rules">
-      <button class="btn btn--border-only" id="btn-rules-open" aria-controls="rules-modal" aria-expanded="false">Rules</button>
-      <div class="rules__modal animate-opening hidden" id="rules-modal">
-        <div class="rules__img">
-          <h2 class="rules__img-title">Rules</h2>
-          <p class="sr-only">
-            Rock beats Scissors, Scissors beats Paper and Paper beats Rock.
-          </p>
-          <button class="rules__img-btn" id="btn-rules-close" aria-controls="rules-modal" aria-expanded="false"><img src="/images/icon-close.svg" alt="close"></button>
-        </div>
-      </div>
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-      Coded by <a href="http://localhost:5173/">Your Name Here</a>.
-    </div>
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>

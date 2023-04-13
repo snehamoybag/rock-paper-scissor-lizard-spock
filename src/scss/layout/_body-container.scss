@@ -1,0 +1,7 @@
+.body-container {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: linear-gradient(var(--clr-neutral-700), var(--clr-neutral-900)) no-repeat;
+  background-size: cover;
+}
