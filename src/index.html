@@ -51,15 +51,15 @@
         <button class="btn btn--white" id="btn-replay">Play Again</button>
       </div>
     </div>
-    <div class="rules">
+    <div class="rules" id="rules">
       <button class="btn btn--border-only" id="btn-rules-open" aria-controls="rules-modal" aria-expanded="false">Rules</button>
-      <div class="rules__modal hidden" id="rules-modal">
+      <div class="rules__modal animate-opening hidden" id="rules-modal">
         <div class="rules__img">
           <h2 class="rules__img-title">Rules</h2>
           <p class="sr-only">
             Rock beats Scissors, Scissors beats Paper and Paper beats Rock.
           </p>
-          <button class="rules__img-btn" id="btn-rules-close" aria-controls="rules-modal" aria-expanded="true"><img src="/images/icon-close.svg" alt="close"></button>
+          <button class="rules__img-btn" id="btn-rules-close" aria-controls="rules-modal" aria-expanded="false"><img src="/images/icon-close.svg" alt="close"></button>
         </div>
       </div>
     </div>

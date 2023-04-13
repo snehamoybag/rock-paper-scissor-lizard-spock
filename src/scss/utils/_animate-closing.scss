@@ -60,4 +60,9 @@
       animation: fade-out;
     }
   }
+  
+  &.rules__modal {
+    animation: fade-out var(--ani-props);
+    animation-duration: 250ms;
+  }
 }

@@ -68,4 +68,9 @@
       animation-delay: calc(var(--chosen-chips-delay) + 100ms);
     }
   }
+
+  &.rules__modal {
+    animation: fade-in var(--ani-props);
+    animation-duration: 250ms;
+  }
 }

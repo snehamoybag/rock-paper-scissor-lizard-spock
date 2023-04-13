@@ -8,6 +8,9 @@ const chosenChipsEl = document.querySelector('#chosen-chips');
 const userChipEl = chosenChipsEl.querySelector('#user-chip');
 const houseChipEl = chosenChipsEl.querySelector('#house-chip');
 const resultsEl = document.querySelector('#results');
+const rulesModalEl = document.querySelector('#rules-modal');
+const rulesModalOpenBtn = document.querySelector('#btn-rules-open');
+const rulesModalCloseBtn = document.querySelector('#btn-rules-close');
 
 let userChoice = '';
 let houseChoice = '';
@@ -157,3 +160,26 @@ const runGame = (e) => {
 
 // add click event to all chip buttons
 allChipBtnEls.forEach(chipBtn => chipBtn.addEventListener('click', runGame));
+
+// open modal
+const openRulesModal = () => {
+  rulesModalEl.classList.remove('hidden');
+  rulesModalOpenBtn.setAttribute('aria-expanded', 'true');
+  rulesModalCloseBtn.setAttribute('aria-expanded', 'true');
+};
+
+// close modal
+const closeRulesModal = () => {
+  rulesModalEl.classList.add('animate-closing');
+  rulesModalOpenBtn.setAttribute('aria-expanded', 'false');
+  rulesModalCloseBtn.setAttribute('aria-expanded', 'false');
+  rulesModalEl.addEventListener('animationend', () => {
+    rulesModalEl.classList.add('hidden');
+    rulesModalEl.classList.remove('animate-closing');
+  }, {
+    once: true
+  });
+};
+// add open and close modal event on rules button
+rulesModalOpenBtn.addEventListener('click', openRulesModal);
+rulesModalCloseBtn.addEventListener('click', closeRulesModal);
