@@ -91,8 +91,8 @@ const displayDefualtChips = () => {
 
 // hide default chips and then show chosen chips
 const displayChosenChips = () => {
-  const userChipSrOnlyEl = userChipEl.querySelector('.sr-only');
-  const houseChipSrOnlyEl = houseChipEl.querySelector('.sr-only');
+  const userChipSrOnlyEl = chosenChipsEl.querySelector('.chosen-chips__user .sr-only');
+  const houseChipSrOnlyEl = chosenChipsEl.querySelector('.chosen-chips__house .sr-only');
   // update chosen chips styles
   userChipEl.dataset.chipValue = userChoice;
   houseChipEl.dataset.chipValue = houseChoice;
