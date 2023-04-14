@@ -1,52 +1,52 @@
 @use '../abstracts/breakpoints' as brk;
 
 .heading {
-  --fs-title: clamp(1rem, calc(0.5rem + 3.5vw), 2.85rem);
-  --fs-score: clamp(0.5rem, calc(0.5rem + 0.65vw), 1.25rem);
-  --fs-score-points: clamp(1.5rem, calc(1rem + 6.5vw), 4.5rem);
-  --score-padding: 1em 2em;
-  width: min(100%, 45rem);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0.75em 0.75em 0.75em 1.25em;
-  border: 3px solid var(--clr-neutral-500);
-  border-radius: 0.5em;
-  font-weight: var(--fw-bold);
-  margin: 0 auto 6.5rem;
-
-  @include brk.minWidth(small) {
-    --score-padding: 1em 3.25em;
-  }
-
-  &__title {
-    max-width: 5ch;
-    font-size: var(--fs-title);
-    line-height: 0.8;
-  }
-
-  &__score {
-    background-color: var(--clr-neutral-100);
-    color: var(--clr-neutral-400);
-    font-size: var(--fs-score);
-    letter-spacing: 0.1em;
-    line-height: 1.025;
-    text-align: center;
-    padding: var(--score-padding);
-    border-radius: 0.5em;
-
-    /* for inner contents */
+    --fs-title: clamp(1rem, calc(0.5rem + 3.5vw), 2.85rem);
+    --fs-score: clamp(0.5rem, calc(0.5rem + 0.65vw), 1.25rem);
+    --fs-score-points: clamp(1.5rem, calc(1rem + 6.5vw), 4.5rem);
+    --score-padding: 1em 2em;
+    width: min(100%, 45rem);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-  }
-
-  &__score-points {
-    color: var(--clr-neutral-600);
-    font-size: var(--fs-score-points);
+    flex-wrap: wrap;
+    padding: 0.75em 0.75em 0.75em 1.25em;
+    border: 3px solid var(--clr-neutral-500);
+    border-radius: 0.5em;
     font-weight: var(--fw-bold);
-    letter-spacing: -0.03rem;
-  }
+    margin: 0 auto 6.5rem;
+
+    @include brk.minWidth(small) {
+        --score-padding: 1em 3.25em;
+    }
+
+    &__title {
+        max-width: 5ch;
+        font-size: var(--fs-title);
+        line-height: 0.8;
+    }
+
+    &__score {
+        background-color: var(--clr-neutral-100);
+        color: var(--clr-neutral-400);
+        font-size: var(--fs-score);
+        letter-spacing: 0.1em;
+        line-height: 1.025;
+        text-align: center;
+        padding: var(--score-padding);
+        border-radius: 0.5em;
+
+        /* for inner contents */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__score-points {
+        color: var(--clr-neutral-600);
+        font-size: var(--fs-score-points);
+        font-weight: var(--fw-bold);
+        letter-spacing: -0.03rem;
+    }
 }

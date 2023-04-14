@@ -1,24 +1,24 @@
 @use '../abstracts/breakpoints' as brk;
 
 .results {
-  --translate-y-pos: -1.5rem;
-  width: 100%;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  transform: translateY(var(--translate-y-pos));
-  opacity: 0; // to make the fade animations work
+    --translate-y-pos: -1.5rem;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    transform: translateY(var(--translate-y-pos));
+    opacity: 0; // to make the fade animations work
 
-  @include brk.minWidth(medium) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    @include brk.minWidth(medium) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-  &__title {
-    font-size: 2.25rem;
-    font-weight: var(--fw-bold);
-    margin-bottom: 0.5rem;
-  }
+    &__title {
+        font-size: 2.25rem;
+        font-weight: var(--fw-bold);
+        margin-bottom: 0.5rem;
+    }
 }

@@ -4,10 +4,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
 
 :root {
-  --ff-primary: 'Barlow Semi Condensed', sans-serif;
+    --ff-primary: 'Barlow Semi Condensed', sans-serif;
 
-  --fw-semi-bold: 600;
-  --fw-bold: 700;
+    --fw-semi-bold: 600;
+    --fw-bold: 700;
 }
 
 /* typography reset */
@@ -16,7 +16,7 @@
  Remove built-in typography styles
 */
 * {
-  font: inherit;
+    font: inherit;
 }
 
 /*
@@ -25,12 +25,12 @@
   5. Improve text rendering
 */
 body {
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* general body typography */
 body {
-  font-family: var(--ff-primary);
-  font-weight: var(--fw-semi-bold);
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-semi-bold);
 }

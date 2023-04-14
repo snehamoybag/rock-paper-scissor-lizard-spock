@@ -1,11 +1,11 @@
 @use '../abstracts/breakpoints' as brk;
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 /* preserves its height and width when hidden */
 .hidden.results {
-  display: block;
-  visibility: hidden;
+    display: block;
+    visibility: hidden;
 }

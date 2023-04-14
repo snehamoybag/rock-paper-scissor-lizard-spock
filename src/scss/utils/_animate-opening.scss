@@ -1,76 +1,76 @@
 @use '../abstracts/breakpoints' as brk;
 
 .animate-opening {
-  --ani-props: 400ms ease forwards;
-  --chosen-chips-delay: 1000ms;
+    --ani-props: 400ms ease forwards;
+    --chosen-chips-delay: 1000ms;
 
-  &.default-chips {
-    animation: expand-bg var(--ani-props);
-  }
-
-  .default-chips__chip-wrapper {
-    &:nth-of-type(1) {
-      animation: center-to-bottom var(--ani-props);
+    &.default-chips {
+        animation: expand-bg var(--ani-props);
     }
 
-    &:nth-of-type(2) {
-      animation: center-to-top-left var(--ani-props);
+    .default-chips__chip-wrapper {
+        &:nth-of-type(1) {
+            animation: center-to-bottom var(--ani-props);
+        }
+
+        &:nth-of-type(2) {
+            animation: center-to-top-left var(--ani-props);
+        }
+
+        &:nth-of-type(3) {
+            animation: center-to-top-right var(--ani-props);
+        }
     }
 
-    &:nth-of-type(3) {
-      animation: center-to-top-right var(--ani-props);
+    &.chosen-chips {
+        @include brk.minWidth(medium) {
+            animation: full-stretch var(--ani-props);
+            animation-delay: var(--chosen-chips-delay);
+        }
+    };
+
+    .chosen-chips__user {
+        animation: center-to-top-left var(--ani-props);
+        @include brk.minWidth(small) {
+            animation: center-to-left var(--ani-props);
+        }
     }
-  }
 
-  &.chosen-chips {
-    @include brk.minWidth(medium) {
-      animation: full-stretch var(--ani-props);
-      animation-delay: var(--chosen-chips-delay);
+    .chosen-chips__house {
+        animation: center-to-top-right var(--ani-props);
+        @include brk.minWidth(small) {
+            animation: center-to-right var(--ani-props);
+        }
     }
-  };
 
-  .chosen-chips__user {
-    animation: center-to-top-left var(--ani-props);
-    @include brk.minWidth(small) {
-      animation: center-to-left var(--ani-props);
+    .chosen-chips__user,
+    .chosen-chips__house {
+        @include brk.minWidth(small) {
+            .chip {
+                animation: increase-size var(--ani-props);
+                animation-delay: 400ms;
+            }
+        }
     }
-  }
 
-  .chosen-chips__house {
-    animation: center-to-top-right var(--ani-props);
-    @include brk.minWidth(small) {
-      animation: center-to-right var(--ani-props);
+    .chosen-chips__texts {
+        animation: fade-in var(--ani-props);
+        animation-delay: 500ms;
     }
-  }
 
-  .chosen-chips__user,
-  .chosen-chips__house {
-    @include brk.minWidth(small) {
-      .chip {
-        animation: increase-size var(--ani-props);
-        animation-delay: 400ms;
-      }
+    &.results {
+        animation:
+        fade-in var(--ani-props),
+        slide-up var(--ani-props);
+
+        @include brk.minWidth(medium) {
+            animation: fade-in var(--ani-props);
+            animation-delay: calc(var(--chosen-chips-delay) + 100ms);
+        }
     }
-  }
 
-  .chosen-chips__texts {
-    animation: fade-in var(--ani-props);
-    animation-delay: 500ms;
-  }
-
-  &.results {
-    animation:
-    fade-in var(--ani-props),
-    slide-up var(--ani-props);
-
-    @include brk.minWidth(medium) {
-      animation: fade-in var(--ani-props);
-      animation-delay: calc(var(--chosen-chips-delay) + 100ms);
+    &.rules__modal {
+        animation: fade-in var(--ani-props);
+        animation-duration: 250ms;
     }
-  }
-
-  &.rules__modal {
-    animation: fade-in var(--ani-props);
-    animation-duration: 250ms;
-  }
 }

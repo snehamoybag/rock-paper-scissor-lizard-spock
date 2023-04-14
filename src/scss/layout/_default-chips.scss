@@ -1,11 +1,11 @@
 .default-chips {
-  --bg-size: 70%;
-  background-image: url('/images/bg-triangle.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: var(--bg-size);
+	--bg-size: 70%;
+	background-image: url('/images/bg-triangle.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: var(--bg-size);
 
-  &__chip-wrapper {
-    position: absolute;
-  }
+	&__chip-wrapper {
+		position: absolute;
+	}
 }

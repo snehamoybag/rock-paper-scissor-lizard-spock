@@ -3,36 +3,36 @@
   1. Use a more-intuitive box-sizing model.
 */
 *, *::before, *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 /*
   2. Remove default margin and padding
 */
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /* default focus-visible styles */
 *:focus-visible {
-  outline: 2px dotted hsla(0, 0%, 100%, 0.5);
-  outline-offset: 5px;
+    outline: 2px dotted hsla(0, 0%, 100%, 0.5);
+    outline-offset: 5px;
 }
 
 /*
   6. Improve media defaults
 */
 img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
+    display: block;
+    max-width: 100%;
 }
 
 /* smooth scrolling */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 /* allow percentage based heights */
 html, body {
-  height: 100%;
+    height: 100%;
 }
