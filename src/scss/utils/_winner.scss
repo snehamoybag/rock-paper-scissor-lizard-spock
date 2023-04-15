@@ -3,19 +3,19 @@
 
 /* radial gradient for the winner */
 .winner {
-  z-index: -1; /* requires its parent to have 'isolation: isolate' property */
-  .chip::before {
-    --shadow-clr-values: 214, 47%, 25%;
-    box-shadow:
-    0 0 0 20px hsla(var(--shadow-clr-values)),
-    0 0 0 50px hsla(var(--shadow-clr-values), 0.5),
-    0 0 0 80px hsla(var(--shadow-clr-values), 0.25);
+    z-index: -1; /* requires its parent to have 'isolation: isolate' property */
+    .chip::before {
+        --shadow-clr-values: 214, 47%, 25%;
+        box-shadow:
+        0 0 0 20px hsla(var(--shadow-clr-values)),
+        0 0 0 50px hsla(var(--shadow-clr-values), 0.5),
+        0 0 0 80px hsla(var(--shadow-clr-values), 0.25);
 
-    @include brk.minWidth(medium) {
-      box-shadow:
-      0 0 0 50px hsla(var(--shadow-clr-values)),
-      0 0 0 110px hsla(var(--shadow-clr-values), 0.5),
-      0 0 0 170px hsla(var(--shadow-clr-values), 0.25);
+        @include brk.minWidth(medium) {
+            box-shadow:
+            0 0 0 40px hsla(var(--shadow-clr-values)),
+            0 0 0 90px hsla(var(--shadow-clr-values), 0.5),
+            0 0 0 150px hsla(var(--shadow-clr-values), 0.25);
+        }
     }
-  }
 }

@@ -1,13 +1,18 @@
 @use '../abstracts/breakpoints' as brk;
 
 .results {
-    --translate-y-pos: -1.5rem;
-    width: 100%;
+    --translate-y-pos: -2.25rem;
+    --fs-title: 3.5rem;
+    width: min(100%, 20rem);
     text-align: center;
     position: relative;
     z-index: 2;
     transform: translateY(var(--translate-y-pos));
     opacity: 0; // to make the fade animations work
+
+    @include brk.minWidth(medium) {
+        --fs-title: 4rem;
+    }
 
     @include brk.minWidth(medium) {
         position: absolute;
@@ -17,8 +22,13 @@
     }
 
     &__title {
-        font-size: 2.25rem;
+        font-size: var(--fs-title);
         font-weight: var(--fw-bold);
-        margin-bottom: 0.5rem;
+        line-height: 1;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn {
+        width: 80%;
     }
 }

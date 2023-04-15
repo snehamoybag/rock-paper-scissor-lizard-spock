@@ -1,5 +1,11 @@
+@use '../abstracts/breakpoints' as brk;
+
 .main {
     padding: 1.75em;
     color: var(--clr-neutral-100);
     text-transform: uppercase;
+
+    @include brk.minWidth(small) {
+        padding: 3em 2em;
+    }
 }

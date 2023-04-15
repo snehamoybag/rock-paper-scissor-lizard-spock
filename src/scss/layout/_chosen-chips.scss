@@ -2,15 +2,18 @@
 
 .chosen-chips {
     --texts-vertical-pos: 6rem; /* translateY value */
+    font-size: 0.9rem;
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.15em;
     isolation: isolate;
 
     @include brk.minWidth(small) {
-        --texts-vertical-pos: -15rem;
+        --texts-vertical-pos: -14rem;
+        font-size: 1.5rem;
     }
 
     &__user,
     &__house {
-        min-width: 16ch;
         position: absolute;
 
         /* for inner contents */
@@ -22,6 +25,7 @@
     }
 
     &__texts {
+        white-space: nowrap; /* prevents the text from wrapping */
         z-index: 1;
         position: absolute;
         transform: translateY(var(--texts-vertical-pos));

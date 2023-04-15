@@ -1,16 +1,20 @@
 @use '../abstracts/breakpoints' as brk;
 
 .chip {
+    --inner-shadow-height: 5px;
+    --bottom-shadow-height: -5px;
     // colored border
     width: 7.75rem;
     aspect-ratio: 1/1;
     background-color: var(--clr-neutral-100);
     border: none;
     border-radius: 50%;
-    box-shadow: 0 -5px 0 hsla(0, 0%, 0%, 0.2) inset;
+    box-shadow: 0 var(--bottom-shadow-height) 0 hsla(0, 0%, 0%, 0.2) inset;
     position: relative;
 
     @include brk.minWidth(small) {
+        --inner-shadow-height: 10px;
+        --bottom-shadow-height: -10px;
         width: 12.5rem;
     }
 
@@ -45,7 +49,7 @@
         top: 50%;
         left: 50%;
         transform: var(--translate-pos);
-        box-shadow: 0 5px 0 hsla(0, 0%, 0%, 0.1) inset;
+        box-shadow: 0 var(--inner-shadow-height) 0 hsla(0, 0%, 0%, 0.1) inset;
         transition: transform 200ms ease;
     }
 

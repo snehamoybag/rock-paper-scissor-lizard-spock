@@ -2,11 +2,17 @@
 
 .rules {
     --fs-title: clamp(0.75rem, calc(0.5rem + 7vw), 2.25rem);
-    width: 100%;
+    --fs-rules-btn: 0.9rem;
+    width: min(100%, 85rem);
     display: flex;
     justify-content: center;
     position: relative;
     z-index: 99;
+    margin: 0 auto;
+
+    @include brk.minWidth(small) {
+        --fs-rules-btn: 1rem;
+    }
 
     @include brk.minWidth(medium) {
         justify-content: end;
@@ -74,5 +80,9 @@
                 transform: scale(0.95);
             }
         }
+    }
+
+    .btn--border-only {
+        font-size: var(--fs-rules-btn);
     }
 }
